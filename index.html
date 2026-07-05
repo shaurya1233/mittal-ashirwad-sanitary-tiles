@@ -1,0 +1,604 @@
+<!DOCTYPE html>
+    <html lang="en">
+    <head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Ashirwad Sanitary &amp; Tiles — Est. 2005 | Lucknow</title>
+    <meta name="description" content="Premium ceramic tiles, sanitaryware and bath fittings in Lucknow since 2005. Showroom at Sarojini Nagar and LDA Colony."/>
+    <link rel="preconnect" href="https://fonts.googleapis.com"/>
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+    <style>
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    :root{
+    --gold:#B8860B;--gold-light:#D4A017;
+    --ivory:#FAF7F2;--cream:#F5F0E8;
+    --charcoal:#2C2C2C;--brown:#6B5F4E;--mahogany:#3D1C0D;
+    --border:#D4C4A0;--shadow:rgba(44,44,44,0.12);
+    --radius:8px;--tr:0.35s ease;
+    }
+    html{scroll-behavior:smooth}
+    body{font-family:'Inter',sans-serif;background:var(--ivory);color:var(--charcoal);line-height:1.7;overflow-x:hidden}
+    body.dark{background:#1A0F08;color:#F0E8D8}
+    body.dark nav.scrolled{background:rgba(26,15,8,0.97);border-bottom-color:#5C4020}
+    body.dark .card,body.dark .brand-card,body.dark .calc-card,body.dark .product-card,body.dark .testimonial{background:#261508;border-color:#5C4020}
+    body.dark section.alt{background:#221206}
+    body.dark .footer{background:#0F0804}
+    body.dark h1,body.dark h2,body.dark h3,body.dark h4{color:#F0E8D8}
+    body.dark input,body.dark textarea,body.dark select{background:#2A1508;border-color:#5C4020;color:#F0E8D8}
+    body.dark label{color:#A08060}
+    body.dark .section-sub,body.dark .card-text,body.dark .value-desc,body.dark .timeline-desc{color:#A08060}
+    body.dark .rating-summary{background:#261508;border-color:#5C4020}
+    body.dark .filter-btn{color:#D4C4A0;border-color:#5C4020}
+    body.dark .owner-quote{color:#D4C4A0}
+    h1,h2,h3,h4{font-family:'Playfair Display',serif;line-height:1.25;color:var(--charcoal)}
+    .quote{font-family:'Cormorant Garamond',serif;font-style:italic}
+    a{color:inherit;text-decoration:none}
+
+    /* NAV */
+    nav{position:fixed;top:0;left:0;right:0;z-index:1000;padding:0 2rem;display:flex;align-items:center;justify-content:space-between;height:72px;transition:background var(--tr),box-shadow var(--tr)}
+    nav.scrolled{background:rgba(250,247,242,0.97);box-shadow:0 1px 20px var(--shadow);border-bottom:1px solid var(--border)}
+    .logo-main{font-family:'Playfair Display',serif;font-size:1.4rem;font-weight:700;color:var(--gold);letter-spacing:.02em}
+    .logo-sub{font-family:'Cormorant Garamond',serif;font-size:.85rem;font-weight:300;color:var(--brown);letter-spacing:.1em;font-style:italic;display:block}
+    .nav-links{display:flex;gap:2rem;list-style:none}
+    .nav-links a{font-size:.78rem;font-weight:500;letter-spacing:.12em;text-transform:uppercase;position:relative;padding-bottom:4px;transition:color var(--tr)}
+    body.dark .nav-links a{color:#D4C4A0}
+    .nav-links a::after{content:'';position:absolute;bottom:0;left:0;width:0;height:1px;background:var(--gold);transition:width var(--tr)}
+    .nav-links a:hover,.nav-links a.active{color:var(--gold)}
+    .nav-links a:hover::after,.nav-links a.active::after{width:100%}
+    .nav-r{display:flex;align-items:center;gap:1rem}
+    #tbtn{background:none;border:1px solid var(--border);border-radius:50%;width:38px;height:38px;cursor:pointer;font-size:1rem;display:flex;align-items:center;justify-content:center;transition:border-color var(--tr)}
+    body.dark #tbtn{border-color:#5C4020}
+    #tbtn:hover{border-color:var(--gold)}
+    .ham{display:none;background:none;border:none;cursor:pointer;padding:4px;flex-direction:column;gap:5px}
+    .ham span{display:block;width:24px;height:2px;background:var(--charcoal);transition:var(--tr)}
+    body.dark .ham span{background:#D4C4A0}
+    @media(max-width:900px){
+    .nav-links{display:none;position:fixed;top:72px;left:0;right:0;background:var(--ivory);flex-direction:column;padding:1.5rem 2rem 2rem;gap:0;border-bottom:1px solid var(--border);box-shadow:0 4px 20px var(--shadow)}
+    body.dark .nav-links{background:#1A0F08}
+    .nav-links.open{display:flex}
+    .nav-links li{border-bottom:1px solid var(--border)}
+    body.dark .nav-links li{border-color:#5C4020}
+    .nav-links a{display:block;padding:1rem 0;font-size:.9rem}
+    .ham{display:flex}
+    }
+
+    /* PAGES */
+    .page{display:none}
+    .page.active{display:block}
+
+    /* HERO */
+    .hero{position:relative;min-height:100vh;display:flex;align-items:center;justify-content:center;overflow:hidden;background:linear-gradient(135deg,#3D2B1F 0%,#5C3D2E 25%,#2C1A10 50%,#4A2E1E 75%,#1E1008 100%)}
+    .hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at center,rgba(184,134,11,.15) 0%,transparent 70%)}
+    .ho{position:absolute;inset:0;background:linear-gradient(to bottom,rgba(20,12,5,.5),rgba(20,12,5,.75))}
+    .hc{position:relative;z-index:1;text-align:center;max-width:900px;padding:0 2rem}
+    .h-est{font-family:'Cormorant Garamond',serif;font-size:.85rem;font-weight:400;letter-spacing:.35em;text-transform:uppercase;color:var(--gold-light);margin-bottom:1.5rem}
+    .h-title{font-family:'Playfair Display',serif;font-size:clamp(2.8rem,7vw,5.5rem);font-weight:700;color:#FAF7F2;line-height:1.1;margin-bottom:.5rem}
+    .h-gold{color:var(--gold-light);font-style:italic;display:block;font-size:clamp(2.2rem,5vw,4rem)}
+    .h-sub{font-family:'Cormorant Garamond',serif;font-size:clamp(1.1rem,2vw,1.5rem);color:rgba(250,247,242,.8);margin:1.5rem 0 2.5rem;letter-spacing:.05em}
+    .h-div{width:80px;height:1px;background:var(--gold);margin:0 auto 2.5rem;position:relative}
+    .h-div::before{content:'◆';position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);color:var(--gold);font-size:.6rem}
+    .h-btns{display:flex;flex-wrap:wrap;gap:1rem;justify-content:center}
+    .scroll-hint{position:absolute;bottom:2rem;left:50%;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:.5rem;color:rgba(250,247,242,.5);font-size:.7rem;letter-spacing:.3em;text-transform:uppercase;animation:bob 2s infinite}
+    @keyframes bob{0%,100%{transform:translateX(-50%) translateY(0)}50%{transform:translateX(-50%) translateY(-6px)}}
+    .s-arr{width:18px;height:18px;border-right:1px solid currentColor;border-bottom:1px solid currentColor;transform:rotate(45deg)}
+
+    /* BUTTONS */
+    .btn{display:inline-block;padding:.85rem 2.2rem;font-size:.78rem;font-weight:600;letter-spacing:.2em;text-transform:uppercase;border-radius:var(--radius);cursor:pointer;transition:all var(--tr);border:1px solid transparent;font-family:'Inter',sans-serif}
+    .btn-g{background:var(--gold);color:#FAF7F2;border-color:var(--gold)}
+    .btn-g:hover{background:var(--gold-light);border-color:var(--gold-light);transform:translateY(-2px)}
+    .btn-o{background:transparent;color:#FAF7F2;border-color:rgba(250,247,242,.6)}
+    .btn-o:hover{border-color:var(--gold);color:var(--gold);transform:translateY(-2px)}
+    .btn-d{background:transparent;color:var(--charcoal);border-color:var(--gold)}
+    .btn-d:hover{background:var(--gold);color:#FAF7F2;transform:translateY(-2px)}
+    body.dark .btn-d{color:#F0E8D8}
+
+    /* SECTIONS */
+    section{padding:5rem 0}
+    section.alt{background:var(--cream)}
+    .con{max-width:1200px;margin:0 auto;padding:0 2rem}
+    .s-label{font-family:'Cormorant Garamond',serif;font-size:.8rem;letter-spacing:.4em;text-transform:uppercase;color:var(--gold);text-align:center;display:block;margin-bottom:.8rem}
+    .s-title{font-family:'Playfair Display',serif;font-size:clamp(1.8rem,3.5vw,2.8rem);text-align:center;margin-bottom:.8rem}
+    .s-sub{text-align:center;color:var(--brown);max-width:600px;margin:0 auto 3rem;font-family:'Cormorant Garamond',serif;font-size:1.1rem;font-style:italic}
+    .orn{display:flex;align-items:center;justify-content:center;gap:.8rem;margin-bottom:3rem;color:var(--gold);font-size:.55rem}
+    .orn::before,.orn::after{content:'';width:60px;height:1px;background:var(--gold)}
+
+    /* GRID */
+    .g3{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:2rem}
+    .g4{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:1.5rem}
+    .card{background:#fff;border:1px solid var(--border);border-radius:var(--radius);overflow:hidden;transition:transform var(--tr),box-shadow var(--tr),border-color var(--tr);cursor:pointer}
+    .card:hover{transform:translateY(-4px);box-shadow:0 12px 40px var(--shadow);border-color:var(--gold)}
+    .card-img{height:180px;display:flex;align-items:flex-end;justify-content:flex-start;font-size:3rem;position:relative;overflow:hidden}
+    .card-lbl{position:absolute;bottom:0;left:0;right:0;background:linear-gradient(to top,rgba(0,0,0,.6),transparent);padding:1rem;color:#fff;font-family:'Playfair Display',serif;font-size:1rem}
+    .card-body{padding:1.5rem}
+    .card-title{font-family:'Playfair Display',serif;font-size:1.1rem;margin-bottom:.5rem}
+    .card-text{font-size:.88rem;color:var(--brown);line-height:1.6}
+
+    /* STATS */
+    .stats-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:2rem;text-align:center}
+    .stat-n{font-family:'Playfair Display',serif;font-size:3rem;font-weight:700;color:var(--gold);line-height:1}
+    .stat-l{font-size:.8rem;letter-spacing:.15em;text-transform:uppercase;color:var(--brown);margin-top:.5rem}
+
+    /* BRANDS */
+    .brand-card{background:#fff;border:1px solid var(--border);border-radius:var(--radius);padding:1.5rem;text-align:center;transition:all var(--tr)}
+    .brand-card:hover{border-color:var(--gold);box-shadow:0 8px 30px var(--shadow)}
+    .brand-card h3{font-family:'Playfair Display',serif;font-size:1.1rem;color:var(--gold);margin-bottom:.3rem}
+    .brand-card p{font-size:.8rem;color:var(--brown)}
+
+    /* TESTIMONIALS */
+    .tgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:2rem}
+    .testimonial{background:var(--cream);border:1px solid var(--border);border-radius:var(--radius);padding:2rem;position:relative}
+    .testimonial::before{content:open-quote;font-family:'Playfair Display',serif;font-size:5rem;color:var(--gold);opacity:.25;position:absolute;top:-.5rem;left:1.5rem;line-height:1}
+    .stars{color:var(--gold);font-size:1rem;margin-bottom:1rem}
+    .testimonial p{font-family:'Cormorant Garamond',serif;font-size:1.1rem;font-style:italic;margin-bottom:1rem}
+    body.dark .testimonial p{color:#D4C4A0}
+    .t-author{font-size:.78rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--brown)}
+
+    /* OWNER */
+    .owner-grid{display:grid;grid-template-columns:1fr 2fr;gap:4rem;align-items:center}
+    .owner-portrait{width:100%;aspect-ratio:3/4;background:linear-gradient(145deg,#C4A882,#8B6914,#5C3D2E);border-radius:var(--radius);display:flex;align-items:flex-end;justify-content:center;padding:1.5rem;font-family:'Cormorant Garamond',serif;font-size:1rem;font-style:italic;color:rgba(250,247,242,.9);max-height:400px}
+    .owner-quote{font-family:'Cormorant Garamond',serif;font-size:1.35rem;font-style:italic;color:var(--charcoal);line-height:1.6;margin-bottom:1.5rem;border-left:3px solid var(--gold);padding-left:1.5rem}
+    @media(max-width:700px){.owner-grid{grid-template-columns:1fr}}
+
+    /* ABOUT TIMELINE */
+    .timeline{position:relative;padding-left:2rem}
+    .timeline::before{content:'';position:absolute;left:0;top:0;bottom:0;width:2px;background:linear-gradient(to bottom,var(--gold),var(--border))}
+    .tl-item{position:relative;padding:0 0 2.5rem 2rem}
+    .tl-item::before{content:'';position:absolute;left:-.45rem;top:.4rem;width:12px;height:12px;border-radius:50%;background:var(--gold);border:2px solid var(--ivory)}
+    body.dark .tl-item::before{border-color:#1A0F08}
+    .tl-year{font-family:'Playfair Display',serif;font-size:1.2rem;color:var(--gold);font-weight:700;margin-bottom:.3rem}
+    .tl-desc{font-size:.92rem;color:var(--brown);line-height:1.6}
+
+    /* VALUES */
+    .vgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:2rem}
+    .val-item{padding:2rem;border:1px solid var(--border);border-radius:var(--radius);text-align:center;transition:border-color var(--tr)}
+    .val-item:hover{border-color:var(--gold)}
+    .val-icon{font-size:2rem;margin-bottom:1rem}
+    .val-title{font-family:'Playfair Display',serif;font-size:1rem;margin-bottom:.5rem}
+    .value-desc{font-size:.85rem;color:var(--brown);line-height:1.6}
+
+    /* PRODUCTS */
+    .filter-bar{display:flex;flex-wrap:wrap;gap:.75rem;margin-bottom:3rem;justify-content:center}
+    .filter-btn{padding:.5rem 1.2rem;border:1px solid var(--border);border-radius:20px;background:none;font-size:.8rem;letter-spacing:.08em;cursor:pointer;transition:all var(--tr);color:var(--charcoal);font-family:'Inter',sans-serif}
+    .filter-btn:hover,.filter-btn.active{background:var(--gold);color:#FAF7F2;border-color:var(--gold)}
+    .pgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:2rem}
+    .product-card{background:#fff;border:1px solid var(--border);border-radius:var(--radius);overflow:hidden;transition:all var(--tr)}
+    .product-card:hover{transform:translateY(-4px);box-shadow:0 12px 40px var(--shadow);border-color:var(--gold)}
+    .p-thumb{height:200px;display:flex;align-items:center;justify-content:center;font-size:3.5rem}
+    .p-info{padding:1.2rem}
+    .p-cat{font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;color:var(--gold);margin-bottom:.3rem}
+    .p-name{font-family:'Playfair Display',serif;font-size:1rem}
+
+    /* GALLERY */
+    .ggrid{columns:3 250px;gap:1.5rem}
+    .g-item{break-inside:avoid;margin-bottom:1.5rem;border-radius:var(--radius);overflow:hidden;border:1px solid var(--border);cursor:pointer;transition:all var(--tr)}
+    .g-item:hover{border-color:var(--gold);box-shadow:0 8px 30px var(--shadow)}
+    .g-thumb{width:100%;display:flex;align-items:center;justify-content:center;font-family:'Playfair Display',serif;color:rgba(255,255,255,.9);font-size:.95rem}
+    @media(max-width:600px){.ggrid{columns:2 140px}}
+
+    /* CALCULATOR */
+    .cgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:2rem}
+    .calc-card{background:#fff;border:1px solid var(--border);border-radius:var(--radius);padding:2rem}
+    .calc-title{font-family:'Playfair Display',serif;font-size:1.3rem;margin-bottom:1.5rem;color:var(--gold)}
+    .fg{margin-bottom:1.2rem}
+    label{display:block;font-size:.78rem;letter-spacing:.1em;text-transform:uppercase;color:var(--brown);margin-bottom:.5rem}
+    input,select,textarea{width:100%;padding:.75rem 1rem;border:1px solid var(--border);border-radius:var(--radius);background:var(--ivory);font-size:.95rem;color:var(--charcoal);transition:border-color var(--tr);font-family:'Inter',sans-serif}
+    input:focus,select:focus,textarea:focus{outline:none;border-color:var(--gold)}
+    textarea{resize:vertical;min-height:120px}
+    .c-result{margin-top:1.5rem;padding:1.2rem;background:var(--cream);border:1px solid var(--gold);border-radius:var(--radius);font-family:'Playfair Display',serif;font-size:.95rem;text-align:center;line-height:1.8}
+    body.dark .c-result{background:#3D1C0D;color:#F0E8D8}
+
+    /* CONTACT */
+    .cngrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:3rem}
+    .c-item{display:flex;align-items:flex-start;gap:1rem;margin-bottom:1.5rem}
+    .c-icon{width:40px;height:40px;border:1px solid var(--gold);border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:1rem;color:var(--gold)}
+    .c-detail h4{font-size:.75rem;letter-spacing:.12em;text-transform:uppercase;color:var(--brown);margin-bottom:.3rem}
+    body.dark .c-detail h4{color:#A08060}
+    .c-detail p,.c-detail a{font-size:.93rem;color:var(--charcoal);line-height:1.6}
+    body.dark .c-detail p,body.dark .c-detail a{color:#D4C4A0}
+    .map-box{height:240px;background:linear-gradient(135deg,#D4C4A0,#A8906A);border-radius:var(--radius);display:flex;align-items:center;justify-content:center;flex-direction:column;gap:1rem;color:var(--mahogany);margin-top:1.5rem}
+
+    /* REVIEWS */
+    .r-sum{text-align:center;padding:3rem;background:var(--cream);border-radius:var(--radius);margin-bottom:3rem;border:1px solid var(--border)}
+    .r-big{font-family:'Playfair Display',serif;font-size:4rem;color:var(--gold);line-height:1}
+    .r-lbl{font-size:.82rem;letter-spacing:.15em;text-transform:uppercase;color:var(--brown);margin-top:.5rem}
+
+    /* FOOTER */
+    .footer{background:var(--mahogany);color:rgba(250,247,242,.8);padding:4rem 0 2rem}
+    .fg-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:3rem;margin-bottom:3rem}
+    .fb h2{font-family:'Playfair Display',serif;color:var(--gold-light);font-size:1.5rem;margin-bottom:.4rem}
+    .fb p{font-size:.85rem;line-height:1.7;opacity:.8}
+    .fc h3{font-family:'Playfair Display',serif;color:var(--gold-light);font-size:1rem;margin-bottom:1rem}
+    .fc ul{list-style:none}
+    .fc li{margin-bottom:.6rem}
+    .fc a{font-size:.85rem;opacity:.75;transition:opacity var(--tr)}
+    .fc a:hover{opacity:1;color:var(--gold-light)}
+    .f-bot{border-top:1px solid rgba(250,247,242,.15);padding-top:2rem;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem}
+    .f-bot p{font-size:.8rem;opacity:.6}
+
+    /* FLOATING */
+    .float-btns{position:fixed;bottom:2rem;right:1.5rem;z-index:900;display:flex;flex-direction:column;gap:.75rem}
+    .fb-btn{width:52px;height:52px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:1.5rem;cursor:pointer;border:none;box-shadow:0 4px 20px rgba(0,0,0,.3);transition:transform var(--tr);text-decoration:none}
+    .fb-btn:hover{transform:scale(1.1)}
+    .fb-wa{background:#25D366}
+    .fb-call{background:var(--gold)}
+    .btt{position:fixed;bottom:2rem;left:1.5rem;z-index:900;width:46px;height:46px;border-radius:50%;background:var(--cream);border:1px solid var(--gold);color:var(--gold);font-size:1.3rem;cursor:pointer;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 16px var(--shadow);transition:all var(--tr);opacity:0;pointer-events:none}
+    .btt.on{opacity:1;pointer-events:auto}
+    .btt:hover{background:var(--gold);color:#fff}
+    #pb{position:fixed;top:0;left:0;height:3px;background:var(--gold);z-index:2000;transition:width .1s linear;width:0}
+
+    /* REVEAL */
+    .rv{opacity:0;transform:translateY(28px);transition:opacity .7s ease,transform .7s ease}
+    .rv.vis{opacity:1;transform:none}
+
+    /* HERO PAGE */
+    .pg-hero{background:linear-gradient(135deg,#3D2B1F,#2C1A10);padding:5rem 0;text-align:center}
+    .pg-hero .s-title{color:#FAF7F2;font-size:clamp(2.2rem,5vw,3.5rem)}
+    .pg-hero .s-sub{color:rgba(250,247,242,.75)}
+
+    @media(max-width:600px){section{padding:3rem 0}.h-btns{flex-direction:column;align-items:center}.btn{width:100%;max-width:280px;text-align:center}}
+    </style>
+    </head>
+    <body>
+    <div id="pb"></div>
+
+    <nav id="nav">
+    <a href="#" onclick="go('home');return false;" style="text-decoration:none">
+      <span class="logo-main">Ashirwad</span>
+      <span class="logo-sub">Sanitary &amp; Tiles</span>
+    </a>
+    <ul class="nav-links" id="nl">
+      <li><a href="#" onclick="go('home');cm();return false;" data-p="home">Home</a></li>
+      <li><a href="#" onclick="go('about');cm();return false;" data-p="about">Heritage</a></li>
+      <li><a href="#" onclick="go('products');cm();return false;" data-p="products">Collections</a></li>
+      <li><a href="#" onclick="go('brands');cm();return false;" data-p="brands">Brands</a></li>
+      <li><a href="#" onclick="go('gallery');cm();return false;" data-p="gallery">Gallery</a></li>
+      <li><a href="#" onclick="go('calc');cm();return false;" data-p="calc">Tools</a></li>
+      <li><a href="#" onclick="go('reviews');cm();return false;" data-p="reviews">Reviews</a></li>
+      <li><a href="#" onclick="go('contact');cm();return false;" data-p="contact">Contact</a></li>
+    </ul>
+    <div class="nav-r">
+      <button id="tbtn" onclick="toggleTheme()">&#9728;&#65039;</button>
+      <button class="ham" onclick="toggleNav()" aria-label="Menu"><span></span><span></span><span></span></button>
+    </div>
+    </nav>
+
+    <!-- HOME -->
+    <div class="page active" id="pg-home">
+    <section class="hero" style="padding:0">
+      <div class="ho"></div>
+      <div class="hc">
+        <p class="h-est">Est. 2005 &nbsp;&bull;&nbsp; Lucknow, India</p>
+        <h1 class="h-title">Crafting Beautiful Spaces<span class="h-gold">Since 2005.</span></h1>
+        <div class="h-div"></div>
+        <p class="h-sub">Premium Tiles &nbsp;&middot;&nbsp; Elegant Bathrooms &nbsp;&middot;&nbsp; Trusted Quality</p>
+        <div class="h-btns">
+          <button class="btn btn-g" onclick="go('products')">Explore Collection</button>
+          <button class="btn btn-o" onclick="go('contact')">Visit Showroom</button>
+          <a href="tel:+919876543210" class="btn btn-o">Call Now</a>
+        </div>
+      </div>
+      <div class="scroll-hint"><div class="s-arr"></div>Scroll</div>
+    </section>
+
+    <section>
+      <div class="con">
+        <div class="stats-grid">
+          <div class="rv"><div class="stat-n" data-c="20">0</div><div class="stat-l">Years of Trust</div></div>
+          <div class="rv"><div class="stat-n" data-c="10000">0</div><div class="stat-l">Happy Customers</div></div>
+          <div class="rv"><div class="stat-n" data-c="50">0</div><div class="stat-l">Premium Brands</div></div>
+          <div class="rv"><div class="stat-n" data-c="500">0</div><div class="stat-l">Products Available</div></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="alt">
+      <div class="con">
+        <span class="s-label">Our Collections</span>
+        <h2 class="s-title">Tiles for Every Vision</h2>
+        <p class="s-sub">From grand living rooms to intimate bathrooms, every tile for every dream.</p>
+        <div class="orn">&#9670;</div>
+        <div class="g3">
+          <div class="card rv" onclick="go('products')"><div class="card-img" style="background:linear-gradient(135deg,#C4A882,#8B6914)"><span class="card-lbl">Wall &amp; Floor Tiles</span></div><div class="card-body"><div class="card-title">Ceramic &amp; Porcelain Tiles</div><p class="card-text">Wall tiles, floor tiles, designer tiles, wood finish, marble finish, granite, GVT, PGVT and more.</p></div></div>
+          <div class="card rv" onclick="go('products')"><div class="card-img" style="background:linear-gradient(135deg,#A8C4C4,#4A7A7A)"><span class="card-lbl">Sanitaryware</span></div><div class="card-body"><div class="card-title">Premium Sanitaryware</div><p class="card-text">Wash basins, toilets, vanities, mirrors, mirror cabinets and kitchen sinks from top brands.</p></div></div>
+          <div class="card rv" onclick="go('products')"><div class="card-img" style="background:linear-gradient(135deg,#C4B8A8,#7A6040)"><span class="card-lbl">Bath Fittings</span></div><div class="card-body"><div class="card-title">Bath Accessories &amp; Fittings</div><p class="card-text">Rain showers, mixers, health faucets, angle valves and complete bathroom accessories.</p></div></div>
+          <div class="card rv" onclick="go('products')"><div class="card-img" style="background:linear-gradient(135deg,#B8A882,#6B5520)"><span class="card-lbl">Kitchen &amp; Outdoor</span></div><div class="card-body"><div class="card-title">Kitchen &amp; Outdoor Tiles</div><p class="card-text">Kitchen tiles, parking tiles, outdoor tiles, elevation tiles, mosaic and subway tiles.</p></div></div>
+          <div class="card rv" onclick="go('products')"><div class="card-img" style="background:linear-gradient(135deg,#C4C4A8,#7A7A40)"><span class="card-lbl">Large Format</span></div><div class="card-body"><div class="card-title">Large Format Tiles</div><p class="card-text">Expansive porcelain slabs and large-format tiles for a seamless, premium finish.</p></div></div>
+          <div class="card rv" onclick="go('products')"><div class="card-img" style="background:linear-gradient(135deg,#B8C4B0,#5A7050)"><span class="card-lbl">Commercial</span></div><div class="card-body"><div class="card-title">Commercial &amp; Industrial</div><p class="card-text">Heavy-duty tiles for offices, malls, showrooms and industrial applications.</p></div></div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="con">
+        <span class="s-label">Trusted Partners</span>
+        <h2 class="s-title">Brands We Carry</h2>
+        <div class="orn">&#9670;</div>
+        <div class="g4">
+          <div class="brand-card rv"><h3>Kajaria</h3><p>Premium Quality</p></div><div class="brand-card rv"><h3>Somany</h3><p>Premium Quality</p></div><div class="brand-card rv"><h3>Johnson</h3><p>Premium Quality</p></div><div class="brand-card rv"><h3>Sunheart</h3><p>Premium Quality</p></div><div class="brand-card rv"><h3>Cera</h3><p>Premium Quality</p></div><div class="brand-card rv"><h3>Jaquar</h3><p>Premium Quality</p></div><div class="brand-card rv"><h3>Hindware</h3><p>Premium Quality</p></div><div class="brand-card rv"><h3>Parryware</h3><p>Premium Quality</p></div><div class="brand-card rv"><h3>Astral</h3><p>Premium Quality</p></div><div class="brand-card rv"><h3>Supreme</h3><p>Premium Quality</p></div><div class="brand-card rv"><h3>Ashirvad Pipes</h3><p>Premium Quality</p></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="alt">
+      <div class="con">
+        <div class="owner-grid">
+          <div class="rv"><div class="owner-portrait">Arvind Mittal<br/>Founder &amp; Proprietor</div></div>
+          <div class="rv">
+            <span class="s-label" style="text-align:left;display:block">A Message from Our Founder</span>
+            <h2 class="s-title" style="text-align:left">Built on Trust,<br/>Grown with Love</h2>
+            <div class="orn" style="justify-content:flex-start;margin:1.5rem 0">&#9670;</div>
+            <blockquote class="owner-quote">"When I opened the doors of Ashirwad in 2005, I had one simple promise to every customer who walked in — you will never be misled, and you will always get the best quality for your money."</blockquote>
+            <p style="color:var(--brown);font-size:.93rem;line-height:1.85;margin-bottom:1.2rem">Over two decades later, that promise remains unbroken. We have watched families build their first homes, renovate their cherished spaces, and return to us — generation after generation — because they know that at Ashirwad, every tile, every fitting, every recommendation comes with our word behind it.</p>
+            <p class="quote" style="color:var(--brown);font-size:1rem">— Arvind Mittal, Proprietor</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="con">
+        <span class="s-label">What Our Customers Say</span>
+        <h2 class="s-title">Words of Trust</h2>
+        <div class="orn">&#9670;</div>
+        <div class="tgrid">
+          <div class="testimonial rv"><div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div><p>We renovated our entire home with tiles from Ashirwad. Mr. Mittal personally guided us through every choice. Exceptional quality, honest prices. We could not be happier.</p><div class="t-author">Rajesh Sharma &mdash; Gomti Nagar</div></div>
+          <div class="testimonial rv"><div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div><p>I have been buying sanitaryware from Ashirwad for my construction projects for seven years. The consistency in quality and after-sales service is something you rarely find.</p><div class="t-author">Priya Agarwal &mdash; Builder, Hazratganj</div></div>
+          <div class="testimonial rv"><div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div><p>Walked in not knowing anything about tiles. Left with a complete bathroom plan and the most beautiful marble-finish tiles within my budget. Truly a gem of a showroom.</p><div class="t-author">Sandeep Verma &mdash; Indira Nagar</div></div>
+        </div>
+      </div>
+    </section>
+    </div>
+
+    <!-- ABOUT -->
+    <div class="page" id="pg-about" style="padding-top:72px">
+    <div class="pg-hero"><div class="con"><span class="s-label" style="color:var(--gold-light)">Our Heritage</span><h1 class="s-title" style="color:#FAF7F2">Two Decades of Trust</h1><p class="s-sub">A story of craftsmanship, honesty, and the enduring pursuit of beautiful spaces.</p></div></div>
+    <section>
+      <div class="con">
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:4rem">
+          <div class="rv">
+            <span class="s-label" style="text-align:left;display:block">Our Journey</span>
+            <h2 class="s-title" style="text-align:left;font-size:1.8rem">The Ashirwad Story</h2>
+            <div class="orn" style="justify-content:flex-start;margin:1.5rem 0">&#9670;</div>
+            <p style="color:var(--brown);line-height:1.9;margin-bottom:1.2rem;font-size:.93rem">In 2005, Arvind Mittal opened a modest tiles showroom in Sarojini Nagar, Lucknow, with a vision that was simple but rare — to treat every customer like family, and every tile like an investment in someone's most personal space: their home.</p>
+            <p style="color:var(--brown);line-height:1.9;margin-bottom:1.2rem;font-size:.93rem">Word spread — not through advertisements, but through the genuine experiences of families who had trusted Ashirwad with their most precious spaces. Each happy customer became an ambassador.</p>
+            <p style="color:var(--brown);line-height:1.9;font-size:.93rem">Today, Ashirwad stands as one of Lucknow's most trusted names in premium tiles and sanitaryware — carrying the finest brands, offering honest pricing, and maintaining the same personal touch that has defined us since day one.</p>
+          </div>
+          <div class="rv">
+            <span class="s-label" style="text-align:left;display:block">Timeline</span>
+            <h2 class="s-title" style="text-align:left;font-size:1.8rem">Our Milestones</h2>
+            <div style="margin-top:2rem" class="timeline">
+              <div class="tl-item"><div class="tl-year">2005</div><p class="tl-desc">Founded by Arvind Mittal at Sarojini Nagar, Lucknow. A small showroom with a big dream of honest, quality business.</p></div>
+              <div class="tl-item"><div class="tl-year">2008</div><p class="tl-desc">Expanded tile collection to include Kajaria and Somany. Customer base grows rapidly through word-of-mouth.</p></div>
+              <div class="tl-item"><div class="tl-year">2012</div><p class="tl-desc">Added complete sanitaryware and bath fittings. Partnered with Jaquar and Hindware for premium offerings.</p></div>
+              <div class="tl-item"><div class="tl-year">2015</div><p class="tl-desc">Opened second location at LDA Colony, Power House Road — serving a wider community across Lucknow.</p></div>
+              <div class="tl-item"><div class="tl-year">2017</div><p class="tl-desc">GST Registration — formalizing our commitment to transparent, law-abiding, honest business practices.</p></div>
+              <div class="tl-item"><div class="tl-year">Today</div><p class="tl-desc">20+ years, 10,000+ happy customers, 50+ premium brands — and the very same promise as day one.</p></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="alt">
+      <div class="con">
+        <span class="s-label">What We Stand For</span>
+        <h2 class="s-title">Our Core Values</h2>
+        <div class="orn">&#9670;</div>
+        <div class="vgrid">
+          <div class="val-item rv"><div class="val-icon">&#9996;</div><div class="val-title">Uncompromising Quality</div><p class="value-desc">Only genuine, certified products from India's most trusted manufacturers. No imitations, no shortcuts.</p></div>
+          <div class="val-item rv"><div class="val-icon">&#129309;</div><div class="val-title">Honest Pricing</div><p class="value-desc">Fair and transparent prices. The right product at the right price builds relationships for life.</p></div>
+          <div class="val-item rv"><div class="val-icon">&#8734;</div><div class="val-title">Customer First</div><p class="value-desc">Every decision — from stock selection to after-sales support — begins with the customer's best interest.</p></div>
+          <div class="val-item rv"><div class="val-icon">&#9733;</div><div class="val-title">Expert Guidance</div><p class="value-desc">Decades of experience, ready to guide you from concept to completion without any pressure to buy.</p></div>
+          <div class="val-item rv"><div class="val-icon">&#127963;</div><div class="val-title">Trusted Heritage</div><p class="value-desc">Twenty years of trust, earned one honest transaction at a time.</p></div>
+          <div class="val-item rv"><div class="val-icon">&#127807;</div><div class="val-title">Community Roots</div><p class="value-desc">Proudly a Lucknow institution — deeply rooted in this city, committed to the families who call it home.</p></div>
+        </div>
+      </div>
+    </section>
+    </div>
+
+    <!-- PRODUCTS -->
+    <div class="page" id="pg-products" style="padding-top:72px">
+    <div class="pg-hero"><div class="con"><span class="s-label" style="color:var(--gold-light)">Our Catalogue</span><h1 class="s-title" style="color:#FAF7F2">Complete Collection</h1></div></div>
+    <section>
+      <div class="con">
+        <div class="filter-bar" id="fb">
+          <button class="filter-btn active" onclick="fp('all',this)">All Products</button>
+          <button class="filter-btn" onclick="fp('tiles',this)">Tiles</button>
+          <button class="filter-btn" onclick="fp('sanitary',this)">Sanitaryware</button>
+          <button class="filter-btn" onclick="fp('fittings',this)">Bath Fittings</button>
+        </div>
+        <div class="pgrid" id="pgrid">
+          <div class="product-card" data-c="tiles"><div class="p-thumb" style="background:linear-gradient(135deg,#C4A882,#8B6914)"></div><div class="p-info"><div class="p-cat">Tiles</div><div class="p-name">Wall Tiles</div></div></div><div class="product-card" data-c="tiles"><div class="p-thumb" style="background:linear-gradient(135deg,#B8A882,#6B5520)"></div><div class="p-info"><div class="p-cat">Tiles</div><div class="p-name">Floor Tiles</div></div></div><div class="product-card" data-c="tiles"><div class="p-thumb" style="background:linear-gradient(135deg,#A8C4C4,#4A7A7A)"></div><div class="p-info"><div class="p-cat">Tiles</div><div class="p-name">Bathroom Tiles</div></div></div><div class="product-card" data-c="tiles"><div class="p-thumb" style="background:linear-gradient(135deg,#C4C4A8,#7A7A40)"></div><div class="p-info"><div class="p-cat">Tiles</div><div class="p-name">Kitchen Tiles</div></div></div><div class="product-card" data-c="tiles"><div class="p-thumb" style="background:linear-gradient(135deg,#A8A8A8,#505050)"></div><div class="p-info"><div class="p-cat">Tiles</div><div class="p-name">Parking Tiles</div></div></div><div class="product-card" data-c="tiles"><div class="p-thumb" style="background:linear-gradient(135deg,#B8C4B0,#5A7050)"></div><div class="p-info"><div class="p-cat">Tiles</div><div class="p-name">Outdoor Tiles</div></div></div><div class="product-card" data-c="tiles"><div class="p-thumb" style="background:linear-gradient(135deg,#D4A8C0,#8A3060)"></div><div class="p-info"><div class="p-cat">Tiles</div><div class="p-name">Designer Tiles</div></div></div><div class="product-card" data-c="tiles"><div class="p-thumb" style="background:linear-gradient(135deg,#C4A870,#7A5A20)"></div><div class="p-info"><div class="p-cat">Tiles</div><div class="p-name">Wood Finish</div></div></div><div class="product-card" data-c="tiles"><div class="p-thumb" style="background:linear-gradient(135deg,#E0D8D0,#A09080)"></div><div class="p-info"><div class="p-cat">Tiles</div><div class="p-name">Marble Finish</div></div></div><div class="product-card" data-c="tiles"><div class="p-thumb" style="background:linear-gradient(135deg,#808090,#3A3A4A)"></div><div class="p-info"><div class="p-cat">Tiles</div><div class="p-name">Granite Finish</div></div></div><div class="product-card" data-c="tiles"><div class="p-thumb" style="background:linear-gradient(135deg,#D4C4A0,#A08040)"></div><div class="p-info"><div class="p-cat">Tiles</div><div class="p-name">GVT / PGVT</div></div></div><div class="product-card" data-c="tiles"><div class="p-thumb" style="background:linear-gradient(135deg,#C0A8D0,#604080)"></div><div class="p-info"><div class="p-cat">Tiles</div><div class="p-name">Mosaic Tiles</div></div></div><div class="product-card" data-c="tiles"><div class="p-thumb" style="background:linear-gradient(135deg,#C8B890,#8A6830)"></div><div class="p-info"><div class="p-cat">Tiles</div><div class="p-name">Elevation Tiles</div></div></div><div class="product-card" data-c="tiles"><div class="p-thumb" style="background:linear-gradient(135deg,#D8D0C8,#908070)"></div><div class="p-info"><div class="p-cat">Tiles</div><div class="p-name">Large Format</div></div></div><div class="product-card" data-c="tiles"><div class="p-thumb" style="background:linear-gradient(135deg,#C8D4D8,#507080)"></div><div class="p-info"><div class="p-cat">Tiles</div><div class="p-name">Subway Tiles</div></div></div><div class="product-card" data-c="sanitary"><div class="p-thumb" style="background:linear-gradient(135deg,#D0E8F0,#5090A8)"></div><div class="p-info"><div class="p-cat">Sanitaryware</div><div class="p-name">Wash Basins</div></div></div><div class="product-card" data-c="sanitary"><div class="p-thumb" style="background:linear-gradient(135deg,#E8F0F8,#7090B8)"></div><div class="p-info"><div class="p-cat">Sanitaryware</div><div class="p-name">One-Piece Toilet</div></div></div><div class="product-card" data-c="sanitary"><div class="p-thumb" style="background:linear-gradient(135deg,#F0F0E8,#909080)"></div><div class="p-info"><div class="p-cat">Sanitaryware</div><div class="p-name">Two-Piece Toilet</div></div></div><div class="product-card" data-c="sanitary"><div class="p-thumb" style="background:linear-gradient(135deg,#E0E8F0,#6080A0)"></div><div class="p-info"><div class="p-cat">Sanitaryware</div><div class="p-name">Wall Hung Toilet</div></div></div><div class="product-card" data-c="sanitary"><div class="p-thumb" style="background:linear-gradient(135deg,#F0E8D8,#B09070)"></div><div class="p-info"><div class="p-cat">Sanitaryware</div><div class="p-name">Vanity Units</div></div></div><div class="product-card" data-c="sanitary"><div class="p-thumb" style="background:linear-gradient(135deg,#D8E8E8,#6090A0)"></div><div class="p-info"><div class="p-cat">Sanitaryware</div><div class="p-name">Mirrors</div></div></div><div class="product-card" data-c="sanitary"><div class="p-thumb" style="background:linear-gradient(135deg,#D0D8E0,#7080A0)"></div><div class="p-info"><div class="p-cat">Sanitaryware</div><div class="p-name">Kitchen Sinks</div></div></div><div class="product-card" data-c="fittings"><div class="p-thumb" style="background:linear-gradient(135deg,#C0D8E8,#4080A0)"></div><div class="p-info"><div class="p-cat">Bath Fittings</div><div class="p-name">Rain Showers</div></div></div><div class="product-card" data-c="fittings"><div class="p-thumb" style="background:linear-gradient(135deg,#D0C8B8,#807060)"></div><div class="p-info"><div class="p-cat">Bath Fittings</div><div class="p-name">Mixers &amp; Taps</div></div></div><div class="product-card" data-c="fittings"><div class="p-thumb" style="background:linear-gradient(135deg,#B8D0E0,#4878A0)"></div><div class="p-info"><div class="p-cat">Bath Fittings</div><div class="p-name">Health Faucets</div></div></div><div class="product-card" data-c="fittings"><div class="p-thumb" style="background:linear-gradient(135deg,#C8C8D0,#606070)"></div><div class="p-info"><div class="p-cat">Bath Fittings</div><div class="p-name">Angle Valves</div></div></div><div class="product-card" data-c="fittings"><div class="p-thumb" style="background:linear-gradient(135deg,#D8D0C8,#908070)"></div><div class="p-info"><div class="p-cat">Bath Fittings</div><div class="p-name">Bath Accessories</div></div></div>
+        </div>
+      </div>
+    </section>
+    </div>
+
+    <!-- BRANDS -->
+    <div class="page" id="pg-brands" style="padding-top:72px">
+    <div class="pg-hero"><div class="con"><span class="s-label" style="color:var(--gold-light)">Our Partners</span><h1 class="s-title" style="color:#FAF7F2">Premium Brands</h1><p class="s-sub">Only India's most trusted and internationally acclaimed brands.</p></div></div>
+    <section>
+      <div class="con">
+        <div class="g3">
+          <div class="card rv"><div class="card-img" style="background:linear-gradient(135deg,#D4C4A0,#8B6914);flex-direction:column;gap:.5rem;align-items:center;justify-content:center"><span style="font-family:'Playfair Display',serif;font-size:1.8rem;font-weight:700;color:#FAF7F2">Kajaria</span><span style="font-family:'Cormorant Garamond',serif;font-size:.9rem;font-style:italic;color:rgba(250,247,242,.8)">Tiles</span></div><div class="card-body"><div class="card-title">Kajaria</div><p class="card-text">India's largest tile manufacturer. Known for exceptional designs and unmatched durability.</p></div></div><div class="card rv"><div class="card-img" style="background:linear-gradient(135deg,#D4C4A0,#8B6914);flex-direction:column;gap:.5rem;align-items:center;justify-content:center"><span style="font-family:'Playfair Display',serif;font-size:1.8rem;font-weight:700;color:#FAF7F2">Somany</span><span style="font-family:'Cormorant Garamond',serif;font-size:.9rem;font-style:italic;color:rgba(250,247,242,.8)">Tiles</span></div><div class="card-body"><div class="card-title">Somany</div><p class="card-text">Premium ceramic and vitrified tiles with innovative finishes and designs for every space.</p></div></div><div class="card rv"><div class="card-img" style="background:linear-gradient(135deg,#D4C4A0,#8B6914);flex-direction:column;gap:.5rem;align-items:center;justify-content:center"><span style="font-family:'Playfair Display',serif;font-size:1.8rem;font-weight:700;color:#FAF7F2">Johnson</span><span style="font-family:'Cormorant Garamond',serif;font-size:.9rem;font-style:italic;color:rgba(250,247,242,.8)">Tiles</span></div><div class="card-body"><div class="card-title">Johnson</div><p class="card-text">Trusted name in ceramic tiles with over five decades of quality manufacturing.</p></div></div><div class="card rv"><div class="card-img" style="background:linear-gradient(135deg,#D4C4A0,#8B6914);flex-direction:column;gap:.5rem;align-items:center;justify-content:center"><span style="font-family:'Playfair Display',serif;font-size:1.8rem;font-weight:700;color:#FAF7F2">Sunheart</span><span style="font-family:'Cormorant Garamond',serif;font-size:.9rem;font-style:italic;color:rgba(250,247,242,.8)">Tiles</span></div><div class="card-body"><div class="card-title">Sunheart</div><p class="card-text">Quality tiles at honest prices. Excellent range for residential and commercial spaces.</p></div></div><div class="card rv"><div class="card-img" style="background:linear-gradient(135deg,#D4C4A0,#8B6914);flex-direction:column;gap:.5rem;align-items:center;justify-content:center"><span style="font-family:'Playfair Display',serif;font-size:1.8rem;font-weight:700;color:#FAF7F2">Cera</span><span style="font-family:'Cormorant Garamond',serif;font-size:.9rem;font-style:italic;color:rgba(250,247,242,.8)">Sanitaryware</span></div><div class="card-body"><div class="card-title">Cera</div><p class="card-text">Complete bathroom solutions — sanitaryware, faucets and wellness products of international quality.</p></div></div><div class="card rv"><div class="card-img" style="background:linear-gradient(135deg,#D4C4A0,#8B6914);flex-direction:column;gap:.5rem;align-items:center;justify-content:center"><span style="font-family:'Playfair Display',serif;font-size:1.8rem;font-weight:700;color:#FAF7F2">Jaquar</span><span style="font-family:'Cormorant Garamond',serif;font-size:.9rem;font-style:italic;color:rgba(250,247,242,.8)">Bath Fittings</span></div><div class="card-body"><div class="card-title">Jaquar</div><p class="card-text">India's leading bath fittings brand. Renowned for engineering excellence and elegant design.</p></div></div><div class="card rv"><div class="card-img" style="background:linear-gradient(135deg,#D4C4A0,#8B6914);flex-direction:column;gap:.5rem;align-items:center;justify-content:center"><span style="font-family:'Playfair Display',serif;font-size:1.8rem;font-weight:700;color:#FAF7F2">Hindware</span><span style="font-family:'Cormorant Garamond',serif;font-size:.9rem;font-style:italic;color:rgba(250,247,242,.8)">Sanitaryware</span></div><div class="card-body"><div class="card-title">Hindware</div><p class="card-text">Premium sanitaryware and bath accessories trusted by millions of Indian homes.</p></div></div><div class="card rv"><div class="card-img" style="background:linear-gradient(135deg,#D4C4A0,#8B6914);flex-direction:column;gap:.5rem;align-items:center;justify-content:center"><span style="font-family:'Playfair Display',serif;font-size:1.8rem;font-weight:700;color:#FAF7F2">Parryware</span><span style="font-family:'Cormorant Garamond',serif;font-size:.9rem;font-style:italic;color:rgba(250,247,242,.8)">Sanitaryware</span></div><div class="card-body"><div class="card-title">Parryware</div><p class="card-text">One of South Asia's finest sanitaryware brands with over 60 years of heritage.</p></div></div><div class="card rv"><div class="card-img" style="background:linear-gradient(135deg,#D4C4A0,#8B6914);flex-direction:column;gap:.5rem;align-items:center;justify-content:center"><span style="font-family:'Playfair Display',serif;font-size:1.8rem;font-weight:700;color:#FAF7F2">Astral</span><span style="font-family:'Cormorant Garamond',serif;font-size:.9rem;font-style:italic;color:rgba(250,247,242,.8)">Plumbing</span></div><div class="card-body"><div class="card-title">Astral</div><p class="card-text">High-quality pipes and plumbing solutions. Reliable, durable, and widely trusted.</p></div></div><div class="card rv"><div class="card-img" style="background:linear-gradient(135deg,#D4C4A0,#8B6914);flex-direction:column;gap:.5rem;align-items:center;justify-content:center"><span style="font-family:'Playfair Display',serif;font-size:1.8rem;font-weight:700;color:#FAF7F2">Supreme</span><span style="font-family:'Cormorant Garamond',serif;font-size:.9rem;font-style:italic;color:rgba(250,247,242,.8)">Plumbing</span></div><div class="card-body"><div class="card-title">Supreme</div><p class="card-text">Comprehensive range of pipes and fittings for residential and industrial applications.</p></div></div><div class="card rv"><div class="card-img" style="background:linear-gradient(135deg,#D4C4A0,#8B6914);flex-direction:column;gap:.5rem;align-items:center;justify-content:center"><span style="font-family:'Playfair Display',serif;font-size:1.8rem;font-weight:700;color:#FAF7F2">Ashirvad Pipes</span><span style="font-family:'Cormorant Garamond',serif;font-size:.9rem;font-style:italic;color:rgba(250,247,242,.8)">Plumbing</span></div><div class="card-body"><div class="card-title">Ashirvad Pipes</div><p class="card-text">Premium CPVC and uPVC pipes. Corrosion-resistant, food-safe, and long-lasting.</p></div></div>
+        </div>
+      </div>
+    </section>
+    </div>
+
+    <!-- GALLERY -->
+    <div class="page" id="pg-gallery" style="padding-top:72px">
+    <div class="pg-hero"><div class="con"><span class="s-label" style="color:var(--gold-light)">Our Work</span><h1 class="s-title" style="color:#FAF7F2">Gallery of Spaces</h1></div></div>
+    <section>
+      <div class="con">
+        <div class="ggrid">
+          <div class="g-item"><div class="g-thumb" style="background:linear-gradient(135deg,#A8C4C4,#4A7A7A);height:220px">Master Bathroom</div></div><div class="g-item"><div class="g-thumb" style="background:linear-gradient(135deg,#C4A882,#8B6914);height:320px">Living Room Floor</div></div><div class="g-item"><div class="g-thumb" style="background:linear-gradient(135deg,#D4C4B0,#8A7050);height:180px">Kitchen Backsplash</div></div><div class="g-item"><div class="g-thumb" style="background:linear-gradient(135deg,#C0B8A8,#706040);height:280px">Showroom Display</div></div><div class="g-item"><div class="g-thumb" style="background:linear-gradient(135deg,#B8A8C4,#604080);height:200px">Bedroom Tiles</div></div><div class="g-item"><div class="g-thumb" style="background:linear-gradient(135deg,#A8B8C4,#405060);height:240px">Guest Bathroom</div></div><div class="g-item"><div class="g-thumb" style="background:linear-gradient(135deg,#C4B0A0,#80503A);height:300px">Luxury Vanity</div></div><div class="g-item"><div class="g-thumb" style="background:linear-gradient(135deg,#B0C4B0,#507050);height:190px">Outdoor Patio</div></div><div class="g-item"><div class="g-thumb" style="background:linear-gradient(135deg,#C4C0A8,#807040);height:260px">Parking Area</div></div><div class="g-item"><div class="g-thumb" style="background:linear-gradient(135deg,#D0C8B8,#908060);height:210px">Commercial Space</div></div><div class="g-item"><div class="g-thumb" style="background:linear-gradient(135deg,#C4A8B0,#804050);height:340px">Feature Wall</div></div><div class="g-item"><div class="g-thumb" style="background:linear-gradient(135deg,#B0C0D0,#405878);height:180px">Modern Bathroom</div></div>
+        </div>
+      </div>
+    </section>
+    </div>
+
+    <!-- CALCULATOR -->
+    <div class="page" id="pg-calc" style="padding-top:72px">
+    <div class="pg-hero"><div class="con"><span class="s-label" style="color:var(--gold-light)">Smart Tools</span><h1 class="s-title" style="color:#FAF7F2">Tile Calculators</h1><p class="s-sub">Plan your project with confidence using our easy calculation tools.</p></div></div>
+    <section>
+      <div class="con">
+        <div class="cgrid">
+          <div class="calc-card rv">
+            <div class="calc-title">Tile Quantity Calculator</div>
+            <div class="fg"><label>Room Length (feet)</label><input type="number" id="cl" placeholder="e.g. 12" oninput="calcT()"></div>
+            <div class="fg"><label>Room Width (feet)</label><input type="number" id="cw" placeholder="e.g. 10" oninput="calcT()"></div>
+            <div class="fg"><label>Tile Size</label><select id="cs" onchange="calcT()"><option value="1">12x12 inch (1 sq ft)</option><option value="2.25">18x18 inch (2.25 sq ft)</option><option value="4">24x24 inch (4 sq ft)</option><option value="6.25">30x30 inch (6.25 sq ft)</option><option value="9">36x36 inch (9 sq ft)</option></select></div>
+            <div class="c-result" id="cr">Enter room dimensions to calculate.</div>
+          </div>
+          <div class="calc-card rv">
+            <div class="calc-title">Cost Estimator</div>
+            <div class="fg"><label>Total Tiles Needed</label><input type="number" id="eq" placeholder="e.g. 150" oninput="calcC()"></div>
+            <div class="fg"><label>Price per Tile (Rs.)</label><input type="number" id="ep" placeholder="e.g. 85" oninput="calcC()"></div>
+            <div class="fg"><label>Include 18% GST?</label><select id="eg" onchange="calcC()"><option value="0">No — exclude GST</option><option value="1">Yes — include GST</option></select></div>
+            <div class="c-result" id="er">Enter details to estimate cost.</div>
+          </div>
+          <div class="calc-card rv">
+            <div class="calc-title">GST Calculator</div>
+            <div class="fg"><label>Base Price (Rs.)</label><input type="number" id="gb" placeholder="e.g. 10000" oninput="calcG()"></div>
+            <div class="fg"><label>GST Rate</label><select id="gr" onchange="calcG()"><option value="5">5%</option><option value="12">12%</option><option value="18" selected>18%</option><option value="28">28%</option></select></div>
+            <div class="c-result" id="gr2">Enter base price to calculate GST.</div>
+          </div>
+        </div>
+      </div>
+    </section>
+    </div>
+
+    <!-- REVIEWS -->
+    <div class="page" id="pg-reviews" style="padding-top:72px">
+    <div class="pg-hero"><div class="con"><span class="s-label" style="color:var(--gold-light)">Customer Stories</span><h1 class="s-title" style="color:#FAF7F2">Words of Trust</h1></div></div>
+    <section>
+      <div class="con">
+        <div class="r-sum rv">
+          <div class="r-big">4.9</div>
+          <div class="stars" style="font-size:1.8rem;margin:.5rem 0">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+          <div class="r-lbl">Based on 500+ Customer Reviews</div>
+          <p class="quote" style="color:var(--brown);margin-top:1rem;font-size:1.1rem">Consistently rated Lucknow's most trusted tile showroom.</p>
+        </div>
+        <div class="tgrid">
+          <div class="testimonial rv"><div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div><p>We renovated our entire home with tiles from Ashirwad. Mr. Mittal personally guided us through every choice. Exceptional quality, genuinely honest prices.</p><div class="t-author">Rajesh Sharma &mdash; Gomti Nagar</div></div><div class="testimonial rv"><div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div><p>For my construction projects, I have been buying from Ashirwad for seven years. The consistency in quality and after-sales support is rare to find in this business.</p><div class="t-author">Priya Agarwal &mdash; Builder, Hazratganj</div></div><div class="testimonial rv"><div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div><p>Walked in knowing nothing about tiles. Left with a complete bathroom plan and the most beautiful marble-finish tiles within my budget.</p><div class="t-author">Sandeep Verma &mdash; Indira Nagar</div></div><div class="testimonial rv"><div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div><p>The collection is unlike anything else in Lucknow. We found tiles in minutes that we had been searching for elsewhere for months. The staff is patient and genuinely helpful.</p><div class="t-author">Meena Tripathi &mdash; Alambagh</div></div><div class="testimonial rv"><div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div><p>GST-compliant billing, genuine brand products, no overcharging — these are rare qualities today. Ashirwad has them all. My whole family buys from here now.</p><div class="t-author">Arun Gupta &mdash; Aashiana</div></div><div class="testimonial rv"><div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div><p>The showroom experience is wonderful. So well organized and beautiful. The guidance for our bathroom renovation saved us significant money without compromising on quality.</p><div class="t-author">Sunita Mishra &mdash; Mahanagar</div></div>
+        </div>
+      </div>
+    </section>
+    </div>
+
+    <!-- CONTACT -->
+    <div class="page" id="pg-contact" style="padding-top:72px">
+    <div class="pg-hero"><div class="con"><span class="s-label" style="color:var(--gold-light)">Visit Us</span><h1 class="s-title" style="color:#FAF7F2">Get in Touch</h1></div></div>
+    <section>
+      <div class="con">
+        <div class="cngrid">
+          <div>
+            <h3 style="font-family:'Playfair Display',serif;font-size:1.4rem;margin-bottom:1.5rem">Our Showrooms</h3>
+            <div class="c-item"><div class="c-icon">&#128205;</div><div class="c-detail"><h4>Main Showroom</h4><p>MDR 91C, Sarojini Nagar,<br/>Lucknow, Uttar Pradesh 226008</p></div></div>
+            <div class="c-item"><div class="c-icon">&#128205;</div><div class="c-detail"><h4>Office &amp; Second Location</h4><p>Shop No M-D1, Sec-D, Near Green Medicals Centre,<br/>Power House Road, LDA Colony, Lucknow 226012</p></div></div>
+            <div class="c-item"><div class="c-icon">&#128222;</div><div class="c-detail"><h4>Call Us</h4><a href="tel:+919876543210" style="color:var(--gold)">+91 98765 43210</a></div></div>
+            <div class="c-item"><div class="c-icon">&#128172;</div><div class="c-detail"><h4>WhatsApp</h4><a href="https://wa.me/919876543210" style="color:var(--gold)">Chat on WhatsApp</a></div></div>
+            <div class="c-item"><div class="c-icon">&#9993;</div><div class="c-detail"><h4>Email</h4><a href="mailto:mittalshaurya66@gmail.com" style="color:var(--gold)">mittalshaurya66@gmail.com</a></div></div>
+            <div class="c-item"><div class="c-icon">&#128336;</div><div class="c-detail"><h4>Opening Hours</h4><p>Mon &ndash; Sat: 10:00 AM &ndash; 8:00 PM<br/>Sunday: 11:00 AM &ndash; 6:00 PM</p></div></div>
+            <div class="map-box"><span style="font-family:'Playfair Display',serif;font-size:1.1rem">&#128205; Sarojini Nagar, Lucknow</span><a href="https://maps.google.com/?q=Sarojini+Nagar+Lucknow" target="_blank" class="btn btn-d">Get Directions</a></div>
+          </div>
+          <div>
+            <h3 style="font-family:'Playfair Display',serif;font-size:1.4rem;margin-bottom:1.5rem">Send an Enquiry</h3>
+            <form onsubmit="submitF(event)">
+              <div class="fg"><label>Your Name</label><input type="text" placeholder="Rajesh Sharma" required></div>
+              <div class="fg"><label>Phone Number</label><input type="tel" placeholder="+91 98765 43210" required></div>
+              <div class="fg"><label>Email Address</label><input type="email" placeholder="you@example.com"></div>
+              <div class="fg"><label>Enquiry Type</label><select><option>Tiles Enquiry</option><option>Sanitaryware Enquiry</option><option>Bath Fittings Enquiry</option><option>Wholesale / Bulk Order</option><option>General Enquiry</option></select></div>
+              <div class="fg"><label>Your Message</label><textarea placeholder="Tell us about your project or requirement..."></textarea></div>
+              <button type="submit" class="btn btn-g" style="width:100%">Send Enquiry</button>
+            </form>
+            <div id="fs" style="display:none;margin-top:1.5rem;padding:1.2rem;background:var(--cream);border:1px solid var(--gold);border-radius:var(--radius);text-align:center"><p style="font-family:'Playfair Display',serif;color:var(--gold)">Thank you for your enquiry!</p><p style="font-size:.88rem;color:var(--brown);margin-top:.5rem">We will get back to you within 24 hours.</p></div>
+          </div>
+        </div>
+      </div>
+    </section>
+    </div>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+    <div class="con">
+      <div class="fg-grid">
+        <div class="fb"><h2>Ashirwad</h2><p class="quote" style="margin-bottom:.5rem">Sanitary &amp; Tiles</p><p>Crafting beautiful spaces in Lucknow since 2005. Trusted by over 10,000 families across Uttar Pradesh.</p><p style="margin-top:1rem;font-size:.78rem;opacity:.6">GST Registered &bull; Est. 2005 &bull; Proprietorship</p></div>
+        <div class="fc"><h3>Quick Links</h3><ul><li><a href="#" onclick="go('home');return false">Home</a></li><li><a href="#" onclick="go('about');return false">Heritage</a></li><li><a href="#" onclick="go('products');return false">Collections</a></li><li><a href="#" onclick="go('brands');return false">Brands</a></li><li><a href="#" onclick="go('gallery');return false">Gallery</a></li><li><a href="#" onclick="go('calc');return false">Tools</a></li><li><a href="#" onclick="go('reviews');return false">Reviews</a></li><li><a href="#" onclick="go('contact');return false">Contact</a></li></ul></div>
+        <div class="fc"><h3>Collections</h3><ul><li><a href="#" onclick="go('products');return false">Wall &amp; Floor Tiles</a></li><li><a href="#" onclick="go('products');return false">Designer Tiles</a></li><li><a href="#" onclick="go('products');return false">Sanitaryware</a></li><li><a href="#" onclick="go('products');return false">Bath Fittings</a></li><li><a href="#" onclick="go('products');return false">Kitchen Sinks</a></li><li><a href="#" onclick="go('products');return false">Bathroom Accessories</a></li></ul></div>
+        <div class="fc"><h3>Contact</h3><ul><li><a href="tel:+919876543210">+91 98765 43210</a></li><li><a href="mailto:mittalshaurya66@gmail.com">mittalshaurya66@gmail.com</a></li><li><a href="https://wa.me/919876543210">WhatsApp Us</a></li></ul><p style="font-size:.8rem;opacity:.7;margin-top:1.5rem;line-height:1.7">MDR 91C, Sarojini Nagar,<br/>Lucknow, UP 226008</p></div>
+      </div>
+      <div class="f-bot"><p>&copy; 2025 Ashirwad Sanitary &amp; Tiles. All rights reserved.</p><p>Designed with care &bull; Trusted since 2005</p></div>
+    </div>
+    </footer>
+
+    <div class="float-btns">
+    <a href="https://wa.me/919876543210" class="fb-btn fb-wa" title="WhatsApp">&#128172;</a>
+    <a href="tel:+919876543210" class="fb-btn fb-call" title="Call">&#128222;</a>
+    </div>
+    <button class="btt" id="btt" onclick="window.scrollTo({top:0,behavior:'smooth'})" title="Back to top">&#8679;</button>
+
+    <script>
+    var dark=false;
+    function toggleTheme(){dark=!dark;document.body.classList.toggle('dark',dark);document.getElementById('tbtn').innerHTML=dark?'&#127769;&#65039;':'&#9728;&#65039;';localStorage.setItem('t',dark?'d':'l')}
+    if(localStorage.getItem('t')==='d'||(!localStorage.getItem('t')&&matchMedia('(prefers-color-scheme:dark)').matches)){dark=true;document.body.classList.add('dark');document.getElementById('tbtn').innerHTML='&#127769;&#65039;'}
+    function toggleNav(){document.getElementById('nl').classList.toggle('open')}
+    function cm(){document.getElementById('nl').classList.remove('open')}
+    function go(p){
+    document.querySelectorAll('.page').forEach(function(x){x.classList.remove('active')});
+    document.getElementById('pg-'+p).classList.add('active');
+    document.querySelectorAll('#nl a').forEach(function(a){a.classList.toggle('active',a.dataset.p===p)});
+    window.scrollTo({top:0,behavior:'smooth'});
+    setTimeout(rv,150);
+    }
+    window.addEventListener('scroll',function(){
+    var s=window.scrollY;
+    document.getElementById('nav').classList.toggle('scrolled',s>60);
+    document.getElementById('btt').classList.toggle('on',s>300);
+    var max=document.documentElement.scrollHeight-window.innerHeight;
+    document.getElementById('pb').style.width=(s/max*100)+'%';
+    rv();cu();
+    });
+    function rv(){document.querySelectorAll('.rv:not(.vis)').forEach(function(el){if(el.getBoundingClientRect().top<window.innerHeight-60)el.classList.add('vis')})}
+    var counted=false;
+    function cu(){
+    if(counted)return;
+    var els=document.querySelectorAll('.stat-n[data-c]');
+    if(!els.length)return;
+    var first=els[0].getBoundingClientRect();
+    if(first.top>window.innerHeight)return;
+    counted=true;
+    els.forEach(function(el){
+      var t=+el.getAttribute('data-c'),isK=t>=1000,cur=0,inc=t/60;
+      var id=setInterval(function(){cur+=inc;if(cur>=t){cur=t;clearInterval(id);}el.textContent=(isK?(cur/1000).toFixed(1)+'K+':Math.round(cur)+'+');},20);
+    });
+    }
+    function fp(c,btn){
+    document.querySelectorAll('#fb .filter-btn').forEach(function(b){b.classList.remove('active')});
+    btn.classList.add('active');
+    document.querySelectorAll('#pgrid .product-card').forEach(function(card){card.style.display=(c==='all'||card.getAttribute('data-c')===c)?'block':'none'});
+    }
+    function calcT(){
+    var l=+document.getElementById('cl').value,w=+document.getElementById('cw').value,s=+document.getElementById('cs').value;
+    if(!l||!w){document.getElementById('cr').textContent='Enter room dimensions to calculate.';return;}
+    var a=l*w,n=Math.ceil(a/s),ww=Math.ceil(n*1.1);
+    document.getElementById('cr').innerHTML='Room Area: <strong>'+a+' sq ft</strong><br>Tiles Needed: <strong>'+n+'</strong><br>With 10% waste: <strong>'+ww+' tiles</strong>';
+    }
+    function calcC(){
+    var q=+document.getElementById('eq').value,p=+document.getElementById('ep').value,g=document.getElementById('eg').value==='1';
+    if(!q||!p){document.getElementById('er').textContent='Enter details to estimate cost.';return;}
+    var b=q*p,tot=g?b*1.18:b;
+    document.getElementById('er').innerHTML='Base Cost: <strong>Rs.'+b.toLocaleString('en-IN')+'</strong>'+(g?'<br>GST (18%): <strong>Rs.'+Math.round(b*.18).toLocaleString('en-IN')+'</strong>':'')+'<br>Total: <strong>Rs.'+Math.round(tot).toLocaleString('en-IN')+'</strong>';
+    }
+    function calcG(){
+    var b=+document.getElementById('gb').value,r=+document.getElementById('gr').value;
+    if(!b){document.getElementById('gr2').textContent='Enter base price to calculate GST.';return;}
+    var g=b*r/100;
+    document.getElementById('gr2').innerHTML='Base: <strong>Rs.'+b.toLocaleString('en-IN')+'</strong><br>GST ('+r+'%): <strong>Rs.'+g.toLocaleString('en-IN')+'</strong><br>Total: <strong>Rs.'+(b+g).toLocaleString('en-IN')+'</strong>';
+    }
+    function submitF(e){e.preventDefault();document.getElementById('fs').style.display='block';e.target.reset()}
+    rv();setTimeout(cu,500);
+    </script>
+    <script src="https://replit-cdn.com/replit-pill/replit-pill.global.js" data-repl-id="f58db578-7e51-482c-a754-c31f345dba0c"></script></body>
+    </html>
