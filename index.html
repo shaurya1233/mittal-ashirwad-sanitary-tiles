@@ -72,7 +72,8 @@ body.dark .nav-links li{border-color:#5C4020}
 .h-est{font-family:'Cormorant Garamond',serif;font-size:.85rem;font-weight:400;letter-spacing:.35em;text-transform:uppercase;color:var(--gold-light);margin-bottom:1.5rem}
 .h-title{font-family:'Playfair Display',serif;font-size:clamp(2.8rem,7vw,5.5rem);font-weight:700;color:#FAF7F2;line-height:1.1;margin-bottom:.5rem}
 .h-gold{color:var(--gold-light);font-style:italic;display:block;font-size:clamp(2.2rem,5vw,4rem)}
-.h-sub{font-family:'Cormorant Garamond',serif;font-size:clamp(1.1rem,2vw,1.5rem);color:rgba(250,247,242,.8);margin:1.5rem 0 2.5rem;letter-spacing:.05em}
+.h-sub{font-family:'Cormorant Garamond',serif;font-size:clamp(1.1rem,2vw,1.5rem);color:rgba(250,247,242,.8);margin:1.5rem 0 1rem;letter-spacing:.05em}
+.h-phone{font-family:'Inter',sans-serif;font-size:1.05rem;color:var(--gold-light);margin-bottom:2rem;letter-spacing:.05em;font-weight:500}
 .h-div{width:80px;height:1px;background:var(--gold);margin:0 auto 2.5rem;position:relative}
 .h-div::before{content:'◆';position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);color:var(--gold);font-size:.6rem}
 .h-btns{display:flex;flex-wrap:wrap;gap:1rem;justify-content:center}
@@ -222,16 +223,395 @@ body.dark .c-detail p,body.dark .c-detail a{color:#D4C4A0}
 /* MODALS */
 .custom-modal{display:none;position:fixed;inset:0;background:rgba(0,0,0,0.65);z-index:3000;align-items:center;justify-content:center;padding:1rem;backdrop-filter:blur(3px)}
 .custom-modal.active{display:flex}
-.modal-card{background:var(--ivory);border:1px solid var(--gold);border-radius:var(--radius);padding:2rem;max-width:420px;width:100%;text-align:center;position:relative;color:var(--charcoal);box-shadow:0 12px 40px rgba(0,0,0,0.3)}
+.modal-card{background:var(--ivory);border:1px solid var(--gold);border-radius:var(--radius);padding:2rem;max-width:440px;width:100%;text-align:center;position:relative;color:var(--charcoal);box-shadow:0 12px 40px rgba(0,0,0,0.3)}
 body.dark .modal-card{background:#261508;color:#F0E8D8;border-color:#5C4020}
 .modal-close{position:absolute;top:12px;right:16px;background:none;border:none;font-size:1.5rem;cursor:pointer;color:inherit;line-height:1}
 .modal-title{font-family:'Playfair Display',serif;font-size:1.35rem;margin-bottom:1.2rem;color:var(--gold)}
 .modal-opt{display:block;width:100%;padding:0.9rem 1rem;margin-bottom:0.8rem;border-radius:var(--radius);background:var(--gold);color:#FAF7F2;font-size:0.85rem;font-weight:600;letter-spacing:0.04em;text-decoration:none;transition:all var(--tr);border:1px solid var(--gold);text-align:center}
 .modal-opt:last-child{margin-bottom:0}
 .modal-opt:hover{background:var(--gold-light);border-color:var(--gold-light);transform:translateY(-2px)}
+.location-card{text-align:left;margin-bottom:1.2rem;padding:1rem;border:1px solid var(--border);border-radius:var(--radius);background:rgba(0,0,0,0.02)}
+body.dark .location-card{background:rgba(255,255,255,0.03);border-color:#5C4020}
+.loc-title{font-family:'Playfair Display',serif;font-weight:700;font-size:1.05rem;color:var(--gold);margin-bottom:0.3rem}
+.loc-addr{font-size:0.85rem;color:var(--brown);margin-bottom:0.8rem;line-height:1.4}
+body.dark .loc-addr{color:#A08060}
+
+/* ========================================================= */
+/* FEATURE 1 — CINEMATIC "THE HERITAGE STONE REVEAL" STYLES  */
+/* ========================================================= */
+#hsrOverlay {
+  position: fixed;
+  inset: 0;
+  z-index: 999999;
+  background: #040302;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  font-family: 'Playfair Display', serif;
+  transition: opacity 1.2s cubic-bezier(0.4, 0, 0.2, 1), transform 1.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+#hsrOverlay.hsr-ending {
+  opacity: 0;
+  transform: scale(1.08);
+  pointer-events: none;
+}
+#hsrCanvas {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 1;
+}
+.hsr-stage {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  perspective: 1200px;
+  z-index: 2;
+}
+.hsr-marble-box {
+  position: absolute;
+  width: min(90vw, 840px);
+  height: min(75vh, 540px);
+  display: flex;
+  box-shadow: 0 30px 90px rgba(0,0,0,0.9), 0 0 50px rgba(184,134,11,0.15);
+  border-radius: 4px;
+  transition: transform 3s ease-out;
+  transform-style: preserve-3d;
+}
+.hsr-marble-half {
+  position: relative;
+  width: 50%;
+  height: 100%;
+  background: linear-gradient(135deg, #FAF8F5 0%, #EBE5DB 40%, #E0D7C9 70%, #F5F2EC 100%);
+  overflow: hidden;
+  transition: transform 2.4s cubic-bezier(0.77, 0, 0.175, 1), box-shadow 2.4s ease;
+  box-shadow: inset 0 0 40px rgba(0,0,0,0.08);
+}
+.hsr-marble-left {
+  border-right: 1px solid rgba(184,134,11,0.3);
+  transform-origin: left center;
+}
+.hsr-marble-right {
+  border-left: 1px solid rgba(184,134,11,0.3);
+  transform-origin: right center;
+}
+.hsr-veins {
+  position: absolute;
+  inset: 0;
+  background-image: 
+    radial-gradient(ellipse at 20% 30%, rgba(184, 134, 11, 0.18) 0%, transparent 50%),
+    radial-gradient(ellipse at 80% 70%, rgba(61, 28, 13, 0.14) 0%, transparent 60%),
+    linear-gradient(45deg, transparent 45%, rgba(184, 134, 11, 0.15) 48%, rgba(212, 160, 23, 0.25) 50%, transparent 53%),
+    linear-gradient(-35deg, transparent 60%, rgba(107, 95, 78, 0.12) 63%, transparent 66%);
+  background-size: 100% 100%, 100% 100%, 200% 200%, 180% 180%;
+  filter: contrast(1.1);
+  opacity: 0.95;
+}
+.hsr-chisel {
+  position: absolute;
+  top: -140px;
+  left: 50%;
+  transform: translateX(-50%) rotate(-20deg);
+  width: 14px;
+  height: 190px;
+  background: linear-gradient(to right, #B8860B, #FFD700, #D4A017, #8B6914);
+  border-radius: 2px 2px 0 0;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.6), 0 0 25px rgba(255,215,0,0.6);
+  z-index: 10;
+  opacity: 0;
+  transition: all 1.2s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+.hsr-chisel::after {
+  content: '';
+  position: absolute;
+  bottom: -15px;
+  left: 0;
+  width: 0;
+  height: 0;
+  border-left: 7px solid transparent;
+  border-right: 7px solid transparent;
+  border-top: 15px solid #FFD700;
+  filter: drop-shadow(0 0 8px #FFD700);
+}
+.hsr-sparks {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 12px;
+  height: 12px;
+  pointer-events: none;
+  z-index: 11;
+  opacity: 0;
+}
+.hsr-sparks::before, .hsr-sparks::after {
+  content: '';
+  position: absolute;
+  inset: -35px;
+  background: radial-gradient(circle, rgba(255,215,0,0.95) 0%, rgba(255,255,255,0.75) 25%, transparent 70%);
+  border-radius: 50%;
+  animation: hsrSparkPulse 0.8s ease-out infinite alternate;
+}
+@keyframes hsrSparkPulse {
+  0% { transform: scale(0.4); opacity: 0.3; }
+  100% { transform: scale(1.4); opacity: 0.9; }
+}
+.hsr-logo {
+  position: absolute;
+  z-index: 1;
+  text-align: center;
+  padding: 2rem;
+  opacity: 0;
+  transform: scale(0.9) translateY(20px);
+  transition: all 1.8s cubic-bezier(0.16, 1, 0.3, 1);
+  max-width: 90vw;
+}
+.hsr-logo-icon {
+  font-size: 2.2rem;
+  color: #FFD700;
+  margin-bottom: 0.5rem;
+  text-shadow: 0 0 20px rgba(255,215,0,0.6);
+}
+.hsr-logo-title {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(2rem, 5.5vw, 4rem);
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  background: linear-gradient(135deg, #FFF8DC 0%, #FFD700 40%, #B8860B 70%, #FFF8DC 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-shadow: 0 4px 25px rgba(184,134,11,0.4);
+  line-height: 1.15;
+}
+.hsr-logo-subtitle {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(1rem, 2.5vw, 1.6rem);
+  font-style: italic;
+  color: #D4A017;
+  letter-spacing: 0.15em;
+  margin-top: 0.6rem;
+  text-shadow: 0 2px 10px rgba(0,0,0,0.8);
+}
+.hsr-logo-tag {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.75rem;
+  letter-spacing: 0.35em;
+  text-transform: uppercase;
+  color: rgba(250, 247, 242, 0.75);
+  margin-top: 1.2rem;
+}
+.hsr-skip {
+  position: absolute;
+  top: 2rem;
+  right: 2rem;
+  z-index: 100;
+  background: rgba(20, 12, 5, 0.65);
+  border: 1px solid rgba(184, 134, 11, 0.4);
+  color: #D4A017;
+  padding: 0.55rem 1.3rem;
+  border-radius: 30px;
+  font-family: 'Inter', sans-serif;
+  font-size: 0.72rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  cursor: pointer;
+  backdrop-filter: blur(6px);
+  transition: all 0.3s ease;
+}
+.hsr-skip:hover {
+  background: var(--gold);
+  color: #FAF7F2;
+  border-color: var(--gold);
+}
+.hsr-stage.step-light .hsr-marble-box { transform: scale(1); }
+.hsr-stage.step-chisel .hsr-chisel { opacity: 1; top: 50%; transform: translate(-50%, -100%) rotate(-12deg); }
+.hsr-stage.step-chisel .hsr-sparks { opacity: 1; }
+.hsr-stage.step-split .hsr-chisel { opacity: 0; transform: translate(-50%, -120%) scale(0.8); }
+.hsr-stage.step-split .hsr-sparks { opacity: 0; }
+.hsr-stage.step-split .hsr-marble-left { transform: translateX(-105%) rotateY(-15deg); }
+.hsr-stage.step-split .hsr-marble-right { transform: translateX(105%) rotateY(15deg); }
+.hsr-stage.step-split .hsr-logo { opacity: 1; transform: scale(1) translateY(0); }
+
+/* ========================================================= */
+/* FEATURE 2 — BEFORE & AFTER COMPARISON SLIDER STYLES      */
+/* ========================================================= */
+.ba-wrapper {
+  position: relative;
+  width: 100%;
+  max-width: 1100px;
+  margin: 0 auto;
+  border-radius: var(--radius);
+  overflow: hidden;
+  box-shadow: 0 20px 50px var(--shadow);
+  border: 1px solid var(--border);
+  background: var(--charcoal);
+}
+.ba-slider-box {
+  position: relative;
+  width: 100%;
+  height: 520px;
+  overflow: hidden;
+  user-select: none;
+  touch-action: pan-y;
+  cursor: ew-resize;
+}
+@media(max-width: 900px) { .ba-slider-box { height: 420px; } }
+@media(max-width: 600px) { .ba-slider-box { height: 320px; } }
+
+.ba-layer-before {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+}
+.ba-layer-before img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  filter: saturate(0.65) contrast(0.95) brightness(0.88);
+}
+.ba-layer-after {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 2;
+  clip-path: inset(0 50% 0 0);
+  will-change: clip-path;
+}
+.ba-layer-after img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+.ba-label {
+  position: absolute;
+  top: 1.5rem;
+  z-index: 5;
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  font-family: 'Inter', sans-serif;
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  pointer-events: none;
+  backdrop-filter: blur(8px);
+}
+.ba-label-before {
+  left: 1.5rem;
+  background: rgba(44, 44, 44, 0.85);
+  color: #FAF7F2;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+.ba-label-after {
+  right: 1.5rem;
+  background: rgba(184, 134, 11, 0.9);
+  color: #FAF7F2;
+  border: 1px solid var(--gold-light);
+  box-shadow: 0 4px 15px rgba(184, 134, 11, 0.35);
+}
+.ba-hotspot {
+  position: absolute;
+  z-index: 4;
+  background: rgba(20, 12, 5, 0.8);
+  border: 1px solid var(--gold);
+  color: #FAF7F2;
+  padding: 0.4rem 0.85rem;
+  border-radius: 20px;
+  font-size: 0.75rem;
+  font-family: 'Inter', sans-serif;
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  pointer-events: none;
+  backdrop-filter: blur(6px);
+  box-shadow: 0 4px 15px rgba(0,0,0,0.4);
+  white-space: nowrap;
+}
+.ba-hotspot::before {
+  content: '✦';
+  color: var(--gold-light);
+  font-size: 0.8rem;
+}
+@media(max-width: 600px) {
+  .ba-hotspot { font-size: 0.65rem; padding: 0.25rem 0.6rem; }
+  .ba-hotspot-hide-mobile { display: none; }
+}
+.ba-handle {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 50%;
+  width: 2px;
+  background: var(--gold-light);
+  z-index: 10;
+  transform: translateX(-50%);
+  pointer-events: none;
+  box-shadow: 0 0 12px rgba(212, 160, 23, 0.9);
+  will-change: left;
+}
+.ba-handle-circle {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #FAF7F2, #EAE5DD);
+  border: 2px solid var(--gold);
+  box-shadow: 0 0 20px rgba(184, 134, 11, 0.5), 0 4px 12px rgba(0,0,0,0.3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--mahogany);
+  font-size: 0.9rem;
+  font-weight: bold;
+}
+.ba-handle-circle::before {
+  content: '◄  ►';
+  font-size: 0.7rem;
+  letter-spacing: 2px;
+  color: var(--gold);
+}
 </style>
 </head>
 <body>
+
+<!-- FEATURE 1 OVERLAY -->
+<div id="hsrOverlay" style="display:none;">
+  <canvas id="hsrCanvas"></canvas>
+  <button class="hsr-skip" onclick="hsrFinish()">Skip Intro &#10140;</button>
+  <div class="hsr-stage" id="hsrStage">
+    <div class="hsr-logo" id="hsrLogo">
+      <div class="hsr-logo-icon">❖</div>
+      <h1 class="hsr-logo-title">ASHIRWAD</h1>
+      <h2 class="hsr-logo-subtitle">SANITARY &amp; TILES</h2>
+      <div class="hsr-logo-tag">Crafting Beautiful Spaces Since 2005</div>
+    </div>
+    <div class="hsr-marble-box" id="hsrMarbleBox">
+      <div class="hsr-marble-half hsr-marble-left" id="hsrMarbleLeft">
+        <div class="hsr-veins"></div>
+      </div>
+      <div class="hsr-marble-half hsr-marble-right" id="hsrMarbleRight">
+        <div class="hsr-veins"></div>
+      </div>
+      <div class="hsr-chisel" id="hsrChisel"></div>
+      <div class="hsr-sparks" id="hsrSparks"></div>
+    </div>
+  </div>
+</div>
+
 <div id="pb"></div>
 <nav id="nav">
 <a href="#" onclick="go('home');return false;" style="text-decoration:none">
@@ -259,9 +639,10 @@ body.dark .modal-card{background:#261508;color:#F0E8D8;border-color:#5C4020}
   <div class="ho"></div>
   <div class="hc">
     <p class="h-est">Est. 2005 &bull; Lucknow, India</p>
-    <h1 class="h-title">Crafting Beautiful Spaces <span class="h-gold">Since 2005</span></h1>
+    <h1 class="h-title">Crafting Beautiful Spaces<span class="h-gold">Since 2005</span></h1>
     <div class="h-div"></div>
-    <p class="h-sub">Premium Tiles &bull; Elegant Bathrooms &bull; Trusted Quality<br/>📞 9455855203 | 9335222840</p>
+    <p class="h-sub">Premium Tiles &bull; Elegant Bathrooms &bull; Trusted Quality</p>
+    <p class="h-phone">📞 9455855203 | 9335222840</p>
     <div class="h-btns">
       <button class="btn btn-g" onclick="go('products')">Explore Collection</button>
       <button class="btn btn-o" onclick="openShowroomModal()">Visit Showroom</button>
@@ -293,8 +674,8 @@ body.dark .modal-card{background:#261508;color:#F0E8D8;border-color:#5C4020}
           <span class="card-lbl">Wall &amp; Floor Tiles</span>
         </div>
         <div class="card-body">
-          <div class="card-title">Ceramic &amp; Vitrified Tiles</div>
-          <p class="card-text">Wall tiles, floor tiles, wooden finish, marble finish, GVT, PGVT, double charge and full body tiles.</p>
+          <div class="card-title">Ceramic &amp; Porcelain Tiles</div>
+          <p class="card-text">Wall tiles, floor tiles, designer tiles, wood finish, marble finish, granite, GVT, PGVT and more.</p>
         </div>
       </div>
       <div class="card rv" onclick="go('products')">
@@ -304,7 +685,7 @@ body.dark .modal-card{background:#261508;color:#F0E8D8;border-color:#5C4020}
         </div>
         <div class="card-body">
           <div class="card-title">Premium Sanitaryware</div>
-          <p class="card-text">Wall hung WC, floor mounted WC, one piece closet, table top basins, pedestal basins and urinals.</p>
+          <p class="card-text">Wash basins, toilets, vanities, mirrors, mirror cabinets and kitchen sinks from top brands.</p>
         </div>
       </div>
       <div class="card rv" onclick="go('products')">
@@ -314,7 +695,7 @@ body.dark .modal-card{background:#261508;color:#F0E8D8;border-color:#5C4020}
         </div>
         <div class="card-body">
           <div class="card-title">Bath Accessories &amp; Fittings</div>
-          <p class="card-text">Basin mixers, wall mixers, rain showers, shower panels, health faucets, and kitchen faucets.</p>
+          <p class="card-text">Rain showers, mixers, health faucets, angle valves and complete bathroom accessories.</p>
         </div>
       </div>
       <div class="card rv" onclick="go('products')">
@@ -323,33 +704,71 @@ body.dark .modal-card{background:#261508;color:#F0E8D8;border-color:#5C4020}
           <span class="card-lbl">Kitchen &amp; Outdoor</span>
         </div>
         <div class="card-body">
-          <div class="card-title">Kitchen &amp; Outdoor Solutions</div>
-          <p class="card-text">Quartz sinks, stainless steel sinks, parking tiles, elevation tiles, outdoor tiles, and water storage tanks.</p>
+          <div class="card-title">Kitchen &amp; Outdoor Tiles</div>
+          <p class="card-text">Kitchen tiles, parking tiles, outdoor tiles, elevation tiles, mosaic and subway tiles.</p>
         </div>
       </div>
       <div class="card rv" onclick="go('products')">
         <div class="card-img">
-          <img src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=600&q=80" alt="Plumbing Solutions" loading="lazy" style="width:100%;height:100%;object-fit:cover;"/>
-          <span class="card-lbl">CPVC &amp; Plumbing</span>
+          <img src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=600&q=80" alt="Large Format" loading="lazy" style="width:100%;height:100%;object-fit:cover;"/>
+          <span class="card-lbl">Large Format</span>
         </div>
         <div class="card-body">
-          <div class="card-title">Plumbing &amp; Piping</div>
-          <p class="card-text">CPVC, UPVC, SWR, and PVC pipes, high-grade fittings, and heavy-duty valves.</p>
+          <div class="card-title">Large Format Tiles</div>
+          <p class="card-text">Expansive porcelain slabs and large-format tiles for a seamless, premium finish.</p>
         </div>
       </div>
       <div class="card rv" onclick="go('products')">
         <div class="card-img">
-          <img src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&w=600&q=80" alt="Adhesives &amp; Construction" loading="lazy" style="width:100%;height:100%;object-fit:cover;"/>
-          <span class="card-lbl">Adhesives &amp; Chemicals</span>
+          <img src="https://images.unsplash.com/photo-1600585154526-990dced4db0d?auto=format&fit=crop&w=600&q=80" alt="Commercial" loading="lazy" style="width:100%;height:100%;object-fit:cover;"/>
+          <span class="card-lbl">Commercial</span>
         </div>
         <div class="card-body">
-          <div class="card-title">Tile Adhesives &amp; Grout</div>
-          <p class="card-text">High-performance tile adhesives, color grout, waterproofing solutions, and construction chemicals.</p>
+          <div class="card-title">Commercial &amp; Industrial</div>
+          <p class="card-text">Heavy-duty tiles for offices, malls, showrooms and industrial applications.</p>
         </div>
       </div>
     </div>
   </div>
 </section>
+
+<!-- FEATURE 2 — BEFORE & AFTER RENOVATION COMPARISON SECTION -->
+<section style="background:var(--ivory)">
+  <div class="con">
+    <span class="s-label">Interactive Transformation</span>
+    <h2 class="s-title">Before &rarr; After Renovation</h2>
+    <p class="s-sub">Drag the slider to see how Ashirwad Sanitary &amp; Tiles transforms outdated spaces into modern luxury sanctuaries.</p>
+    <div class="orn">&#9670;</div>
+    
+    <div class="ba-wrapper rv">
+      <div class="ba-slider-box" id="baSliderBox">
+        <!-- BEFORE IMAGE (LEFT/BACKGROUND) -->
+        <div class="ba-layer-before">
+          <img src="https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&fit=crop&w=1400&q=80" alt="Outdated Bathroom Before Renovation" loading="lazy"/>
+          <span class="ba-label ba-label-before">BEFORE RENOVATION</span>
+        </div>
+        
+        <!-- AFTER IMAGE (RIGHT/FOREGROUND WITH CLIP-PATH) -->
+        <div class="ba-layer-after" id="baLayerAfter">
+          <img src="https://images.unsplash.com/photo-1620626011761-996317b8d101?auto=format&fit=crop&w=1400&q=80" alt="Renovated Bathroom After Ashirwad Products" loading="lazy"/>
+          <span class="ba-label ba-label-after">AFTER &bull; ASHIRWAD LUXURY</span>
+          
+          <!-- HOTSPOTS ON RENOVATED SIDE -->
+          <div class="ba-hotspot" style="top:25%; left:20%;">Italian Vitrified Tiles</div>
+          <div class="ba-hotspot ba-hotspot-hide-mobile" style="top:45%; left:45%;">Jaquar Rain Shower</div>
+          <div class="ba-hotspot" style="top:68%; left:25%;">Designer Wash Basin</div>
+          <div class="ba-hotspot ba-hotspot-hide-mobile" style="top:75%; left:65%;">Cera Wall-Hung WC</div>
+        </div>
+        
+        <!-- DRAG HANDLE -->
+        <div class="ba-handle" id="baHandle">
+          <div class="ba-handle-circle"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
 <section>
   <div class="con">
     <span class="s-label">Trusted Partners</span>
@@ -444,7 +863,7 @@ body.dark .modal-card{background:#261508;color:#F0E8D8;border-color:#5C4020}
       <button class="filter-btn" onclick="fp('fittings',this)">Bath Fittings</button>
       <button class="filter-btn" onclick="fp('sanitary',this)">Sanitaryware</button>
       <button class="filter-btn" onclick="fp('accessories',this)">Bathroom Accessories</button>
-      <button class="filter-btn" onclick="fp('storage',this)">Water Storage</button>
+      <button class="filter-btn" onclick="fp('water',this)">Water Storage</button>
       <button class="filter-btn" onclick="fp('kitchen',this)">Kitchen</button>
       <button class="filter-btn" onclick="fp('plumbing',this)">CPVC &amp; Plumbing</button>
       <button class="filter-btn" onclick="fp('adhesives',this)">Adhesives &amp; Construction</button>
@@ -492,15 +911,15 @@ body.dark .modal-card{background:#261508;color:#F0E8D8;border-color:#5C4020}
         <div class="p-info"><div class="p-cat">Tiles</div><div class="p-name">PGVT Tiles</div></div>
       </div>
       <div class="product-card" data-c="tiles">
-        <div class="p-thumb"><img src="https://images.unsplash.com/photo-1552321554-5fefe8c9ef14?auto=format&fit=crop&w=600&q=80" alt="Double Charge Vitrified Tiles" loading="lazy"/></div>
+        <div class="p-thumb"><img src="https://images.unsplash.com/photo-1502005229762-cf1b2da7c5d6?auto=format&fit=crop&w=600&q=80" alt="Double Charge Vitrified Tiles" loading="lazy"/></div>
         <div class="p-info"><div class="p-cat">Tiles</div><div class="p-name">Double Charge Vitrified Tiles</div></div>
       </div>
       <div class="product-card" data-c="tiles">
-        <div class="p-thumb"><img src="https://images.unsplash.com/photo-1502005229762-cf1b2da7c5d6?auto=format&fit=crop&w=600&q=80" alt="Full Body Tiles" loading="lazy"/></div>
+        <div class="p-thumb"><img src="https://images.unsplash.com/photo-1523413651479-597eb2da0ad6?auto=format&fit=crop&w=600&q=80" alt="Full Body Tiles" loading="lazy"/></div>
         <div class="p-info"><div class="p-cat">Tiles</div><div class="p-name">Full Body Tiles</div></div>
       </div>
       <div class="product-card" data-c="tiles">
-        <div class="p-thumb"><img src="https://images.unsplash.com/photo-1523413651479-597eb2da0ad6?auto=format&fit=crop&w=600&q=80" alt="Ceramic Tiles" loading="lazy"/></div>
+        <div class="p-thumb"><img src="https://images.unsplash.com/photo-1552321554-5fefe8c9ef14?auto=format&fit=crop&w=600&q=80" alt="Ceramic Tiles" loading="lazy"/></div>
         <div class="p-info"><div class="p-cat">Tiles</div><div class="p-name">Ceramic Tiles</div></div>
       </div>
       <div class="product-card" data-c="tiles">
@@ -508,10 +927,9 @@ body.dark .modal-card{background:#261508;color:#F0E8D8;border-color:#5C4020}
         <div class="p-info"><div class="p-cat">Tiles</div><div class="p-name">Subway Tiles</div></div>
       </div>
       <div class="product-card" data-c="tiles">
-        <div class="p-thumb"><img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?auto=format&fit=crop&w=600&q=80" alt="Mosaic Tiles" loading="lazy"/></div>
+        <div class="p-thumb"><img src="https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&fit=crop&w=600&q=80" alt="Mosaic Tiles" loading="lazy"/></div>
         <div class="p-info"><div class="p-cat">Tiles</div><div class="p-name">Mosaic Tiles</div></div>
       </div>
-
       <!-- BATH FITTINGS -->
       <div class="product-card" data-c="fittings">
         <div class="p-thumb"><img src="https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&fit=crop&w=600&q=80" alt="Basin Mixers" loading="lazy"/></div>
@@ -522,11 +940,11 @@ body.dark .modal-card{background:#261508;color:#F0E8D8;border-color:#5C4020}
         <div class="p-info"><div class="p-cat">Bath Fittings</div><div class="p-name">Sink Mixers</div></div>
       </div>
       <div class="product-card" data-c="fittings">
-        <div class="p-thumb"><img src="https://images.unsplash.com/photo-1595428774223-ef52624120d2?auto=format&fit=crop&w=600&q=80" alt="Wall Mixers" loading="lazy"/></div>
+        <div class="p-thumb"><img src="https://images.unsplash.com/photo-1585909692994-4340d2ee2188?auto=format&fit=crop&w=600&q=80" alt="Wall Mixers" loading="lazy"/></div>
         <div class="p-info"><div class="p-cat">Bath Fittings</div><div class="p-name">Wall Mixers</div></div>
       </div>
       <div class="product-card" data-c="fittings">
-        <div class="p-thumb"><img src="https://images.unsplash.com/photo-1620626011761-996317b8d101?auto=format&fit=crop&w=600&q=80" alt="Bib Cocks" loading="lazy"/></div>
+        <div class="p-thumb"><img src="https://images.unsplash.com/photo-1585909692994-4340d2ee2188?auto=format&fit=crop&w=600&q=80" alt="Bib Cocks" loading="lazy"/></div>
         <div class="p-info"><div class="p-cat">Bath Fittings</div><div class="p-name">Bib Cocks</div></div>
       </div>
       <div class="product-card" data-c="fittings">
@@ -542,7 +960,7 @@ body.dark .modal-card{background:#261508;color:#F0E8D8;border-color:#5C4020}
         <div class="p-info"><div class="p-cat">Bath Fittings</div><div class="p-name">Health Faucets</div></div>
       </div>
       <div class="product-card" data-c="fittings">
-        <div class="p-thumb"><img src="https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&fit=crop&w=600&q=80" alt="Hand Showers" loading="lazy"/></div>
+        <div class="p-thumb"><img src="https://images.unsplash.com/photo-1540555700478-4be289fbecef?auto=format&fit=crop&w=600&q=80" alt="Hand Showers" loading="lazy"/></div>
         <div class="p-info"><div class="p-cat">Bath Fittings</div><div class="p-name">Hand Showers</div></div>
       </div>
       <div class="product-card" data-c="fittings">
@@ -558,10 +976,9 @@ body.dark .modal-card{background:#261508;color:#F0E8D8;border-color:#5C4020}
         <div class="p-info"><div class="p-cat">Bath Fittings</div><div class="p-name">Kitchen Faucets</div></div>
       </div>
       <div class="product-card" data-c="fittings">
-        <div class="p-thumb"><img src="https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&fit=crop&w=600&q=80" alt="Sensor Faucets" loading="lazy"/></div>
+        <div class="p-thumb"><img src="https://images.unsplash.com/photo-1585909692994-4340d2ee2188?auto=format&fit=crop&w=600&q=80" alt="Sensor Faucets" loading="lazy"/></div>
         <div class="p-info"><div class="p-cat">Bath Fittings</div><div class="p-name">Sensor Faucets</div></div>
       </div>
-
       <!-- SANITARYWARE -->
       <div class="product-card" data-c="sanitary">
         <div class="p-thumb"><img src="https://images.unsplash.com/photo-1620626011761-996317b8d101?auto=format&fit=crop&w=600&q=80" alt="Wall Hung WC" loading="lazy"/></div>
@@ -584,7 +1001,7 @@ body.dark .modal-card{background:#261508;color:#F0E8D8;border-color:#5C4020}
         <div class="p-info"><div class="p-cat">Sanitaryware</div><div class="p-name">Table Top Basin</div></div>
       </div>
       <div class="product-card" data-c="sanitary">
-        <div class="p-thumb"><img src="https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&fit=crop&w=600&q=80" alt="Counter Basin" loading="lazy"/></div>
+        <div class="p-thumb"><img src="https://images.unsplash.com/photo-1507652313519-d4e9174996dd?auto=format&fit=crop&w=600&q=80" alt="Counter Basin" loading="lazy"/></div>
         <div class="p-info"><div class="p-cat">Sanitaryware</div><div class="p-name">Counter Basin</div></div>
       </div>
       <div class="product-card" data-c="sanitary">
@@ -596,7 +1013,7 @@ body.dark .modal-card{background:#261508;color:#F0E8D8;border-color:#5C4020}
         <div class="p-info"><div class="p-cat">Sanitaryware</div><div class="p-name">Half Pedestal Basin</div></div>
       </div>
       <div class="product-card" data-c="sanitary">
-        <div class="p-thumb"><img src="https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&fit=crop&w=600&q=80" alt="Art Basin" loading="lazy"/></div>
+        <div class="p-thumb"><img src="https://images.unsplash.com/photo-1507652313519-d4e9174996dd?auto=format&fit=crop&w=600&q=80" alt="Art Basin" loading="lazy"/></div>
         <div class="p-info"><div class="p-cat">Sanitaryware</div><div class="p-name">Art Basin</div></div>
       </div>
       <div class="product-card" data-c="sanitary">
@@ -604,10 +1021,9 @@ body.dark .modal-card{background:#261508;color:#F0E8D8;border-color:#5C4020}
         <div class="p-info"><div class="p-cat">Sanitaryware</div><div class="p-name">Corner Basin</div></div>
       </div>
       <div class="product-card" data-c="sanitary">
-        <div class="p-thumb"><img src="https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&fit=crop&w=600&q=80" alt="Urinals" loading="lazy"/></div>
+        <div class="p-thumb"><img src="https://images.unsplash.com/photo-1585412727339-54e4ba3bbf93?auto=format&fit=crop&w=600&q=80" alt="Urinals" loading="lazy"/></div>
         <div class="p-info"><div class="p-cat">Sanitaryware</div><div class="p-name">Urinals</div></div>
       </div>
-
       <!-- BATHROOM ACCESSORIES -->
       <div class="product-card" data-c="accessories">
         <div class="p-thumb"><img src="https://images.unsplash.com/photo-1618219908412-a29a1bb7b86e?auto=format&fit=crop&w=600&q=80" alt="Mirrors" loading="lazy"/></div>
@@ -649,21 +1065,19 @@ body.dark .modal-card{background:#261508;color:#F0E8D8;border-color:#5C4020}
         <div class="p-thumb"><img src="https://images.unsplash.com/photo-1604709177225-055f99402ea3?auto=format&fit=crop&w=600&q=80" alt="Toothbrush Holders" loading="lazy"/></div>
         <div class="p-info"><div class="p-cat">Bathroom Accessories</div><div class="p-name">Toothbrush Holders</div></div>
       </div>
-
       <!-- WATER STORAGE -->
-      <div class="product-card" data-c="storage">
-        <div class="p-thumb"><img src="https://images.unsplash.com/photo-1541888946425-d0fbb186a5b7?auto=format&fit=crop&w=600&q=80" alt="Water Tanks" loading="lazy"/></div>
+      <div class="product-card" data-c="water">
+        <div class="p-thumb"><img src="https://images.unsplash.com/photo-1541888946425-d0fbb186a5b3?auto=format&fit=crop&w=600&q=80" alt="Water Tanks" loading="lazy"/></div>
         <div class="p-info"><div class="p-cat">Water Storage</div><div class="p-name">Water Tanks</div></div>
       </div>
-      <div class="product-card" data-c="storage">
-        <div class="p-thumb"><img src="https://images.unsplash.com/photo-1541888946425-d0fbb186a5b7?auto=format&fit=crop&w=600&q=80" alt="Loft Tanks" loading="lazy"/></div>
+      <div class="product-card" data-c="water">
+        <div class="p-thumb"><img src="https://images.unsplash.com/photo-1541888946425-d0fbb186a5b3?auto=format&fit=crop&w=600&q=80" alt="Loft Tanks" loading="lazy"/></div>
         <div class="p-info"><div class="p-cat">Water Storage</div><div class="p-name">Loft Tanks</div></div>
       </div>
-      <div class="product-card" data-c="storage">
-        <div class="p-thumb"><img src="https://images.unsplash.com/photo-1541888946425-d0fbb186a5b7?auto=format&fit=crop&w=600&q=80" alt="PVC Tanks" loading="lazy"/></div>
+      <div class="product-card" data-c="water">
+        <div class="p-thumb"><img src="https://images.unsplash.com/photo-1541888946425-d0fbb186a5b3?auto=format&fit=crop&w=600&q=80" alt="PVC Tanks" loading="lazy"/></div>
         <div class="p-info"><div class="p-cat">Water Storage</div><div class="p-name">PVC Tanks</div></div>
       </div>
-
       <!-- KITCHEN -->
       <div class="product-card" data-c="kitchen">
         <div class="p-thumb"><img src="https://images.unsplash.com/photo-1590490360182-c33d57733427?auto=format&fit=crop&w=600&q=80" alt="Kitchen Sinks" loading="lazy"/></div>
@@ -681,7 +1095,6 @@ body.dark .modal-card{background:#261508;color:#F0E8D8;border-color:#5C4020}
         <div class="p-thumb"><img src="https://images.unsplash.com/photo-1590490360182-c33d57733427?auto=format&fit=crop&w=600&q=80" alt="Drain Boards" loading="lazy"/></div>
         <div class="p-info"><div class="p-cat">Kitchen</div><div class="p-name">Drain Boards</div></div>
       </div>
-
       <!-- CPVC & PLUMBING -->
       <div class="product-card" data-c="plumbing">
         <div class="p-thumb"><img src="https://images.unsplash.com/photo-1581092160607-ee22621dd758?auto=format&fit=crop&w=600&q=80" alt="CPVC Pipes" loading="lazy"/></div>
@@ -704,10 +1117,9 @@ body.dark .modal-card{background:#261508;color:#F0E8D8;border-color:#5C4020}
         <div class="p-info"><div class="p-cat">CPVC &amp; Plumbing</div><div class="p-name">Fittings</div></div>
       </div>
       <div class="product-card" data-c="plumbing">
-        <div class="p-thumb"><img src="https://images.unsplash.com/photo-1585909692994-4340d2ee2188?auto=format&fit=crop&w=600&q=80" alt="Valves" loading="lazy"/></div>
+        <div class="p-thumb"><img src="https://images.unsplash.com/photo-1581092160607-ee22621dd758?auto=format&fit=crop&w=600&q=80" alt="Valves" loading="lazy"/></div>
         <div class="p-info"><div class="p-cat">CPVC &amp; Plumbing</div><div class="p-name">Valves</div></div>
       </div>
-
       <!-- ADHESIVES & CONSTRUCTION -->
       <div class="product-card" data-c="adhesives">
         <div class="p-thumb"><img src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&w=600&q=80" alt="Tile Adhesive" loading="lazy"/></div>
@@ -755,8 +1167,8 @@ body.dark .modal-card{background:#261508;color:#F0E8D8;border-color:#5C4020}
       <div class="g-item"><div class="g-thumb" style="height:300px"><img src="https://images.unsplash.com/photo-1595428774223-ef52624120d2?auto=format&fit=crop&w=600&q=80" alt="Luxury Vanity" loading="lazy"/><span>Luxury Vanity</span></div></div>
       <div class="g-item"><div class="g-thumb" style="height:190px"><img src="https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&w=600&q=80" alt="Outdoor Patio" loading="lazy"/><span>Outdoor Patio</span></div></div>
       <div class="g-item"><div class="g-thumb" style="height:260px"><img src="https://images.unsplash.com/photo-1590381105924-c72589b9ef3f?auto=format&fit=crop&w=600&q=80" alt="Parking Area" loading="lazy"/><span>Parking Area</span></div></div>
-      <div class="g-item"><div class="g-thumb" style="height:210px"><img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=600&q=80" alt="Commercial Space" loading="lazy"/><span>Commercial Space</span></div></div>
-      <div class="g-item"><div class="g-thumb" style="height:340px"><img src="https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&w=600&q=80" alt="Feature Wall" loading="lazy"/><span>Feature Wall</span></div></div>
+      <div class="g-item"><div class="g-thumb" style="height:210px"><img src="https://images.unsplash.com/photo-1600585154526-990dced4db0d?auto=format&fit=crop&w=600&q=80" alt="Commercial Space" loading="lazy"/><span>Commercial Space</span></div></div>
+      <div class="g-item"><div class="g-thumb" style="height:340px"><img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=600&q=80" alt="Feature Wall" loading="lazy"/><span>Feature Wall</span></div></div>
       <div class="g-item"><div class="g-thumb" style="height:180px"><img src="https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&fit=crop&w=600&q=80" alt="Modern Bathroom" loading="lazy"/><span>Modern Bathroom</span></div></div>
     </div>
   </div>
@@ -828,7 +1240,7 @@ body.dark .modal-card{background:#261508;color:#F0E8D8;border-color:#5C4020}
           <div class="c-icon">&#128205;</div>
           <div class="c-detail">
             <h4>Office &amp; Second Location</h4>
-            <p>Shop No. M-D1, Sector-D, Near Green Medicals Centre, Power House Road, LDA Colony, Lucknow – 226012</p>
+            <p>Shop No. M-D1, Sector-D, Near Green Medical Centre, Power House Road, LDA Colony, Lucknow – 226012</p>
           </div>
         </div>
         <div class="c-item">
@@ -836,8 +1248,8 @@ body.dark .modal-card{background:#261508;color:#F0E8D8;border-color:#5C4020}
           <div class="c-detail">
             <h4>Call Us</h4>
             <div style="display:flex;flex-direction:column;gap:0.3rem;">
-              <a href="tel:9455855203" style="color:var(--gold)">📞 9455855203</a>
-              <a href="tel:9335222840" style="color:var(--gold)">📞 9335222840</a>
+              <a href="tel:9455855203" style="color:var(--gold)">☎️ 9455855203</a>
+              <a href="tel:9335222840" style="color:var(--gold)">☎️ 9335222840</a>
             </div>
           </div>
         </div>
@@ -865,13 +1277,13 @@ body.dark .modal-card{background:#261508;color:#F0E8D8;border-color:#5C4020}
             <p>Monday &ndash; Wednesday 10:00 AM &ndash; 8:00 PM<br/>Thursday Half Day<br/>Friday &ndash; Sunday 10:00 AM &ndash; 8:00 PM</p>
           </div>
         </div>
-        <div class="map-box"><span style="font-family:'Playfair Display',serif;font-size:1.1rem">&#128205; Sarojini Nagar &amp; LDA Colony</span><button onclick="openShowroomModal()" class="btn btn-d">View Locations</button></div>
+        <div class="map-box"><span style="font-family:'Playfair Display',serif;font-size:1.1rem">&#128205; Sarojini Nagar, Lucknow</span><a href="https://maps.app.goo.gl/VVaRQCB53qAKciQR7" target="_blank" class="btn btn-d">Get Directions</a></div>
       </div>
       <div>
         <h3 style="font-family:'Playfair Display',serif;font-size:1.4rem;margin-bottom:1.5rem">Send an Enquiry</h3>
         <form onsubmit="submitF(event)">
           <div class="fg"><label>Your Name</label><input type="text" placeholder="Rajesh Sharma" required></div>
-          <div class="fg"><label>Phone Number</label><input type="tel" placeholder="9455855203" required></div>
+          <div class="fg"><label>Phone Number</label><input type="tel" placeholder="+91 94558 55203" required></div>
           <div class="fg"><label>Email Address</label><input type="email" placeholder="you@example.com"></div>
           <div class="fg"><label>Enquiry Type</label><select><option>Tiles Enquiry</option><option>Sanitaryware Enquiry</option><option>Bath Fittings Enquiry</option><option>Wholesale / Bulk Order</option><option>General Enquiry</option></select></div>
           <div class="fg"><label>Your Message</label><textarea placeholder="Tell us about your project or requirement..."></textarea></div>
@@ -893,8 +1305,8 @@ body.dark .modal-card{background:#261508;color:#F0E8D8;border-color:#5C4020}
     <div class="fc">
       <h3>Contact</h3>
       <ul>
-        <li><a href="tel:9455855203">☎️ 9455855203</a></li>
-        <li><a href="tel:9335222840">☎️ 9335222840</a></li>
+        <li><a href="javascript:void(0)" onclick="openCallModal()">☎️ 9455855203</a></li>
+        <li><a href="javascript:void(0)" onclick="openCallModal()">☎️ 9335222840</a></li>
         <li><a href="mailto:mittalshaurya66@gmail.com">mittalshaurya66@gmail.com</a></li>
         <li><a href="javascript:void(0)" onclick="openWaModal()">WhatsApp Us</a></li>
       </ul>
@@ -910,7 +1322,6 @@ body.dark .modal-card{background:#261508;color:#F0E8D8;border-color:#5C4020}
 <button onclick="openCallModal()" class="fb-btn fb-call" title="Call" aria-label="Call">&#128222;</button>
 </div>
 <button class="btt" id="btt" onclick="window.scrollTo({top:0,behavior:'smooth'})" title="Back to top">&#8679;</button>
-
 <!-- CALL MODAL -->
 <div id="callModal" class="custom-modal" onclick="if(event.target===this)closeCallModal()">
   <div class="modal-card">
@@ -920,104 +1331,368 @@ body.dark .modal-card{background:#261508;color:#F0E8D8;border-color:#5C4020}
     <a href="tel:9335222840" class="modal-opt">☎️ 9335222840</a>
   </div>
 </div>
-
-<!-- VISIT SHOWROOM MODAL -->
+<!-- SHOWROOM MODAL -->
 <div id="showroomModal" class="custom-modal" onclick="if(event.target===this)closeShowroomModal()">
-  <div class="modal-card" style="max-width:480px;text-align:left;">
+  <div class="modal-card">
     <button class="modal-close" onclick="closeShowroomModal()">&times;</button>
-    <div class="modal-title" style="text-align:center;">Visit Showroom</div>
+    <div class="modal-title">Visit Our Showrooms</div>
     
-    <div style="margin-bottom:1.5rem;padding-bottom:1rem;border-bottom:1px solid var(--border);">
-      <h4 style="font-family:'Playfair Display',serif;font-size:1.1rem;color:var(--gold);margin-bottom:0.4rem;">📍 Main Showroom</h4>
-      <p style="font-size:0.88rem;color:var(--brown);margin-bottom:0.8rem;line-height:1.5;">MDR 91C, Sarojini Nagar, Lucknow, Uttar Pradesh 226008</p>
+    <div class="location-card">
+      <div class="loc-title">📍 Main Showroom</div>
+      <div class="loc-addr">MDR 91C, Sarojini Nagar, Lucknow, Uttar Pradesh 226008</div>
       <a href="https://maps.app.goo.gl/VVaRQCB53qAKciQR7" target="_blank" rel="noopener" class="modal-opt">Open in Google Maps</a>
     </div>
-
-    <div>
-      <h4 style="font-family:'Playfair Display',serif;font-size:1.1rem;color:var(--gold);margin-bottom:0.4rem;">📍 Office &amp; Second Location</h4>
-      <p style="font-size:0.88rem;color:var(--brown);margin-bottom:0.8rem;line-height:1.5;">Shop No M-D1, Sec-D, Near Green Medicals Centre, Power House Road, LDA Colony, Lucknow 226012</p>
-      <a href="https://maps.app.goo.gl/8e8aDuenDPycFwB1A" target="_blank" rel="noopener" class="modal-opt">Open in Google Maps</a>
+    <div class="location-card" style="margin-bottom:0;">
+      <div class="loc-title">📍 Office &amp; Second Location</div>
+      <div class="loc-addr">Shop No M-D1, Sec-D, Near Green Medicals Centre, Power House Road, LDA Colony, Lucknow 226012</div>
+      <a href="https://maps.app.goo.gl/8e8aDuenDPycFwB" target="_blank" rel="noopener" class="modal-opt">Open in Google Maps</a>
     </div>
   </div>
 </div>
-
 <!-- WHATSAPP MODAL -->
 <div id="waModal" class="custom-modal" onclick="if(event.target===this)closeWaModal()">
   <div class="modal-card">
     <button class="modal-close" onclick="closeWaModal()">&times;</button>
-    <div class="modal-title">Select Showroom for WhatsApp</div>
-    <a href="https://wa.me/919455855203" target="_blank" rel="noopener" class="modal-opt">💬 Chat with Main Showroom (+91 9455855203)</a>
-    <a href="https://wa.me/919335222840" target="_blank" rel="noopener" class="modal-opt">💬 Chat with Second Showroom (+91 9335222840)</a>
+    <div class="modal-title">WhatsApp Us</div>
+    <a href="https://wa.me/919455855203" target="_blank" rel="noopener" class="modal-opt">💬 Chat on +91 9455855203</a>
+    <a href="https://wa.me/919335222840" target="_blank" rel="noopener" class="modal-opt">💬 Chat on +91 9335222840</a>
   </div>
 </div>
 
 <script>
-var dark=false;
-function toggleTheme(){dark=!dark;document.body.classList.toggle('dark',dark);document.getElementById('tbtn').innerHTML=dark?'&#127769;&#65039;':'&#9728;&#65039;';localStorage.setItem('t',dark?'d':'l')}
-if(localStorage.getItem('t')==='d'||(!localStorage.getItem('t')&&matchMedia('(prefers-color-scheme:dark)').matches)){dark=true;document.body.classList.add('dark');document.getElementById('tbtn').innerHTML='&#127769;&#65039;'}
-function toggleNav(){document.getElementById('nl').classList.toggle('open')}
-function cm(){document.getElementById('nl').classList.remove('open')}
-function go(p){
-document.querySelectorAll('.page').forEach(function(x){x.classList.remove('active')});
-document.getElementById('pg-'+p).classList.add('active');
-document.querySelectorAll('#nl a').forEach(function(a){a.classList.toggle('active',a.dataset.p===p)});
-window.scrollTo({top:0,behavior:'smooth'});
-setTimeout(rv,150);
+/* ========================================================= */
+/* EXISTING SITE FUNCTIONALITY & NAVIGATION                 */
+/* ========================================================= */
+function go(p) {
+  document.querySelectorAll('.page').forEach(el => el.classList.remove('active'));
+  const target = document.getElementById('pg-' + p);
+  if(target) target.classList.add('active');
+  window.scrollTo({top: 0, behavior: 'smooth'});
+  document.querySelectorAll('.nav-links a').forEach(a => {
+    a.classList.toggle('active', a.getAttribute('data-p') === p);
+  });
 }
-window.addEventListener('scroll',function(){
-var s=window.scrollY;
-document.getElementById('nav').classList.toggle('scrolled',s>60);
-document.getElementById('btt').classList.toggle('on',s>300);
-var max=document.documentElement.scrollHeight-window.innerHeight;
-document.getElementById('pb').style.width=(s/max*100)+'%';
-rv();cu();
+function cm() {
+  const nl = document.getElementById('nl');
+  if(nl) nl.classList.remove('open');
+}
+function toggleNav() {
+  const nl = document.getElementById('nl');
+  if(nl) nl.classList.toggle('open');
+}
+function toggleTheme() {
+  document.body.classList.toggle('dark');
+  const btn = document.getElementById('tbtn');
+  if(btn) {
+    btn.textContent = document.body.classList.contains('dark') ? '☀️' : '🌙';
+  }
+}
+function fp(cat, btn) {
+  document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  document.querySelectorAll('#pgrid .product-card').forEach(card => {
+    if(cat === 'all' || card.getAttribute('data-c') === cat) {
+      card.style.display = 'block';
+    } else {
+      card.style.display = 'none';
+    }
+  });
+}
+function calcT() {
+  const l = parseFloat(document.getElementById('cl').value) || 0;
+  const w = parseFloat(document.getElementById('cw').value) || 0;
+  const s = parseFloat(document.getElementById('cs').value) || 1;
+  const cr = document.getElementById('cr');
+  if(l <= 0 || w <= 0) {
+    cr.innerHTML = 'Enter room dimensions to calculate.';
+    return;
+  }
+  const area = l * w;
+  const tilesNeeded = Math.ceil(area / s);
+  const withWastage = Math.ceil(tilesNeeded * 1.1);
+  cr.innerHTML = `<strong>Room Area:</strong> ${area.toFixed(1)} sq ft<br><strong>Tiles Needed:</strong> ~${tilesNeeded} tiles<br><strong>Recommended (incl. 10% wastage):</strong> <span style="color:var(--gold);font-weight:700">${withWastage} tiles</span>`;
+}
+function calcC() {
+  const q = parseFloat(document.getElementById('eq').value) || 0;
+  const p = parseFloat(document.getElementById('ep').value) || 0;
+  const g = parseInt(document.getElementById('eg').value) || 0;
+  const er = document.getElementById('er');
+  if(q <= 0 || p <= 0) {
+    er.innerHTML = 'Enter details to estimate cost.';
+    return;
+  }
+  let total = q * p;
+  let gstAmt = 0;
+  if(g === 1) {
+    gstAmt = total * 0.18;
+    total += gstAmt;
+  }
+  er.innerHTML = `<strong>Base Amount:</strong> ₹${(q*p).toLocaleString('en-IN')}<br>` + 
+    (g === 1 ? `<strong>GST (18%):</strong> ₹${gstAmt.toLocaleString('en-IN')}<br>` : '') +
+    `<strong>Estimated Total:</strong> <span style="color:var(--gold);font-weight:700">₹${total.toLocaleString('en-IN')}</span>`;
+}
+function calcG() {
+  const b = parseFloat(document.getElementById('gb').value) || 0;
+  const r = parseFloat(document.getElementById('gr').value) || 18;
+  const gr2 = document.getElementById('gr2');
+  if(b <= 0) {
+    gr2.innerHTML = 'Enter base price to calculate GST.';
+    return;
+  }
+  const gstAmt = (b * r) / 100;
+  const total = b + gstAmt;
+  gr2.innerHTML = `<strong>Base Price:</strong> ₹${b.toLocaleString('en-IN')}<br><strong>GST (${r}%):</strong> ₹${gstAmt.toLocaleString('en-IN')}<br><strong>Total Amount:</strong> <span style="color:var(--gold);font-weight:700">₹${total.toLocaleString('en-IN')}</span>`;
+}
+function submitF(e) {
+  e.preventDefault();
+  const fs = document.getElementById('fs');
+  if(fs) {
+    fs.style.display = 'block';
+    e.target.reset();
+  }
+}
+function openCallModal(){ document.getElementById('callModal').classList.add('active'); }
+function closeCallModal(){ document.getElementById('callModal').classList.remove('active'); }
+function openShowroomModal(){ document.getElementById('showroomModal').classList.add('active'); }
+function closeShowroomModal(){ document.getElementById('showroomModal').classList.remove('active'); }
+function openWaModal(){ document.getElementById('waModal').classList.add('active'); }
+function closeWaModal(){ document.getElementById('waModal').classList.remove('active'); }
+
+window.addEventListener('scroll', () => {
+  const nav = document.getElementById('nav');
+  if(window.scrollY > 50) nav.classList.add('scrolled');
+  else nav.classList.remove('scrolled');
+
+  const btt = document.getElementById('btt');
+  if(window.scrollY > 300) btt.classList.add('on');
+  else btt.classList.remove('on');
+
+  const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+  const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+  const scrolled = (winScroll / height) * 100;
+  const pb = document.getElementById('pb');
+  if(pb) pb.style.width = scrolled + '%';
 });
-function rv(){document.querySelectorAll('.rv:not(.vis)').forEach(function(el){if(el.getBoundingClientRect().top<window.innerHeight-60)el.classList.add('vis')})}
-var counted=false;
-function cu(){
-if(counted)return;
-var els=document.querySelectorAll('.stat-n[data-c]');
-if(!els.length)return;
-var first=els[0].getBoundingClientRect();
-if(first.top>window.innerHeight)return;
-counted=true;
-els.forEach(function(el){
-  var t=+el.getAttribute('data-c'),isK=t>=1000,cur=0,inc=t/60;
-  var id=setInterval(function(){cur+=inc;if(cur>=t){cur=t;clearInterval(id);}el.textContent=(isK?(cur/1000).toFixed(1)+'K+':Math.round(cur)+'+');},20);
-});
-}
-function fp(c,btn){
-document.querySelectorAll('#fb .filter-btn').forEach(function(b){b.classList.remove('active')});
-btn.classList.add('active');
-document.querySelectorAll('#pgrid .product-card').forEach(function(card){card.style.display=(c==='all'||card.getAttribute('data-c')===c)?'block':'none'});
-}
-function calcT(){
-var l=+document.getElementById('cl').value,w=+document.getElementById('cw').value,s=+document.getElementById('cs').value;
-if(!l||!w){document.getElementById('cr').textContent='Enter room dimensions to calculate.';return;}
-var a=l*w,n=Math.ceil(a/s),ww=Math.ceil(n*1.1);
-document.getElementById('cr').innerHTML='Room Area: <strong>'+a+' sq ft</strong><br>Tiles Needed: <strong>'+n+'</strong><br>With 10% waste: <strong>'+ww+' tiles</strong>';
-}
-function calcC(){
-var q=+document.getElementById('eq').value,p=+document.getElementById('ep').value,g=document.getElementById('eg').value==='1';
-if(!q||!p){document.getElementById('er').textContent='Enter details to estimate cost.';return;}
-var b=q*p,tot=g?b*1.18:b;
-document.getElementById('er').innerHTML='Base Cost: <strong>Rs.'+b.toLocaleString('en-IN')+'</strong>'+(g?'<br>GST (18%): <strong>Rs.'+Math.round(b*.18).toLocaleString('en-IN')+'</strong>':'')+'<br>Total: <strong>Rs.'+Math.round(tot).toLocaleString('en-IN')+'</strong>';
-}
-function calcG(){
-var b=+document.getElementById('gb').value,r=+document.getElementById('gr').value;
-if(!b){document.getElementById('gr2').textContent='Enter base price to calculate GST.';return;}
-var g=b*r/100;
-document.getElementById('gr2').innerHTML='Base: <strong>Rs.'+b.toLocaleString('en-IN')+'</strong><br>GST ('+r+'%): <strong>Rs.'+g.toLocaleString('en-IN')+'</strong><br>Total: <strong>Rs.'+(b+g).toLocaleString('en-IN')+'</strong>';
-}
-function submitF(e){e.preventDefault();document.getElementById('fs').style.display='block';e.target.reset()}
-function openCallModal(){document.getElementById('callModal').classList.add('active')}
-function closeCallModal(){document.getElementById('callModal').classList.remove('active')}
-function openShowroomModal(){document.getElementById('showroomModal').classList.add('active')}
-function closeShowroomModal(){document.getElementById('showroomModal').classList.remove('active')}
-function openWaModal(){document.getElementById('waModal').classList.add('active')}
-function closeWaModal(){document.getElementById('waModal').classList.remove('active')}
-rv();setTimeout(cu,500);
+
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if(entry.isIntersecting) {
+      entry.target.classList.add('vis');
+      const stat = entry.target.querySelector('[data-c]');
+      if(stat && !stat.classList.contains('counted')) {
+        stat.classList.add('counted');
+        const targetVal = parseInt(stat.getAttribute('data-c'));
+        let current = 0;
+        const step = Math.ceil(targetVal / 40);
+        const timer = setInterval(() => {
+          current += step;
+          if(current >= targetVal) {
+            stat.textContent = targetVal + (targetVal >= 1000 ? '+' : targetVal === 20 ? '+' : '+');
+            clearInterval(timer);
+          } else {
+            stat.textContent = current;
+          }
+        }, 30);
+      }
+    }
+  });
+}, { threshold: 0.1 });
+
+document.querySelectorAll('.rv').forEach(el => observer.observe(el));
+
+/* ========================================================= */
+/* FEATURE 1 — CINEMATIC HERITAGE STONE REVEAL SCRIPT      */
+/* ========================================================= */
+(function() {
+  const HAS_SEEN = localStorage.getItem('ashirwad_heritage_reveal_seen');
+  const overlay = document.getElementById('hsrOverlay');
+  if(!overlay) return;
+
+  if (HAS_SEEN) {
+    overlay.style.display = 'none';
+    return;
+  }
+
+  overlay.style.display = 'flex';
+  document.body.style.overflow = 'hidden';
+
+  const canvas = document.getElementById('hsrCanvas');
+  const ctx = canvas.getContext('2d');
+  
+  function resizeCanvas() {
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+  }
+  resizeCanvas();
+  window.addEventListener('resize', resizeCanvas);
+
+  const isLowEnd = (navigator.hardwareConcurrency && navigator.hardwareConcurrency <= 4) || /Android|iPhone|iPad/i.test(navigator.userAgent);
+  const particleCount = isLowEnd ? 35 : 85;
+  const particles = [];
+
+  for (let i = 0; i < particleCount; i++) {
+    particles.push({
+      x: Math.random() * canvas.width,
+      y: Math.random() * canvas.height,
+      r: Math.random() * 2 + 0.5,
+      vy: -(Math.random() * 0.4 + 0.1),
+      vx: (Math.random() - 0.5) * 0.3,
+      alpha: Math.random() * 0.7 + 0.2,
+      pulse: Math.random() * 0.02 + 0.005
+    });
+  }
+
+  let beamAlpha = 0;
+  let animId;
+  let startTime = null;
+
+  function render(timestamp) {
+    if (!startTime) startTime = timestamp;
+    const elapsed = (timestamp - startTime) / 1000;
+
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+    if (elapsed > 1.2 && elapsed < 8.5) {
+      if (beamAlpha < 0.65) beamAlpha += 0.008;
+    } else if (elapsed >= 8.5) {
+      if (beamAlpha > 0) beamAlpha -= 0.015;
+    }
+
+    if (beamAlpha > 0) {
+      const grad = ctx.createRadialGradient(
+        canvas.width / 2, 0, 10,
+        canvas.width / 2, canvas.height * 0.6, canvas.width * 0.7
+      );
+      grad.addColorStop(0, `rgba(212, 160, 23, ${beamAlpha * 0.4})`);
+      grad.addColorStop(0.3, `rgba(184, 134, 11, ${beamAlpha * 0.2})`);
+      grad.addColorStop(1, 'rgba(0,0,0,0)');
+
+      ctx.fillStyle = grad;
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+      ctx.beginPath();
+      ctx.moveTo(canvas.width / 2 - 40, 0);
+      ctx.lineTo(canvas.width / 2 + 40, 0);
+      ctx.lineTo(canvas.width / 2 + canvas.width * 0.4, canvas.height);
+      ctx.lineTo(canvas.width / 2 - canvas.width * 0.4, canvas.height);
+      ctx.closePath();
+      const coneGrad = ctx.createLinearGradient(0, 0, 0, canvas.height);
+      coneGrad.addColorStop(0, `rgba(255, 215, 0, ${beamAlpha * 0.25})`);
+      coneGrad.addColorStop(1, 'rgba(212, 160, 23, 0)');
+      ctx.fillStyle = coneGrad;
+      ctx.fill();
+    }
+
+    for (let p of particles) {
+      p.y += p.vy;
+      p.x += p.vx;
+      if (p.y < 0) { p.y = canvas.height; p.x = Math.random() * canvas.width; }
+      if (p.x < 0 || p.x > canvas.width) { p.x = Math.random() * canvas.width; }
+      
+      p.alpha += Math.sin(timestamp * p.pulse) * 0.01;
+      const clampedAlpha = Math.max(0.1, Math.min(0.9, p.alpha)) * (beamAlpha > 0 ? beamAlpha * 1.2 : 0.2);
+
+      ctx.beginPath();
+      ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+      ctx.fillStyle = `rgba(245, 222, 179, ${clampedAlpha})`;
+      ctx.shadowBlur = p.r * 3;
+      ctx.shadowColor = '#D4A017';
+      ctx.fill();
+      ctx.shadowBlur = 0;
+    }
+
+    animId = requestAnimationFrame(render);
+  }
+
+  animId = requestAnimationFrame(render);
+
+  function playCraftSound() {
+    try {
+      const AudioContext = window.AudioContext || window.webkitAudioContext;
+      if (!AudioContext) return;
+      const ctxAud = new AudioContext();
+      if (ctxAud.state === 'suspended') { ctxAud.resume(); }
+      const osc = ctxAud.createOscillator();
+      const gain = ctxAud.createGain();
+      osc.type = 'sine';
+      osc.frequency.setValueAtTime(880, ctxAud.currentTime);
+      osc.frequency.exponentialRampToValueAtTime(440, ctxAud.currentTime + 0.8);
+      gain.gain.setValueAtTime(0.12, ctxAud.currentTime);
+      gain.gain.exponentialRampToValueAtTime(0.001, ctxAud.currentTime + 0.8);
+      osc.connect(gain);
+      gain.connect(ctxAud.destination);
+      osc.start();
+      osc.stop(ctxAud.currentTime + 0.85);
+    } catch(e) {}
+  }
+
+  const stage = document.getElementById('hsrStage');
+
+  setTimeout(() => { if(stage) stage.classList.add('step-light'); }, 1200);
+  setTimeout(() => { if(stage) { stage.classList.add('step-chisel'); playCraftSound(); } }, 4200);
+  setTimeout(() => { if(stage) stage.classList.add('step-split'); }, 5800);
+  setTimeout(() => { finishReveal(); }, 9200);
+
+  window.hsrFinish = function() {
+    finishReveal();
+  };
+
+  function finishReveal() {
+    if (overlay.classList.contains('hsr-ending')) return;
+    overlay.classList.add('hsr-ending');
+    localStorage.setItem('ashirwad_heritage_reveal_seen', 'true');
+
+    setTimeout(() => {
+      overlay.style.display = 'none';
+      document.body.style.overflow = '';
+      if(animId) cancelAnimationFrame(animId);
+    }, 1200);
+  }
+})();
+
+/* ========================================================= */
+/* FEATURE 2 — BEFORE & AFTER RENOVATION COMPARISON SCRIPT  */
+/* ========================================================= */
+(function() {
+  const box = document.getElementById('baSliderBox');
+  const layerAfter = document.getElementById('baLayerAfter');
+  const handle = document.getElementById('baHandle');
+
+  if (!box || !layerAfter || !handle) return;
+
+  let isDragging = false;
+
+  function updatePos(clientX) {
+    const rect = box.getBoundingClientRect();
+    let x = clientX - rect.left;
+    if (x < 0) x = 0;
+    if (x > rect.width) x = rect.width;
+
+    const pct = (x / rect.width) * 100;
+    layerAfter.style.clipPath = `inset(0 ${100 - pct}% 0 0)`;
+    handle.style.left = `${pct}%`;
+  }
+
+  box.addEventListener('pointerdown', (e) => {
+    isDragging = true;
+    box.setPointerCapture(e.pointerId);
+    updatePos(e.clientX);
+  });
+
+  box.addEventListener('pointermove', (e) => {
+    if (!isDragging) return;
+    updatePos(e.clientX);
+  });
+
+  box.addEventListener('pointerup', (e) => {
+    isDragging = false;
+    try { box.releasePointerCapture(e.pointerId); } catch(err) {}
+  });
+
+  box.addEventListener('pointercancel', (e) => {
+    isDragging = false;
+  });
+})();
 </script>
-<script src="https://replit-cdn.com/replit-pill/replit-pill.global.js" data-repl-id="f58db578-7e51-482c-a754-c31f345dba0c"></script>
 </body>
 </html>
