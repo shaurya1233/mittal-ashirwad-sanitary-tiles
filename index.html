@@ -127,7 +127,7 @@ body.dark .testimonial p{color:#D4C4A0}
 .t-author{font-size:.78rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--brown)}
 /* OWNER */
 .owner-grid{display:grid;grid-template-columns:1fr 2fr;gap:4rem;align-items:center}
-.owner-portrait{width:100%;aspect-ratio:3/4;background:linear-gradient(145deg,#C4A882,#8B6914,#5C3D2E);border-radius:var(--radius);display:flex;align-items:flex-end;justify-content:center;padding:1.5rem;font-family:'Cormorant Garamond',serif;font-size:1rem;font-style:italic;color:rgba(250,247,242,.9);max-height:400px;position:relative;overflow:hidden;transition:all var(--tr)}
+.owner-portrait{width:100%;aspect-ratio:3/4;background:linear-gradient(145deg,#C4A882,#8B6914,#5C3D2E);border-radius:var(--radius);display:flex;align-items:center;justify-content:center;padding:1.5rem;font-family:'Cormorant Garamond',serif;font-size:1rem;font-style:italic;color:rgba(250,247,242,.9);max-height:400px}
 .owner-quote{font-family:'Cormorant Garamond',serif;font-size:1.35rem;font-style:italic;color:var(--charcoal);line-height:1.6;margin-bottom:1.5rem;border-left:3px solid var(--gold);padding-left:1.5rem}
 @media(max-width:700px){.owner-grid{grid-template-columns:1fr}}
 /* ABOUT TIMELINE */
@@ -235,8 +235,7 @@ body.dark .location-card{background:rgba(255,255,255,0.03);border-color:#5C4020}
 .loc-title{font-family:'Playfair Display',serif;font-weight:700;font-size:1.05rem;color:var(--gold);margin-bottom:0.3rem}
 .loc-addr{font-size:0.85rem;color:var(--brown);margin-bottom:0.8rem;line-height:1.4}
 body.dark .loc-addr{color:#A08060}
-
-/* HERITAGE STONE REVEAL */
+/* CINEMATIC REVEAL STYLES */
 #hsrOverlay {
   position: fixed;
   inset: 0;
@@ -435,8 +434,7 @@ body.dark .loc-addr{color:#A08060}
 .hsr-stage.step-split .hsr-marble-left { transform: translateX(-105%) rotateY(-15deg); }
 .hsr-stage.step-split .hsr-marble-right { transform: translateX(105%) rotateY(15deg); }
 .hsr-stage.step-split .hsr-logo { opacity: 1; transform: scale(1) translateY(0); }
-
-/* BEFORE & AFTER SLIDER */
+/* BEFORE & AFTER COMPARISON SLIDER STYLES */
 .ba-wrapper {
   position: relative;
   width: 100%;
@@ -582,7 +580,7 @@ body.dark .loc-addr{color:#A08060}
 </style>
 </head>
 <body>
-
+<!-- FEATURE 1 OVERLAY -->
 <div id="hsrOverlay" style="display:none;">
   <canvas id="hsrCanvas"></canvas>
   <button class="hsr-skip" onclick="hsrFinish()">Skip Intro &#10140;</button>
@@ -627,6 +625,10 @@ body.dark .loc-addr{color:#A08060}
 </div>
 </nav>
 
+<!-- Hidden File Inputs for Photo Uploads -->
+<input type="file" id="founderFileInput" accept="image/*" style="display:none;" onchange="handleFileSelect(event, 'founder')"/>
+<input type="file" id="sonFileInput" accept="image/*" style="display:none;" onchange="handleFileSelect(event, 'son')"/>
+
 <!-- HOME -->
 <div class="page active" id="pg-home">
 <section class="hero" style="padding:0">
@@ -646,6 +648,64 @@ body.dark .loc-addr{color:#A08060}
   <div class="scroll-hint"><div class="s-arr"></div>Scroll</div>
 </section>
 
+<!-- SECTION 2 — MOVED FOUNDER SECTION WITH ONE-TIME PERMANENT PHOTO UPLOAD -->
+<section class="alt">
+  <div class="con">
+    <div class="owner-grid">
+      <div class="rv">
+        <div class="owner-portrait" id="founderPortraitBox" style="display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;gap:1.2rem;position:relative;">
+          <div id="founderPhotoCircle" style="width:200px;height:200px;border-radius:50%;border:3px solid var(--gold);box-shadow:0 8px 25px rgba(0,0,0,0.35);overflow:hidden;position:relative;display:flex;flex-direction:column;align-items:center;justify-content:center;background:linear-gradient(135deg, rgba(184,134,11,0.2), rgba(61,28,13,0.4));transition:transform 0.3s ease;">
+            <div style="font-family:'Playfair Display',serif;font-size:3rem;font-weight:700;color:var(--gold-light);line-height:1;margin-bottom:4px;">AM</div>
+            <div id="founderUploadBadge" style="position:absolute;bottom:10px;background:var(--gold);color:#FAF7F2;padding:4px 10px;border-radius:12px;font-size:0.7rem;font-family:'Inter',sans-serif;font-weight:600;letter-spacing:0.05em;box-shadow:0 2px 8px rgba(0,0,0,0.4);display:flex;align-items:center;gap:4px;">📷 Tap to Upload</div>
+          </div>
+          <div style="font-family:'Cormorant Garamond',serif;font-size:1.15rem;font-style:italic;color:rgba(250,247,242,.95);line-height:1.3;">
+            Arvind Mittal<br/><span style="font-size:0.85rem;letter-spacing:0.05em;font-family:'Inter',sans-serif;font-style:normal;opacity:0.85;">Founder &amp; Proprietor</span>
+          </div>
+        </div>
+      </div>
+      <div class="rv">
+        <span class="s-label" style="text-align:left;display:block">A Message from Our Founder</span>
+        <h2 class="s-title" style="text-align:left">Built on Trust,<br/>Grown with Love</h2>
+        <div class="orn" style="justify-content:flex-start;margin:1.5rem 0">&#9670;</div>
+        <blockquote class="owner-quote">"When I opened the doors of Ashirwad in 2005, I had one simple promise to every customer who walked in — you will never be misled, and you will always get the best quality for your money."</blockquote>
+        <p style="color:var(--brown);font-size:.93rem;line-height:1.85;margin-bottom:1.2rem">Over two decades later, that promise remains unbroken. We have watched families build their first homes, renovate their cherished spaces, and return to us — generation after generation — because they know that at Ashirwad, every tile, every fitting, every recommendation comes with our word behind it.</p>
+        <p class="quote" style="color:var(--brown);font-size:1rem">— Arvind Mittal, Proprietor</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION 3 — NEW FOUNDER'S SON SECTION -->
+<section>
+  <div class="con">
+    <div class="owner-grid">
+      <div class="rv">
+        <div class="owner-portrait" id="sonPortraitBox" style="display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;gap:1.2rem;position:relative;">
+          <div id="sonPhotoCircle" style="width:200px;height:200px;border-radius:50%;border:3px solid var(--gold);box-shadow:0 8px 25px rgba(0,0,0,0.35);overflow:hidden;position:relative;display:flex;flex-direction:column;align-items:center;justify-content:center;background:linear-gradient(135deg, rgba(184,134,11,0.2), rgba(61,28,13,0.4));transition:transform 0.3s ease;">
+            <div style="font-family:'Playfair Display',serif;font-size:3rem;font-weight:700;color:var(--gold-light);line-height:1;margin-bottom:4px;">SM</div>
+            <div id="sonUploadBadge" style="position:absolute;bottom:10px;background:var(--gold);color:#FAF7F2;padding:4px 10px;border-radius:12px;font-size:0.7rem;font-family:'Inter',sans-serif;font-weight:600;letter-spacing:0.05em;box-shadow:0 2px 8px rgba(0,0,0,0.4);display:flex;align-items:center;gap:4px;">📷 Tap to Upload</div>
+          </div>
+          <div style="font-family:'Cormorant Garamond',serif;font-size:1.15rem;font-style:italic;color:rgba(250,247,242,.95);line-height:1.3;">
+            Shaurya Mittal<br/><span style="font-size:0.85rem;letter-spacing:0.05em;font-family:'Inter',sans-serif;font-style:normal;opacity:0.85;">Founder's Son</span>
+          </div>
+        </div>
+      </div>
+      <div class="rv">
+        <span class="s-label" style="text-align:left;display:block">Founder's Son</span>
+        <h2 class="s-title" style="text-align:left">SHAURYA MITTAL</h2>
+        <div class="orn" style="justify-content:flex-start;margin:1.5rem 0">&#9670;</div>
+        <p class="quote" style="color:var(--gold);font-size:1.25rem;line-height:1.6;margin-bottom:1.2rem;font-weight:600">
+          Next Generation | Digital Creator | Website Developer
+        </p>
+        <p style="color:var(--brown);font-size:.93rem;line-height:1.85;margin-bottom:1.2rem">
+          Representing the new era of Ashirwad Sanitary &amp; Tiles. Bringing modern digital creation, web technology, and creative vision to elevate customer experience while honouring our legacy of trust.
+        </p>
+        <p class="quote" style="color:var(--brown);font-size:1rem">— Shaurya Mittal</p>
+      </div>
+    </div>
+  </div>
+</section>
+
 <section>
   <div class="con">
     <div class="stats-grid">
@@ -656,7 +716,6 @@ body.dark .loc-addr{color:#A08060}
     </div>
   </div>
 </section>
-
 <section class="alt">
   <div class="con">
     <span class="s-label">Our Collections</span>
@@ -728,6 +787,7 @@ body.dark .loc-addr{color:#A08060}
   </div>
 </section>
 
+<!-- BEFORE & AFTER RENOVATION COMPARISON SECTION -->
 <section style="background:var(--ivory)">
   <div class="con">
     <span class="s-label">Interactive Transformation</span>
@@ -767,27 +827,6 @@ body.dark .loc-addr{color:#A08060}
     <div class="orn">&#9670;</div>
     <div class="g4">
       <div class="brand-card rv"><h3>Kajaria</h3><p>Premium Quality</p></div><div class="brand-card rv"><h3>Somany</h3><p>Premium Quality</p></div><div class="brand-card rv"><h3>Johnson</h3><p>Premium Quality</p></div><div class="brand-card rv"><h3>Sunheart</h3><p>Premium Quality</p></div><div class="brand-card rv"><h3>Cera</h3><p>Premium Quality</p></div><div class="brand-card rv"><h3>Jaquar</h3><p>Premium Quality</p></div><div class="brand-card rv"><h3>Hindware</h3><p>Premium Quality</p></div><div class="brand-card rv"><h3>Parryware</h3><p>Premium Quality</p></div><div class="brand-card rv"><h3>Astral</h3><p>Premium Quality</p></div><div class="brand-card rv"><h3>Supreme</h3><p>Premium Quality</p></div><div class="brand-card rv"><h3>Ashirvad Pipes</h3><p>Premium Quality</p></div>
-    </div>
-  </div>
-</section>
-
-<section class="alt">
-  <div class="con">
-    <div class="owner-grid">
-      <div class="rv">
-        <input type="file" id="founderFileInput" accept="image/*" style="display:none;"/>
-        <div class="owner-portrait" id="ownerPortrait">
-          Arvind Mittal<br/>Founder &amp; Proprietor
-        </div>
-      </div>
-      <div class="rv">
-        <span class="s-label" style="text-align:left;display:block">A Message from Our Founder</span>
-        <h2 class="s-title" style="text-align:left">Built on Trust,<br/>Grown with Love</h2>
-        <div class="orn" style="justify-content:flex-start;margin:1.5rem 0">&#9670;</div>
-        <blockquote class="owner-quote">"When I opened the doors of Ashirwad in 2005, I had one simple promise to every customer who walked in — you will never be misled, and you will always get the best quality for your money."</blockquote>
-        <p style="color:var(--brown);font-size:.93rem;line-height:1.85;margin-bottom:1.2rem">Over two decades later, that promise remains unbroken. We have watched families build their first homes, renovate their cherished spaces, and return to us — generation after generation — because they know that at Ashirwad, every tile, every fitting, every recommendation comes with our word behind it.</p>
-        <p class="quote" style="color:var(--brown);font-size:1rem">— Arvind Mittal, Proprietor</p>
-      </div>
     </div>
   </div>
 </section>
@@ -910,14 +949,232 @@ body.dark .loc-addr{color:#A08060}
         <div class="p-thumb"><img src="https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?auto=format&fit=crop&w=600&q=80" alt="PGVT Tiles" loading="lazy"/></div>
         <div class="p-info"><div class="p-cat">Tiles</div><div class="p-name">PGVT Tiles</div></div>
       </div>
-      <!-- SANITARYWARE & OTHERS -->
+      <div class="product-card" data-c="tiles">
+        <div class="p-thumb"><img src="https://images.unsplash.com/photo-1502005229762-cf1b2da7c5d6?auto=format&fit=crop&w=600&q=80" alt="Double Charge Vitrified Tiles" loading="lazy"/></div>
+        <div class="p-info"><div class="p-cat">Tiles</div><div class="p-name">Double Charge Vitrified Tiles</div></div>
+      </div>
+      <div class="product-card" data-c="tiles">
+        <div class="p-thumb"><img src="https://images.unsplash.com/photo-1523413651479-597eb2da0ad6?auto=format&fit=crop&w=600&q=80" alt="Full Body Tiles" loading="lazy"/></div>
+        <div class="p-info"><div class="p-cat">Tiles</div><div class="p-name">Full Body Tiles</div></div>
+      </div>
+      <div class="product-card" data-c="tiles">
+        <div class="p-thumb"><img src="https://images.unsplash.com/photo-1552321554-5fefe8c9ef14?auto=format&fit=crop&w=600&q=80" alt="Ceramic Tiles" loading="lazy"/></div>
+        <div class="p-info"><div class="p-cat">Tiles</div><div class="p-name">Ceramic Tiles</div></div>
+      </div>
+      <div class="product-card" data-c="tiles">
+        <div class="p-thumb"><img src="https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&fit=crop&w=600&q=80" alt="Subway Tiles" loading="lazy"/></div>
+        <div class="p-info"><div class="p-cat">Tiles</div><div class="p-name">Subway Tiles</div></div>
+      </div>
+      <div class="product-card" data-c="tiles">
+        <div class="p-thumb"><img src="https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&fit=crop&w=600&q=80" alt="Mosaic Tiles" loading="lazy"/></div>
+        <div class="p-info"><div class="p-cat">Tiles</div><div class="p-name">Mosaic Tiles</div></div>
+      </div>
+      <!-- BATH FITTINGS -->
+      <div class="product-card" data-c="fittings">
+        <div class="p-thumb"><img src="https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&fit=crop&w=600&q=80" alt="Basin Mixers" loading="lazy"/></div>
+        <div class="p-info"><div class="p-cat">Bath Fittings</div><div class="p-name">Basin Mixers</div></div>
+      </div>
+      <div class="product-card" data-c="fittings">
+        <div class="p-thumb"><img src="https://images.unsplash.com/photo-1585909692994-4340d2ee2188?auto=format&fit=crop&w=600&q=80" alt="Sink Mixers" loading="lazy"/></div>
+        <div class="p-info"><div class="p-cat">Bath Fittings</div><div class="p-name">Sink Mixers</div></div>
+      </div>
+      <div class="product-card" data-c="fittings">
+        <div class="p-thumb"><img src="https://images.unsplash.com/photo-1585909692994-4340d2ee2188?auto=format&fit=crop&w=600&q=80" alt="Wall Mixers" loading="lazy"/></div>
+        <div class="p-info"><div class="p-cat">Bath Fittings</div><div class="p-name">Wall Mixers</div></div>
+      </div>
+      <div class="product-card" data-c="fittings">
+        <div class="p-thumb"><img src="https://images.unsplash.com/photo-1585909692994-4340d2ee2188?auto=format&fit=crop&w=600&q=80" alt="Bib Cocks" loading="lazy"/></div>
+        <div class="p-info"><div class="p-cat">Bath Fittings</div><div class="p-name">Bib Cocks</div></div>
+      </div>
+      <div class="product-card" data-c="fittings">
+        <div class="p-thumb"><img src="https://images.unsplash.com/photo-1585909692994-4340d2ee2188?auto=format&fit=crop&w=600&q=80" alt="Angle Valves" loading="lazy"/></div>
+        <div class="p-info"><div class="p-cat">Bath Fittings</div><div class="p-name">Angle Valves</div></div>
+      </div>
+      <div class="product-card" data-c="fittings">
+        <div class="p-thumb"><img src="https://images.unsplash.com/photo-1540555700478-4be289fbecef?auto=format&fit=crop&w=600&q=80" alt="Showers" loading="lazy"/></div>
+        <div class="p-info"><div class="p-cat">Bath Fittings</div><div class="p-name">Showers</div></div>
+      </div>
+      <div class="product-card" data-c="fittings">
+        <div class="p-thumb"><img src="https://images.unsplash.com/photo-1620626011761-996317b8d101?auto=format&fit=crop&w=600&q=80" alt="Health Faucets" loading="lazy"/></div>
+        <div class="p-info"><div class="p-cat">Bath Fittings</div><div class="p-name">Health Faucets</div></div>
+      </div>
+      <div class="product-card" data-c="fittings">
+        <div class="p-thumb"><img src="https://images.unsplash.com/photo-1540555700478-4be289fbecef?auto=format&fit=crop&w=600&q=80" alt="Hand Showers" loading="lazy"/></div>
+        <div class="p-info"><div class="p-cat">Bath Fittings</div><div class="p-name">Hand Showers</div></div>
+      </div>
+      <div class="product-card" data-c="fittings">
+        <div class="p-thumb"><img src="https://images.unsplash.com/photo-1540555700478-4be289fbecef?auto=format&fit=crop&w=600&q=80" alt="Rain Showers" loading="lazy"/></div>
+        <div class="p-info"><div class="p-cat">Bath Fittings</div><div class="p-name">Rain Showers</div></div>
+      </div>
+      <div class="product-card" data-c="fittings">
+        <div class="p-thumb"><img src="https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&fit=crop&w=600&q=80" alt="Shower Panels" loading="lazy"/></div>
+        <div class="p-info"><div class="p-cat">Bath Fittings</div><div class="p-name">Shower Panels</div></div>
+      </div>
+      <div class="product-card" data-c="fittings">
+        <div class="p-thumb"><img src="https://images.unsplash.com/photo-1585909692994-4340d2ee2188?auto=format&fit=crop&w=600&q=80" alt="Kitchen Faucets" loading="lazy"/></div>
+        <div class="p-info"><div class="p-cat">Bath Fittings</div><div class="p-name">Kitchen Faucets</div></div>
+      </div>
+      <div class="product-card" data-c="fittings">
+        <div class="p-thumb"><img src="https://images.unsplash.com/photo-1585909692994-4340d2ee2188?auto=format&fit=crop&w=600&q=80" alt="Sensor Faucets" loading="lazy"/></div>
+        <div class="p-info"><div class="p-cat">Bath Fittings</div><div class="p-name">Sensor Faucets</div></div>
+      </div>
+      <!-- SANITARYWARE -->
       <div class="product-card" data-c="sanitary">
         <div class="p-thumb"><img src="https://images.unsplash.com/photo-1620626011761-996317b8d101?auto=format&fit=crop&w=600&q=80" alt="Wall Hung WC" loading="lazy"/></div>
         <div class="p-info"><div class="p-cat">Sanitaryware</div><div class="p-name">Wall Hung WC</div></div>
       </div>
-      <div class="product-card" data-c="fittings">
-        <div class="p-thumb"><img src="https://images.unsplash.com/photo-1585909692994-4340d2ee2188?auto=format&fit=crop&w=600&q=80" alt="Rain Showers" loading="lazy"/></div>
-        <div class="p-info"><div class="p-cat">Bath Fittings</div><div class="p-name">Rain Showers</div></div>
+      <div class="product-card" data-c="sanitary">
+        <div class="p-thumb"><img src="https://images.unsplash.com/photo-1585412727339-54e4ba3bbf93?auto=format&fit=crop&w=600&q=80" alt="Floor Mounted WC" loading="lazy"/></div>
+        <div class="p-info"><div class="p-cat">Sanitaryware</div><div class="p-name">Floor Mounted WC</div></div>
+      </div>
+      <div class="product-card" data-c="sanitary">
+        <div class="p-thumb"><img src="https://images.unsplash.com/photo-1585412727339-54e4ba3bbf93?auto=format&fit=crop&w=600&q=80" alt="One Piece Closet" loading="lazy"/></div>
+        <div class="p-info"><div class="p-cat">Sanitaryware</div><div class="p-name">One Piece Closet</div></div>
+      </div>
+      <div class="product-card" data-c="sanitary">
+        <div class="p-thumb"><img src="https://images.unsplash.com/photo-1564540586988-aa4e53c3d799?auto=format&fit=crop&w=600&q=80" alt="Two Piece Closet" loading="lazy"/></div>
+        <div class="p-info"><div class="p-cat">Sanitaryware</div><div class="p-name">Two Piece Closet</div></div>
+      </div>
+      <div class="product-card" data-c="sanitary">
+        <div class="p-thumb"><img src="https://images.unsplash.com/photo-1507652313519-d4e9174996dd?auto=format&fit=crop&w=600&q=80" alt="Table Top Basin" loading="lazy"/></div>
+        <div class="p-info"><div class="p-cat">Sanitaryware</div><div class="p-name">Table Top Basin</div></div>
+      </div>
+      <div class="product-card" data-c="sanitary">
+        <div class="p-thumb"><img src="https://images.unsplash.com/photo-1507652313519-d4e9174996dd?auto=format&fit=crop&w=600&q=80" alt="Counter Basin" loading="lazy"/></div>
+        <div class="p-info"><div class="p-cat">Sanitaryware</div><div class="p-name">Counter Basin</div></div>
+      </div>
+      <div class="product-card" data-c="sanitary">
+        <div class="p-thumb"><img src="https://images.unsplash.com/photo-1507652313519-d4e9174996dd?auto=format&fit=crop&w=600&q=80" alt="Pedestal Basin" loading="lazy"/></div>
+        <div class="p-info"><div class="p-cat">Sanitaryware</div><div class="p-name">Pedestal Basin</div></div>
+      </div>
+      <div class="product-card" data-c="sanitary">
+        <div class="p-thumb"><img src="https://images.unsplash.com/photo-1507652313519-d4e9174996dd?auto=format&fit=crop&w=600&q=80" alt="Half Pedestal Basin" loading="lazy"/></div>
+        <div class="p-info"><div class="p-cat">Sanitaryware</div><div class="p-name">Half Pedestal Basin</div></div>
+      </div>
+      <div class="product-card" data-c="sanitary">
+        <div class="p-thumb"><img src="https://images.unsplash.com/photo-1507652313519-d4e9174996dd?auto=format&fit=crop&w=600&q=80" alt="Art Basin" loading="lazy"/></div>
+        <div class="p-info"><div class="p-cat">Sanitaryware</div><div class="p-name">Art Basin</div></div>
+      </div>
+      <div class="product-card" data-c="sanitary">
+        <div class="p-thumb"><img src="https://images.unsplash.com/photo-1507652313519-d4e9174996dd?auto=format&fit=crop&w=600&q=80" alt="Corner Basin" loading="lazy"/></div>
+        <div class="p-info"><div class="p-cat">Sanitaryware</div><div class="p-name">Corner Basin</div></div>
+      </div>
+      <div class="product-card" data-c="sanitary">
+        <div class="p-thumb"><img src="https://images.unsplash.com/photo-1585412727339-54e4ba3bbf93?auto=format&fit=crop&w=600&q=80" alt="Urinals" loading="lazy"/></div>
+        <div class="p-info"><div class="p-cat">Sanitaryware</div><div class="p-name">Urinals</div></div>
+      </div>
+      <!-- BATHROOM ACCESSORIES -->
+      <div class="product-card" data-c="accessories">
+        <div class="p-thumb"><img src="https://images.unsplash.com/photo-1618219908412-a29a1bb7b86e?auto=format&fit=crop&w=600&q=80" alt="Mirrors" loading="lazy"/></div>
+        <div class="p-info"><div class="p-cat">Bathroom Accessories</div><div class="p-name">Mirrors</div></div>
+      </div>
+      <div class="product-card" data-c="accessories">
+        <div class="p-thumb"><img src="https://images.unsplash.com/photo-1595428774223-ef52624120d2?auto=format&fit=crop&w=600&q=80" alt="Mirror Cabinets" loading="lazy"/></div>
+        <div class="p-info"><div class="p-cat">Bathroom Accessories</div><div class="p-name">Mirror Cabinets</div></div>
+      </div>
+      <div class="product-card" data-c="accessories">
+        <div class="p-thumb"><img src="https://images.unsplash.com/photo-1604709177225-055f99402ea3?auto=format&fit=crop&w=600&q=80" alt="Soap Dispensers" loading="lazy"/></div>
+        <div class="p-info"><div class="p-cat">Bathroom Accessories</div><div class="p-name">Soap Dispensers</div></div>
+      </div>
+      <div class="product-card" data-c="accessories">
+        <div class="p-thumb"><img src="https://images.unsplash.com/photo-1604709177225-055f99402ea3?auto=format&fit=crop&w=600&q=80" alt="Soap Dishes" loading="lazy"/></div>
+        <div class="p-info"><div class="p-cat">Bathroom Accessories</div><div class="p-name">Soap Dishes</div></div>
+      </div>
+      <div class="product-card" data-c="accessories">
+        <div class="p-thumb"><img src="https://images.unsplash.com/photo-1604709177225-055f99402ea3?auto=format&fit=crop&w=600&q=80" alt="Towel Rings" loading="lazy"/></div>
+        <div class="p-info"><div class="p-cat">Bathroom Accessories</div><div class="p-name">Towel Rings</div></div>
+      </div>
+      <div class="product-card" data-c="accessories">
+        <div class="p-thumb"><img src="https://images.unsplash.com/photo-1604709177225-055f99402ea3?auto=format&fit=crop&w=600&q=80" alt="Towel Rods" loading="lazy"/></div>
+        <div class="p-info"><div class="p-cat">Bathroom Accessories</div><div class="p-name">Towel Rods</div></div>
+      </div>
+      <div class="product-card" data-c="accessories">
+        <div class="p-thumb"><img src="https://images.unsplash.com/photo-1604709177225-055f99402ea3?auto=format&fit=crop&w=600&q=80" alt="Tissue Holders" loading="lazy"/></div>
+        <div class="p-info"><div class="p-cat">Bathroom Accessories</div><div class="p-name">Tissue Holders</div></div>
+      </div>
+      <div class="product-card" data-c="accessories">
+        <div class="p-thumb"><img src="https://images.unsplash.com/photo-1604709177225-055f99402ea3?auto=format&fit=crop&w=600&q=80" alt="Robe Hooks" loading="lazy"/></div>
+        <div class="p-info"><div class="p-cat">Bathroom Accessories</div><div class="p-name">Robe Hooks</div></div>
+      </div>
+      <div class="product-card" data-c="accessories">
+        <div class="p-thumb"><img src="https://images.unsplash.com/photo-1604709177225-055f99402ea3?auto=format&fit=crop&w=600&q=80" alt="Glass Shelves" loading="lazy"/></div>
+        <div class="p-info"><div class="p-cat">Bathroom Accessories</div><div class="p-name">Glass Shelves</div></div>
+      </div>
+      <div class="product-card" data-c="accessories">
+        <div class="p-thumb"><img src="https://images.unsplash.com/photo-1604709177225-055f99402ea3?auto=format&fit=crop&w=600&q=80" alt="Toothbrush Holders" loading="lazy"/></div>
+        <div class="p-info"><div class="p-cat">Bathroom Accessories</div><div class="p-name">Toothbrush Holders</div></div>
+      </div>
+      <!-- WATER STORAGE -->
+      <div class="product-card" data-c="water">
+        <div class="p-thumb"><img src="https://images.unsplash.com/photo-1541888946425-d0fbb186a5b3?auto=format&fit=crop&w=600&q=80" alt="Water Tanks" loading="lazy"/></div>
+        <div class="p-info"><div class="p-cat">Water Storage</div><div class="p-name">Water Tanks</div></div>
+      </div>
+      <div class="product-card" data-c="water">
+        <div class="p-thumb"><img src="https://images.unsplash.com/photo-1541888946425-d0fbb186a5b3?auto=format&fit=crop&w=600&q=80" alt="Loft Tanks" loading="lazy"/></div>
+        <div class="p-info"><div class="p-cat">Water Storage</div><div class="p-name">Loft Tanks</div></div>
+      </div>
+      <div class="product-card" data-c="water">
+        <div class="p-thumb"><img src="https://images.unsplash.com/photo-1541888946425-d0fbb186a5b3?auto=format&fit=crop&w=600&q=80" alt="PVC Tanks" loading="lazy"/></div>
+        <div class="p-info"><div class="p-cat">Water Storage</div><div class="p-name">PVC Tanks</div></div>
+      </div>
+      <!-- KITCHEN -->
+      <div class="product-card" data-c="kitchen">
+        <div class="p-thumb"><img src="https://images.unsplash.com/photo-1590490360182-c33d57733427?auto=format&fit=crop&w=600&q=80" alt="Kitchen Sinks" loading="lazy"/></div>
+        <div class="p-info"><div class="p-cat">Kitchen</div><div class="p-name">Kitchen Sinks</div></div>
+      </div>
+      <div class="product-card" data-c="kitchen">
+        <div class="p-thumb"><img src="https://images.unsplash.com/photo-1590490360182-c33d57733427?auto=format&fit=crop&w=600&q=80" alt="Quartz Sinks" loading="lazy"/></div>
+        <div class="p-info"><div class="p-cat">Kitchen</div><div class="p-name">Quartz Sinks</div></div>
+      </div>
+      <div class="product-card" data-c="kitchen">
+        <div class="p-thumb"><img src="https://images.unsplash.com/photo-1590490360182-c33d57733427?auto=format&fit=crop&w=600&q=80" alt="Stainless Steel Sinks" loading="lazy"/></div>
+        <div class="p-info"><div class="p-cat">Kitchen</div><div class="p-name">Stainless Steel Sinks</div></div>
+      </div>
+      <div class="product-card" data-c="kitchen">
+        <div class="p-thumb"><img src="https://images.unsplash.com/photo-1590490360182-c33d57733427?auto=format&fit=crop&w=600&q=80" alt="Drain Boards" loading="lazy"/></div>
+        <div class="p-info"><div class="p-cat">Kitchen</div><div class="p-name">Drain Boards</div></div>
+      </div>
+      <!-- CPVC & PLUMBING -->
+      <div class="product-card" data-c="plumbing">
+        <div class="p-thumb"><img src="https://images.unsplash.com/photo-1581092160607-ee22621dd758?auto=format&fit=crop&w=600&q=80" alt="CPVC Pipes" loading="lazy"/></div>
+        <div class="p-info"><div class="p-cat">CPVC &amp; Plumbing</div><div class="p-name">CPVC Pipes</div></div>
+      </div>
+      <div class="product-card" data-c="plumbing">
+        <div class="p-thumb"><img src="https://images.unsplash.com/photo-1581092160607-ee22621dd758?auto=format&fit=crop&w=600&q=80" alt="UPVC Pipes" loading="lazy"/></div>
+        <div class="p-info"><div class="p-cat">CPVC &amp; Plumbing</div><div class="p-name">UPVC Pipes</div></div>
+      </div>
+      <div class="product-card" data-c="plumbing">
+        <div class="p-thumb"><img src="https://images.unsplash.com/photo-1581092160607-ee22621dd758?auto=format&fit=crop&w=600&q=80" alt="SWR Pipes" loading="lazy"/></div>
+        <div class="p-info"><div class="p-cat">CPVC &amp; Plumbing</div><div class="p-name">SWR Pipes</div></div>
+      </div>
+      <div class="product-card" data-c="plumbing">
+        <div class="p-thumb"><img src="https://images.unsplash.com/photo-1581092160607-ee22621dd758?auto=format&fit=crop&w=600&q=80" alt="PVC Pipes" loading="lazy"/></div>
+        <div class="p-info"><div class="p-cat">CPVC &amp; Plumbing</div><div class="p-name">PVC Pipes</div></div>
+      </div>
+      <div class="product-card" data-c="plumbing">
+        <div class="p-thumb"><img src="https://images.unsplash.com/photo-1581092160607-ee22621dd758?auto=format&fit=crop&w=600&q=80" alt="Fittings" loading="lazy"/></div>
+        <div class="p-info"><div class="p-cat">CPVC &amp; Plumbing</div><div class="p-name">Fittings</div></div>
+      </div>
+      <div class="product-card" data-c="plumbing">
+        <div class="p-thumb"><img src="https://images.unsplash.com/photo-1581092160607-ee22621dd758?auto=format&fit=crop&w=600&q=80" alt="Valves" loading="lazy"/></div>
+        <div class="p-info"><div class="p-cat">CPVC &amp; Plumbing</div><div class="p-name">Valves</div></div>
+      </div>
+      <!-- ADHESIVES & CONSTRUCTION -->
+      <div class="product-card" data-c="adhesives">
+        <div class="p-thumb"><img src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&w=600&q=80" alt="Tile Adhesive" loading="lazy"/></div>
+        <div class="p-info"><div class="p-cat">Adhesives &amp; Construction</div><div class="p-name">Tile Adhesive</div></div>
+      </div>
+      <div class="product-card" data-c="adhesives">
+        <div class="p-thumb"><img src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&w=600&q=80" alt="Grout" loading="lazy"/></div>
+        <div class="p-info"><div class="p-cat">Adhesives &amp; Construction</div><div class="p-name">Grout</div></div>
+      </div>
+      <div class="product-card" data-c="adhesives">
+        <div class="p-thumb"><img src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&w=600&q=80" alt="Waterproofing" loading="lazy"/></div>
+        <div class="p-info"><div class="p-cat">Adhesives &amp; Construction</div><div class="p-name">Waterproofing</div></div>
+      </div>
+      <div class="product-card" data-c="adhesives">
+        <div class="p-thumb"><img src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&w=600&q=80" alt="Construction Chemicals" loading="lazy"/></div>
+        <div class="p-info"><div class="p-cat">Adhesives &amp; Construction</div><div class="p-name">Construction Chemicals</div></div>
       </div>
     </div>
   </div>
@@ -930,88 +1187,132 @@ body.dark .loc-addr{color:#A08060}
 <section>
   <div class="con">
     <div class="g3">
-      <div class="card rv"><div class="card-img" style="background:linear-gradient(135deg,#D4C4A0,#8B6914);flex-direction:column;gap:.5rem;align-items:center;justify-content:center"><span style="font-family:'Playfair Display',serif;font-size:1.8rem;font-weight:700;color:#FAF7F2">Kajaria</span></div><div class="card-body"><div class="card-title">Kajaria</div><p class="card-text">India's largest tile manufacturer. Known for exceptional designs and unmatched durability.</p></div></div>
-      <div class="card rv"><div class="card-img" style="background:linear-gradient(135deg,#D4C4A0,#8B6914);flex-direction:column;gap:.5rem;align-items:center;justify-content:center"><span style="font-family:'Playfair Display',serif;font-size:1.8rem;font-weight:700;color:#FAF7F2">Somany</span></div><div class="card-body"><div class="card-title">Somany</div><p class="card-text">Premium ceramic and vitrified tiles with innovative finishes and designs for every space.</p></div></div>
-      <div class="card rv"><div class="card-img" style="background:linear-gradient(135deg,#D4C4A0,#8B6914);flex-direction:column;gap:.5rem;align-items:center;justify-content:center"><span style="font-family:'Playfair Display',serif;font-size:1.8rem;font-weight:700;color:#FAF7F2">Jaquar</span></div><div class="card-body"><div class="card-title">Jaquar</div><p class="card-text">India's leading bath fittings brand. Renowned for engineering excellence and elegant design.</p></div></div>
+      <div class="card rv"><div class="card-img" style="background:linear-gradient(135deg,#D4C4A0,#8B6914);flex-direction:column;gap:.5rem;align-items:center;justify-content:center"><span style="font-family:'Playfair Display',serif;font-size:1.8rem;font-weight:700;color:#FAF7F2">Kajaria</span><span style="font-family:'Cormorant Garamond',serif;font-size:.9rem;font-style:italic;color:rgba(250,247,242,.8)">Tiles</span></div><div class="card-body"><div class="card-title">Kajaria</div><p class="card-text">India's largest tile manufacturer. Known for exceptional designs and unmatched durability.</p></div></div>
+      <div class="card rv"><div class="card-img" style="background:linear-gradient(135deg,#D4C4A0,#8B6914);flex-direction:column;gap:.5rem;align-items:center;justify-content:center"><span style="font-family:'Playfair Display',serif;font-size:1.8rem;font-weight:700;color:#FAF7F2">Somany</span><span style="font-family:'Cormorant Garamond',serif;font-size:.9rem;font-style:italic;color:rgba(250,247,242,.8)">Tiles</span></div><div class="card-body"><div class="card-title">Somany</div><p class="card-text">Premium ceramic and vitrified tiles with innovative finishes and designs for every space.</p></div></div>
+      <div class="card rv"><div class="card-img" style="background:linear-gradient(135deg,#D4C4A0,#8B6914);flex-direction:column;gap:.5rem;align-items:center;justify-content:center"><span style="font-family:'Playfair Display',serif;font-size:1.8rem;font-weight:700;color:#FAF7F2">Johnson</span><span style="font-family:'Cormorant Garamond',serif;font-size:.9rem;font-style:italic;color:rgba(250,247,242,.8)">Tiles</span></div><div class="card-body"><div class="card-title">Johnson</div><p class="card-text">Trusted name in ceramic tiles with over five decades of quality manufacturing.</p></div></div>
+      <div class="card rv"><div class="card-img" style="background:linear-gradient(135deg,#D4C4A0,#8B6914);flex-direction:column;gap:.5rem;align-items:center;justify-content:center"><span style="font-family:'Playfair Display',serif;font-size:1.8rem;font-weight:700;color:#FAF7F2">Sunheart</span><span style="font-family:'Cormorant Garamond',serif;font-size:.9rem;font-style:italic;color:rgba(250,247,242,.8)">Tiles</span></div><div class="card-body"><div class="card-title">Sunheart</div><p class="card-text">Quality tiles at honest prices. Excellent range for residential and commercial spaces.</p></div></div>
+      <div class="card rv"><div class="card-img" style="background:linear-gradient(135deg,#D4C4A0,#8B6914);flex-direction:column;gap:.5rem;align-items:center;justify-content:center"><span style="font-family:'Playfair Display',serif;font-size:1.8rem;font-weight:700;color:#FAF7F2">Cera</span><span style="font-family:'Cormorant Garamond',serif;font-size:.9rem;font-style:italic;color:rgba(250,247,242,.8)">Sanitaryware</span></div><div class="card-body"><div class="card-title">Cera</div><p class="card-text">Complete bathroom solutions — sanitaryware, faucets and wellness products of international quality.</p></div></div>
+      <div class="card rv"><div class="card-img" style="background:linear-gradient(135deg,#D4C4A0,#8B6914);flex-direction:column;gap:.5rem;align-items:center;justify-content:center"><span style="font-family:'Playfair Display',serif;font-size:1.8rem;font-weight:700;color:#FAF7F2">Jaquar</span><span style="font-family:'Cormorant Garamond',serif;font-size:.9rem;font-style:italic;color:rgba(250,247,242,.8)">Bath Fittings</span></div><div class="card-body"><div class="card-title">Jaquar</div><p class="card-text">India's leading bath fittings brand. Renowned for engineering excellence and elegant design.</p></div></div>
+      <div class="card rv"><div class="card-img" style="background:linear-gradient(135deg,#D4C4A0,#8B6914);flex-direction:column;gap:.5rem;align-items:center;justify-content:center"><span style="font-family:'Playfair Display',serif;font-size:1.8rem;font-weight:700;color:#FAF7F2">Hindware</span><span style="font-family:'Cormorant Garamond',serif;font-size:.9rem;font-style:italic;color:rgba(250,247,242,.8)">Sanitaryware</span></div><div class="card-body"><div class="card-title">Hindware</div><p class="card-text">Premium sanitaryware and bath accessories trusted by millions of Indian homes.</p></div></div>
+      <div class="card rv"><div class="card-img" style="background:linear-gradient(135deg,#D4C4A0,#8B6914);flex-direction:column;gap:.5rem;align-items:center;justify-content:center"><span style="font-family:'Playfair Display',serif;font-size:1.8rem;font-weight:700;color:#FAF7F2">Parryware</span><span style="font-family:'Cormorant Garamond',serif;font-size:.9rem;font-style:italic;color:rgba(250,247,242,.8)">Sanitaryware</span></div><div class="card-body"><div class="card-title">Parryware</div><p class="card-text">One of South Asia's finest sanitaryware brands with over 60 years of heritage.</p></div></div>
+      <div class="card rv"><div class="card-img" style="background:linear-gradient(135deg,#D4C4A0,#8B6914);flex-direction:column;gap:.5rem;align-items:center;justify-content:center"><span style="font-family:'Playfair Display',serif;font-size:1.8rem;font-weight:700;color:#FAF7F2">Astral</span><span style="font-family:'Cormorant Garamond',serif;font-size:.9rem;font-style:italic;color:rgba(250,247,242,.8)">Plumbing</span></div><div class="card-body"><div class="card-title">Astral</div><p class="card-text">High-quality pipes and plumbing solutions. Reliable, durable, and widely trusted.</p></div></div>
     </div>
   </div>
 </section>
 </div>
 
-<!-- GALLERY -->
+<!-- GALLERY PAGE -->
 <div class="page" id="pg-gallery" style="padding-top:72px">
-<div class="pg-hero"><div class="con"><span class="s-label" style="color:var(--gold-light)">Our Work</span><h1 class="s-title" style="color:#FAF7F2">Gallery of Spaces</h1></div></div>
+<div class="pg-hero"><div class="con"><span class="s-label" style="color:var(--gold-light)">Inspiration</span><h1 class="s-title" style="color:#FAF7F2">Showroom &amp; Projects</h1></div></div>
 <section>
   <div class="con">
     <div class="ggrid">
-      <div class="g-item"><div class="g-thumb" style="height:220px"><img src="https://images.unsplash.com/photo-1552321554-5fefe8c9ef14?auto=format&fit=crop&w=600&q=80" alt="Master Bathroom" loading="lazy"/><span>Master Bathroom</span></div></div>
-      <div class="g-item"><div class="g-thumb" style="height:320px"><img src="https://images.unsplash.com/photo-1581858726788-75bc0f6a952d?auto=format&fit=crop&w=600&q=80" alt="Living Room Floor" loading="lazy"/><span>Living Room Floor</span></div></div>
-      <div class="g-item"><div class="g-thumb" style="height:180px"><img src="https://images.unsplash.com/photo-1556911220-e15b29be8c8f?auto=format&fit=crop&w=600&q=80" alt="Kitchen Backsplash" loading="lazy"/><span>Kitchen Backsplash</span></div></div>
-      <div class="g-item"><div class="g-thumb" style="height:280px"><img src="https://images.unsplash.com/photo-1615873968403-89e068629265?auto=format&fit=crop&w=600&q=80" alt="Showroom Display" loading="lazy"/><span>Showroom Display</span></div></div>
-      <div class="g-item"><div class="g-thumb" style="height:200px"><img src="https://images.unsplash.com/photo-1516455590571-18256e5bb9ff?auto=format&fit=crop&w=600&q=80" alt="Bedroom Tiles" loading="lazy"/><span>Bedroom Tiles</span></div></div>
-      <div class="g-item"><div class="g-thumb" style="height:240px"><img src="https://images.unsplash.com/photo-1620626011761-996317b8d101?auto=format&fit=crop&w=600&q=80" alt="Guest Bathroom" loading="lazy"/><span>Guest Bathroom</span></div></div>
+      <div class="g-item"><div class="g-thumb"><img src="https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&fit=crop&w=600&q=80" alt="Showroom Display" loading="lazy"/><span>Showroom Display</span></div></div>
+      <div class="g-item"><div class="g-thumb"><img src="https://images.unsplash.com/photo-1620626011761-996317b8d101?auto=format&fit=crop&w=600&q=80" alt="Luxury Bathroom" loading="lazy"/><span>Luxury Bathroom Design</span></div></div>
+      <div class="g-item"><div class="g-thumb"><img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=600&q=80" alt="Living Room Floor" loading="lazy"/><span>Living Room Vitrified Tiles</span></div></div>
+      <div class="g-item"><div class="g-thumb"><img src="https://images.unsplash.com/photo-1552321554-5fefe8c9ef14?auto=format&fit=crop&w=600&q=80" alt="Modern Kitchen" loading="lazy"/><span>Modern Kitchen Wall Tiles</span></div></div>
+      <div class="g-item"><div class="g-thumb"><img src="https://images.unsplash.com/photo-1581858726788-75bc0f6a952d?auto=format&fit=crop&w=600&q=80" alt="Outdoor Patio" loading="lazy"/><span>Outdoor Parking &amp; Patio</span></div></div>
+      <div class="g-item"><div class="g-thumb"><img src="https://images.unsplash.com/photo-1585909692994-4340d2ee2188?auto=format&fit=crop&w=600&q=80" alt="Bath Fittings" loading="lazy"/><span>Premium Jaquar Fittings</span></div></div>
     </div>
   </div>
 </section>
 </div>
 
-<!-- CALCULATOR / TOOLS -->
+<!-- TOOLS PAGE -->
 <div class="page" id="pg-calc" style="padding-top:72px">
-<div class="pg-hero"><div class="con"><span class="s-label" style="color:var(--gold-light)">Estimation Tools</span><h1 class="s-title" style="color:#FAF7F2">Tile Calculator</h1></div></div>
+<div class="pg-hero"><div class="con"><span class="s-label" style="color:var(--gold-light)">Planning Tools</span><h1 class="s-title" style="color:#FAF7F2">Tile Calculator</h1></div></div>
 <section>
   <div class="con">
     <div class="cgrid">
-      <div class="calc-card rv">
+      <div class="calc-card">
         <h3 class="calc-title">Area Calculator</h3>
-        <div class="fg"><label>Room Length (Feet)</label><input type="number" id="cLength" value="10" oninput="calcTiles()"/></div>
-        <div class="fg"><label>Room Width (Feet)</label><input type="number" id="cWidth" value="10" oninput="calcTiles()"/></div>
-        <div class="fg">
-          <label>Tile Size</label>
-          <select id="cTileSize" onchange="calcTiles()">
-            <option value="2x2">2ft x 2ft (4 sq.ft)</option>
-            <option value="2x4">2ft x 4ft (8 sq.ft)</option>
-            <option value="1x1">1ft x 1ft (1 sq.ft)</option>
+        <div class="fg"><label>Room Length (Feet)</label><input type="number" id="cl" placeholder="e.g. 12" oninput="calc()"/></div>
+        <div class="fg"><label>Room Width (Feet)</label><input type="number" id="cw" placeholder="e.g. 10" oninput="calc()"/></div>
+        <div class="fg"><label>Tile Size</label>
+          <select id="ts" onchange="calc()">
+            <option value="2x2">2ft x 2ft (4 sq ft)</option>
+            <option value="2x4">2ft x 4ft (8 sq ft)</option>
+            <option value="1x1">1ft x 1ft (1 sq ft)</option>
+            <option value="1x1.5">1ft x 1.5ft (1.5 sq ft)</option>
           </select>
         </div>
-        <div class="c-result" id="cResult">Estimated Tiles: 25 tiles<br/>Total Area: 100 sq.ft</div>
+        <div class="c-result" id="cr">Enter dimensions above to calculate tile requirements.</div>
       </div>
     </div>
   </div>
 </section>
 </div>
 
-<!-- REVIEWS -->
+<!-- REVIEWS PAGE -->
 <div class="page" id="pg-reviews" style="padding-top:72px">
 <div class="pg-hero"><div class="con"><span class="s-label" style="color:var(--gold-light)">Testimonials</span><h1 class="s-title" style="color:#FAF7F2">Customer Reviews</h1></div></div>
 <section>
   <div class="con">
     <div class="r-sum">
       <div class="r-big">4.9 / 5.0</div>
-      <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-      <div class="r-lbl">Based on 500+ Verified Customer Reviews</div>
+      <div class="stars" style="font-size:1.5rem">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+      <div class="r-lbl">Based on 500+ Local Customer Reviews</div>
+    </div>
+    <div class="tgrid">
+      <div class="testimonial rv"><div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div><p>We renovated our entire home with tiles from Ashirwad. Mr. Mittal personally guided us through every choice. Exceptional quality, honest prices.</p><div class="t-author">Rajesh Sharma &mdash; Gomti Nagar</div></div>
+      <div class="testimonial rv"><div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div><p>I have been buying sanitaryware from Ashirwad for my construction projects for seven years. The consistency in quality and after-sales service is outstanding.</p><div class="t-author">Priya Agarwal &mdash; Builder, Hazratganj</div></div>
+      <div class="testimonial rv"><div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div><p>Walked in not knowing anything about tiles. Left with a complete bathroom plan and the most beautiful marble-finish tiles within my budget.</p><div class="t-author">Sandeep Verma &mdash; Indira Nagar</div></div>
     </div>
   </div>
 </section>
 </div>
 
-<!-- CONTACT -->
+<!-- CONTACT PAGE -->
 <div class="page" id="pg-contact" style="padding-top:72px">
-<div class="pg-hero"><div class="con"><span class="s-label" style="color:var(--gold-light)">Get in Touch</span><h1 class="s-title" style="color:#FAF7F2">Visit Our Showroom</h1></div></div>
+<div class="pg-hero"><div class="con"><span class="s-label" style="color:var(--gold-light)">Get in Touch</span><h1 class="s-title" style="color:#FAF7F2">Visit Our Showrooms</h1></div></div>
 <section>
   <div class="con">
     <div class="cngrid">
       <div>
-        <div class="c-item"><div class="c-icon">📍</div><div class="c-detail"><h4>Showroom 1</h4><p>Sarojini Nagar, Lucknow, UP</p></div></div>
-        <div class="c-item"><div class="c-icon">📍</div><div class="c-detail"><h4>Showroom 2</h4><p>LDA Colony, Power House Road, Lucknow, UP</p></div></div>
-        <div class="c-item"><div class="c-icon">📞</div><div class="c-detail"><h4>Phone</h4><p><a href="tel:9455855203">9455855203</a> | <a href="tel:9335222840">9335222840</a></p></div></div>
+        <div class="c-item">
+          <div class="c-icon">📍</div>
+          <div class="c-detail">
+            <h4>Sarojini Nagar Showroom</h4>
+            <p>Ashirwad Sanitary &amp; Tiles, Main Market, Sarojini Nagar, Lucknow, UP 226008</p>
+          </div>
+        </div>
+        <div class="c-item">
+          <div class="c-icon">📍</div>
+          <div class="c-detail">
+            <h4>LDA Colony Showroom</h4>
+            <p>Power House Road, Near LDA Market, Lucknow, UP 226012</p>
+          </div>
+        </div>
+        <div class="c-item">
+          <div class="c-icon">📞</div>
+          <div class="c-detail">
+            <h4>Phone Numbers</h4>
+            <p><a href="tel:9455855203">9455855203</a> | <a href="tel:9335222840">9335222840</a></p>
+          </div>
+        </div>
+        <div class="c-item">
+          <div class="c-icon">✉️</div>
+          <div class="c-detail">
+            <h4>Email Us</h4>
+            <p><a href="mailto:ashirwadsanitary.lko@gmail.com">ashirwadsanitary.lko@gmail.com</a></p>
+          </div>
+        </div>
       </div>
       <div>
-        <form class="calc-card" onsubmit="alert('Thank you! We will get back to you shortly.'); return false;">
-          <h3 class="calc-title">Send a Message</h3>
-          <div class="fg"><label>Name</label><input type="text" required placeholder="Your Name"/></div>
-          <div class="fg"><label>Phone</label><input type="tel" required placeholder="Your Phone Number"/></div>
+        <form onsubmit="alert('Thank you for contacting Ashirwad Sanitary & Tiles. We will get back to you shortly.');return false;">
+          <div class="fg"><label>Your Name</label><input type="text" required placeholder="Full Name"/></div>
+          <div class="fg"><label>Phone Number</label><input type="tel" required placeholder="Phone Number"/></div>
+          <div class="fg"><label>Inquiry Type</label>
+            <select>
+              <option>Tile Inquiry</option>
+              <option>Sanitaryware Inquiry</option>
+              <option>Bath Fittings Inquiry</option>
+              <option>Bulk/Commercial Requirement</option>
+              <option>General Question</option>
+            </select>
+          </div>
           <div class="fg"><label>Message</label><textarea placeholder="Tell us about your requirement..."></textarea></div>
-          <button class="btn btn-g" style="width:100%">Submit Query</button>
+          <button type="submit" class="btn btn-g" style="width:100%">Send Message</button>
         </form>
       </div>
     </div>
@@ -1025,7 +1326,8 @@ body.dark .loc-addr{color:#A08060}
     <div class="fg-grid">
       <div class="fb">
         <h2>Ashirwad</h2>
-        <p>Premium Ceramic Tiles, Sanitaryware &amp; Bath Fittings in Lucknow since 2005.</p>
+        <p>Sanitary &amp; Tiles — Est. 2005</p>
+        <p style="margin-top:1rem;font-size:0.8rem;opacity:0.7">Lucknow's trusted destination for premium ceramic tiles, luxury sanitaryware and bath fittings for over 20 years.</p>
       </div>
       <div class="fc">
         <h3>Quick Links</h3>
@@ -1033,436 +1335,418 @@ body.dark .loc-addr{color:#A08060}
           <li><a href="#" onclick="go('home');return false;">Home</a></li>
           <li><a href="#" onclick="go('about');return false;">Heritage</a></li>
           <li><a href="#" onclick="go('products');return false;">Collections</a></li>
-          <li><a href="#" onclick="go('contact');return false;">Contact</a></li>
+          <li><a href="#" onclick="go('brands');return false;">Brands</a></li>
+          <li><a href="#" onclick="go('gallery');return false;">Gallery</a></li>
         </ul>
+      </div>
+      <div class="fc">
+        <h3>Showrooms</h3>
+        <ul>
+          <li><a href="#" onclick="openShowroomModal()">Sarojini Nagar</a></li>
+          <li><a href="#" onclick="openShowroomModal()">LDA Colony</a></li>
+          <li><a href="#" onclick="openCallModal()">Call Us</a></li>
+        </ul>
+      </div>
+      <div class="fc">
+        <h3>Contact</h3>
+        <p style="font-size:0.85rem;line-height:1.6;opacity:0.8">Sarojini Nagar &amp; LDA Colony, Lucknow<br/>Phone: 9455855203, 9335222840</p>
       </div>
     </div>
     <div class="f-bot">
       <p>&copy; 2026 Ashirwad Sanitary &amp; Tiles. All Rights Reserved.</p>
+      <p>Est. 2005 &bull; Lucknow, Uttar Pradesh</p>
     </div>
   </div>
 </footer>
 
 <!-- FLOATING BUTTONS -->
 <div class="float-btns">
-  <a href="https://wa.me/919455855203" target="_blank" class="fb-btn fb-wa" aria-label="WhatsApp">💬</a>
-  <a href="tel:9455855203" class="fb-btn fb-call" aria-label="Call">📞</a>
+  <a href="https://wa.me/919455855203" target="_blank" class="fb-btn fb-wa" aria-label="WhatsApp Us">💬</a>
+  <a href="tel:9455855203" class="fb-btn fb-call" aria-label="Call Us">📞</a>
 </div>
-<button class="btt" id="bttBtn" onclick="scrollToTop()">▲</button>
+<button class="btt" id="btt" onclick="scrollToTop()" aria-label="Scroll to top">&#8593;</button>
 
-<!-- MODALS -->
-<div class="custom-modal" id="showroomModal">
+<!-- SHOWROOM MODAL -->
+<div id="showroomModal" class="custom-modal">
   <div class="modal-card">
     <button class="modal-close" onclick="closeModal('showroomModal')">&times;</button>
-    <h3 class="modal-title">Our Showrooms</h3>
+    <div class="modal-title">Our Showroom Locations</div>
+    
     <div class="location-card">
-      <div class="loc-title">Sarojini Nagar Branch</div>
-      <div class="loc-addr">Main Market, Sarojini Nagar, Lucknow</div>
-      <a href="https://maps.google.com" target="_blank" class="btn btn-g" style="padding:0.4rem 1rem;font-size:0.7rem">Get Directions</a>
+      <div class="loc-title">Sarojini Nagar Showroom</div>
+      <div class="loc-addr">Main Market, Sarojini Nagar, Lucknow, UP 226008</div>
+      <a href="https://maps.google.com/?q=Ashirwad+Sanitary+and+Tiles+Sarojini+Nagar+Lucknow" target="_blank" class="modal-opt">Open in Google Maps</a>
     </div>
+
     <div class="location-card">
-      <div class="loc-title">LDA Colony Branch</div>
-      <div class="loc-addr">Power House Road, LDA Colony, Lucknow</div>
-      <a href="https://maps.google.com" target="_blank" class="btn btn-g" style="padding:0.4rem 1rem;font-size:0.7rem">Get Directions</a>
+      <div class="loc-title">LDA Colony Showroom</div>
+      <div class="loc-addr">Power House Road, Near LDA Market, Lucknow, UP 226012</div>
+      <a href="https://maps.google.com/?q=Ashirwad+Sanitary+and+Tiles+LDA+Colony+Lucknow" target="_blank" class="modal-opt">Open in Google Maps</a>
     </div>
   </div>
 </div>
 
-<div class="custom-modal" id="callModal">
+<!-- CALL MODAL -->
+<div id="callModal" class="custom-modal">
   <div class="modal-card">
     <button class="modal-close" onclick="closeModal('callModal')">&times;</button>
-    <h3 class="modal-title">Call Us</h3>
+    <div class="modal-title">Call Ashirwad Sanitary</div>
+    <p style="margin-bottom: 1.2rem; font-size: 0.9rem; color: var(--brown);">Select a contact number to place a direct call:</p>
     <a href="tel:9455855203" class="modal-opt">Call 9455855203</a>
     <a href="tel:9335222840" class="modal-opt">Call 9335222840</a>
   </div>
 </div>
 
-<!-- FOUNDER CIRCULAR CROP EDITOR MODAL -->
-<div class="custom-modal" id="founderCropModal">
-  <div class="modal-card" style="max-width: 440px; text-align: center; padding: 1.8rem;">
-    <h3 class="modal-title" style="margin-bottom: 0.4rem;">Adjust Founder Photo</h3>
-    <p style="font-size: 0.8rem; color: var(--brown); margin-bottom: 1.2rem;">Drag to position and use slider to zoom</p>
-    
-    <div id="cropContainer" style="position: relative; width: 260px; height: 260px; margin: 0 auto; overflow: hidden; border-radius: 50%; border: 3px solid var(--gold); box-shadow: 0 8px 25px rgba(0,0,0,0.3); background: #1a0f08; cursor: grab; user-select: none; touch-action: none;">
-      <canvas id="cropCanvas" width="260" height="260" style="width: 100%; height: 100%; pointer-events: none;"></canvas>
+<!-- PREMIUM CIRCULAR CROP EDITOR MODAL -->
+<div id="cropEditorModal" class="custom-modal">
+  <div class="modal-card" style="max-width:460px;padding:1.5rem;">
+    <button class="modal-close" onclick="closeCropModal()">&times;</button>
+    <div class="modal-title" style="margin-bottom:0.4rem;">Adjust &amp; Crop Photo</div>
+    <p style="font-size:0.8rem;color:var(--brown);margin-bottom:1rem;">Drag image to position and use slider to zoom into the circular frame.</p>
+
+    <div id="cropContainer" style="position:relative;width:280px;height:280px;margin:0 auto 1.2rem;overflow:hidden;border-radius:var(--radius);background:#100804;touch-action:none;user-select:none;cursor:grab;">
+      <canvas id="cropCanvas" width="280" height="280" style="position:absolute;top:0;left:0;width:280px;height:280px;"></canvas>
+      <div style="position:absolute;inset:0;pointer-events:none;border-radius:50%;box-shadow:0 0 0 9999px rgba(0,0,0,0.65);border:2px solid var(--gold);"></div>
     </div>
 
-    <div style="margin: 1.2rem 0; display: flex; align-items: center; justify-content: center; gap: 0.8rem;">
-      <span style="font-size: 0.78rem; font-weight: 600; letter-spacing: 0.05em; color: var(--brown); text-transform: uppercase;">Zoom</span>
-      <input type="range" id="cropZoom" min="1" max="3" step="0.01" value="1" style="width: 180px; accent-color: var(--gold);">
+    <div style="display:flex;align-items:center;justify-content:center;gap:1rem;margin-bottom:1.5rem;">
+      <span style="font-size:0.8rem;color:var(--brown);font-weight:600;">Zoom:</span>
+      <input type="range" id="cropZoom" min="1" max="3" step="0.01" value="1" style="width:180px;accent-color:var(--gold);cursor:pointer;"/>
     </div>
 
-    <div style="display: flex; gap: 0.8rem; justify-content: center;">
-      <button id="cropCancelBtn" class="btn btn-o" style="padding: 0.65rem 1.2rem; color: var(--charcoal); border-color: var(--border);">Cancel</button>
-      <button id="cropConfirmBtn" class="btn btn-g" style="padding: 0.65rem 1.8rem;">Confirm</button>
+    <div style="display:flex;gap:1rem;justify-content:center;">
+      <button type="button" class="btn btn-d" onclick="closeCropModal()" style="padding:0.6rem 1.2rem;">Cancel</button>
+      <button type="button" class="btn btn-g" id="cropConfirmBtn" onclick="confirmCrop()" style="padding:0.6rem 1.2rem;">Confirm &amp; Lock</button>
     </div>
   </div>
 </div>
 
 <script>
-/* ROUTING & UI FUNCTIONS */
-function go(pageId) {
-  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
-  const target = document.getElementById('pg-' + pageId);
-  if (target) {
-    target.classList.add('active');
-    window.scrollTo(0, 0);
-  }
-  document.querySelectorAll('.nav-links a').forEach(a => {
-    a.classList.toggle('active', a.getAttribute('data-p') === pageId);
-  });
+/* THEME & NAV LOGIC */
+function toggleTheme(){
+  document.body.classList.toggle('dark');
+  const isDark = document.body.classList.contains('dark');
+  document.getElementById('tbtn').innerText = isDark ? '🌙' : '☀️';
 }
-function cm() {
-  document.getElementById('nl').classList.remove('open');
-}
-function toggleNav() {
+function toggleNav(){
   document.getElementById('nl').classList.toggle('open');
 }
-function toggleTheme() {
-  document.body.classList.toggle('dark');
+function cm(){
+  document.getElementById('nl').classList.remove('open');
 }
-function openShowroomModal() {
-  document.getElementById('showroomModal').classList.add('active');
+function go(pageId){
+  document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
+  document.querySelectorAll('.nav-links a').forEach(a=>a.classList.remove('active'));
+  const target = document.getElementById('pg-' + pageId);
+  if(target){
+    target.classList.add('active');
+    window.scrollTo({top:0,behavior:'smooth'});
+  }
+  const activeNav = document.querySelector(`.nav-links a[data-p="${pageId}"]`);
+  if(activeNav) activeNav.classList.add('active');
 }
-function openCallModal() {
-  document.getElementById('callModal').classList.add('active');
-}
-function closeModal(id) {
-  document.getElementById(id).classList.remove('active');
-}
-function scrollToTop() {
-  window.scrollTo({ top: 0, behavior: 'smooth' });
-}
+window.addEventListener('scroll',()=>{
+  const nav = document.getElementById('nav');
+  if(window.scrollY > 50) nav.classList.add('scrolled');
+  else nav.classList.remove('scrolled');
 
-/* SCROLL REVEAL & PROGRESS */
-window.addEventListener('scroll', () => {
-  const scroll = window.scrollY;
-  const docH = document.documentElement.scrollHeight - window.innerHeight;
-  document.getElementById('pb').style.width = (docH > 0 ? (scroll / docH) * 100 : 0) + '%';
-  document.getElementById('nav').classList.toggle('scrolled', scroll > 50);
-  document.getElementById('bttBtn').classList.toggle('on', scroll > 400);
+  const winH = document.documentElement.scrollHeight - window.innerHeight;
+  const pct = winH > 0 ? (window.scrollY / winH) * 100 : 0;
+  document.getElementById('pb').style.width = pct + '%';
 
-  document.querySelectorAll('.rv').forEach(el => {
-    const rect = el.getBoundingClientRect();
-    if (rect.top < window.innerHeight - 80) el.classList.add('vis');
-  });
+  const btt = document.getElementById('btt');
+  if(window.scrollY > 300) btt.classList.add('on');
+  else btt.classList.remove('on');
 });
+function scrollToTop(){ window.scrollTo({top:0,behavior:'smooth'}); }
 
 /* STATS COUNTER */
-let counted = false;
-function checkStats() {
-  if (counted) return;
-  const grid = document.querySelector('.stats-grid');
-  if (!grid) return;
-  if (grid.getBoundingClientRect().top < window.innerHeight) {
-    counted = true;
-    document.querySelectorAll('.stat-n').forEach(el => {
-      const target = parseInt(el.getAttribute('data-c'));
-      let current = 0;
-      const step = Math.max(1, Math.floor(target / 40));
-      const timer = setInterval(() => {
-        current += step;
-        if (current >= target) {
-          el.innerText = target + '+';
+const observer = new IntersectionObserver((entries)=>{
+  entries.forEach(entry=>{
+    if(entry.isIntersecting){
+      const el = entry.target;
+      const countTo = parseInt(el.getAttribute('data-c'),10);
+      let curr = 0;
+      const step = Math.ceil(countTo / 60);
+      const timer = setInterval(()=>{
+        curr += step;
+        if(curr >= countTo){
+          el.innerText = countTo.toLocaleString() + '+';
           clearInterval(timer);
         } else {
-          el.innerText = current;
+          el.innerText = curr.toLocaleString();
         }
-      }, 30);
-    });
-  }
-}
-window.addEventListener('scroll', checkStats);
-
-/* FILTER PRODUCTS */
-function fp(cat, btn) {
-  document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
-  btn.classList.add('active');
-  document.querySelectorAll('#pgrid .product-card').forEach(card => {
-    if (cat === 'all' || card.getAttribute('data-c') === cat) {
-      card.style.display = 'block';
-    } else {
-      card.style.display = 'none';
+      },25);
+      observer.unobserve(el);
     }
+  });
+},{threshold:0.5});
+document.querySelectorAll('.stat-n').forEach(el=>observer.observe(el));
+
+/* REVEAL OBSERVER */
+const rvObs = new IntersectionObserver((entries)=>{
+  entries.forEach(e=>{ if(e.isIntersecting) e.target.classList.add('vis'); });
+},{threshold:0.15});
+document.querySelectorAll('.rv').forEach(el=>rvObs.observe(el));
+
+/* PRODUCT FILTER */
+function fp(cat, btn){
+  document.querySelectorAll('.filter-btn').forEach(b=>b.classList.remove('active'));
+  btn.classList.add('active');
+  const cards = document.querySelectorAll('#pgrid .product-card');
+  cards.forEach(c=>{
+    if(cat==='all' || c.getAttribute('data-c')===cat) c.style.display='block';
+    else c.style.display='none';
   });
 }
 
 /* CALCULATOR */
-function calcTiles() {
-  const l = parseFloat(document.getElementById('cLength').value) || 0;
-  const w = parseFloat(document.getElementById('cWidth').value) || 0;
-  const size = document.getElementById('cTileSize').value;
-  const area = l * w;
-  let tArea = 4;
-  if (size === '2x4') tArea = 8;
-  if (size === '1x1') tArea = 1;
-  const tiles = Math.ceil((area * 1.1) / tArea);
-  document.getElementById('cResult').innerHTML = `Estimated Tiles: <strong>${tiles} tiles</strong> (incl. 10% wastage)<br/>Total Room Area: <strong>${area} sq.ft</strong>`;
+function calc(){
+  const l = parseFloat(document.getElementById('cl').value)||0;
+  const w = parseFloat(document.getElementById('cw').value)||0;
+  const ts = document.getElementById('ts').value;
+  if(l<=0 || w<=0){
+    document.getElementById('cr').innerText = "Enter dimensions above to calculate tile requirements.";
+    return;
+  }
+  const sqft = l*w;
+  let tileSqFt = 4;
+  if(ts==='2x4') tileSqFt = 8;
+  if(ts==='1x1') tileSqFt = 1;
+  if(ts==='1x1.5') tileSqFt = 1.5;
+  const numTiles = Math.ceil((sqft * 1.1) / tileSqFt);
+  document.getElementById('cr').innerHTML = `Total Area: <strong>${sqft} sq ft</strong><br/>Estimated Tiles (w/ 10% wastage): <strong>${numTiles} tiles</strong>`;
 }
 
-/* BEFORE & AFTER SLIDER */
-(function initBASlider() {
+/* MODAL LOGIC */
+function openShowroomModal(){ document.getElementById('showroomModal').classList.add('active'); }
+function openCallModal(){ document.getElementById('callModal').classList.add('active'); }
+function closeModal(id){ document.getElementById(id).classList.remove('active'); }
+
+/* BEFORE & AFTER SLIDER DRAG LOGIC */
+(function initBASlider(){
   const box = document.getElementById('baSliderBox');
-  const layerAfter = document.getElementById('baLayerAfter');
+  const afterLayer = document.getElementById('baLayerAfter');
   const handle = document.getElementById('baHandle');
-  if (!box || !layerAfter || !handle) return;
+  if(!box || !afterLayer || !handle) return;
 
   let isDragging = false;
-  function updateSlider(x) {
+  function updateSlider(clientX){
     const rect = box.getBoundingClientRect();
-    let pos = ((x - rect.left) / rect.width) * 100;
-    if (pos < 0) pos = 0;
-    if (pos > 100) pos = 100;
-    layerAfter.style.clipPath = `inset(0 ${100 - pos}% 0 0)`;
-    handle.style.left = pos + '%';
+    let x = clientX - rect.left;
+    if(x < 0) x = 0;
+    if(x > rect.width) x = rect.width;
+    const pct = (x / rect.width) * 100;
+    afterLayer.style.clipPath = `inset(0 ${100 - pct}% 0 0)`;
+    handle.style.left = pct + '%';
   }
-  box.addEventListener('mousedown', e => { isDragging = true; updateSlider(e.clientX); });
-  window.addEventListener('mousemove', e => { if (isDragging) updateSlider(e.clientX); });
-  window.addEventListener('mouseup', () => isDragging = false);
 
-  box.addEventListener('touchstart', e => { isDragging = true; updateSlider(e.touches[0].clientX); }, { passive: true });
-  window.addEventListener('touchmove', e => { if (isDragging) updateSlider(e.touches[0].clientX); }, { passive: true });
-  window.addEventListener('touchend', () => isDragging = false);
+  box.addEventListener('mousedown', (e)=>{ isDragging = true; updateSlider(e.clientX); });
+  window.addEventListener('mousemove', (e)=>{ if(isDragging) updateSlider(e.clientX); });
+  window.addEventListener('mouseup', ()=>{ isDragging = false; });
+
+  box.addEventListener('touchstart', (e)=>{ isDragging = true; if(e.touches[0]) updateSlider(e.touches[0].clientX); },{passive:true});
+  window.addEventListener('touchmove', (e)=>{ if(isDragging && e.touches[0]) updateSlider(e.touches[0].clientX); },{passive:true});
+  window.addEventListener('touchend', ()=>{ isDragging = false; });
 })();
 
-/* FOUNDER SECTION — PHOTO UPLOAD, CIRCULAR CROP & PERMANENT LOCK */
-(function initFounderSection() {
-  const founderPortrait = document.getElementById('ownerPortrait');
-  const fileInput = document.getElementById('founderFileInput');
-  const cropModal = document.getElementById('founderCropModal');
-  const cropCanvas = document.getElementById('cropCanvas');
-  const cropZoom = document.getElementById('cropZoom');
-  const cropConfirmBtn = document.getElementById('cropConfirmBtn');
-  const cropCancelBtn = document.getElementById('cropCancelBtn');
-  const cropContainer = document.getElementById('cropContainer');
+/* CINEMATIC REVEAL INTRO (HSR) */
+function hsrFinish(){
+  const overlay = document.getElementById('hsrOverlay');
+  if(overlay){
+    overlay.classList.add('hsr-ending');
+    setTimeout(()=>{ overlay.style.display='none'; },1200);
+  }
+}
 
-  if (!founderPortrait || !fileInput) return;
+/* ========================================================= */
+/* PERMANENT ONE-TIME PHOTO UPLOAD & CIRCULAR CROP LOGIC     */
+/* ========================================================= */
+let cropTarget = null; // 'founder' or 'son'
+let cropImgObj = null;
+let cropScale = 1;
+let cropPosX = 0, cropPosY = 0;
+let cropDragging = false;
+let cropStartX = 0, cropStartY = 0;
 
-  const STORAGE_KEY = 'ashirwad_founder_photo_data';
-  const LOCKED_KEY = 'ashirwad_founder_photo_locked';
+function checkPhotoLock(type){
+  const isLocked = localStorage.getItem('ashirwad_' + type + '_locked') === 'true';
+  const savedPhoto = localStorage.getItem('ashirwad_' + type + '_photo');
+  
+  const circleEl = document.getElementById(type + 'PhotoCircle');
+  const badgeEl = document.getElementById(type + 'UploadBadge');
+  const fileInput = document.getElementById(type + 'FileInput');
 
-  let loadedImg = null;
-  let scale = 1;
-  let baseScale = 1;
-  let offsetX = 0;
-  let offsetY = 0;
-  let isDragging = false;
-  let startX = 0;
-  let startY = 0;
-  const cropSize = 260;
-
-  function renderSavedPhoto() {
-    const savedData = localStorage.getItem(STORAGE_KEY);
-    const isLocked = localStorage.getItem(LOCKED_KEY) === 'true';
-
-    if (savedData && isLocked) {
-      founderPortrait.innerHTML = `
-        <div style="width:100%; height:100%; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:0.8rem; text-align:center;">
-          <img src="${savedData}" alt="Arvind Mittal - Founder" style="width:190px; height:190px; border-radius:50%; object-fit:cover; border:3px solid var(--gold); box-shadow:0 8px 25px rgba(0,0,0,0.3); pointer-events:none;" />
-          <div>Arvind Mittal<br/>Founder &amp; Proprietor</div>
-        </div>
-      `;
-      founderPortrait.style.cursor = 'default';
-      founderPortrait.title = '';
-      fileInput.disabled = true;
-      fileInput.style.display = 'none';
-      return true;
-    } else {
-      founderPortrait.style.cursor = 'pointer';
-      founderPortrait.title = 'Tap to add founder photo';
-      return false;
+  if (isLocked && savedPhoto) {
+    if (circleEl) {
+      circleEl.innerHTML = `<img src="${savedPhoto}" alt="${type === 'founder' ? 'Arvind Mittal' : 'Shaurya Mittal'}" style="width:100%;height:100%;object-fit:cover;border-radius:50%;display:block;">`;
+      circleEl.style.cursor = 'default';
+      circleEl.style.transform = 'none';
+      circleEl.onclick = null;
     }
-  }
-
-  // Initial check on page load
-  if (renderSavedPhoto()) {
-    return; // Photo is permanently locked, skip attaching listeners
-  }
-
-  // Open file input on first tap
-  founderPortrait.addEventListener('click', function() {
-    if (localStorage.getItem(LOCKED_KEY) === 'true') return;
-    fileInput.click();
-  });
-
-  // Handle selected image
-  fileInput.addEventListener('change', function(e) {
-    const file = e.target.files && e.target.files[0];
-    if (!file) return;
-
-    const reader = new FileReader();
-    reader.onload = function(evt) {
-      loadedImg = new Image();
-      loadedImg.onload = function() {
-        openCropModal();
+    if (badgeEl) badgeEl.remove();
+    if (fileInput) fileInput.remove();
+  } else {
+    if (circleEl) {
+      circleEl.style.cursor = 'pointer';
+      circleEl.onclick = function(){
+        if (localStorage.getItem('ashirwad_' + type + '_locked') !== 'true') {
+          const input = document.getElementById(type + 'FileInput');
+          if (input) input.click();
+        }
       };
-      loadedImg.src = evt.target.result;
-    };
-    reader.readAsDataURL(file);
-    fileInput.value = '';
+    }
+  }
+}
+
+function handleFileSelect(e, target){
+  if (localStorage.getItem('ashirwad_' + target + '_locked') === 'true') return;
+  const file = e.target.files && e.target.files[0];
+  if (!file) return;
+  const reader = new FileReader();
+  reader.onload = function(evt){
+    const img = new Image();
+    img.onload = function(){ initCropEditor(img, target); };
+    img.src = evt.target.result;
+  };
+  reader.readAsDataURL(file);
+}
+
+function initCropEditor(img, target){
+  cropTarget = target;
+  cropImgObj = img;
+  
+  // Calculate initial scale to cover 280px viewport
+  cropScale = Math.max(280 / img.width, 280 / img.height);
+  const zoomInput = document.getElementById('cropZoom');
+  zoomInput.min = cropScale;
+  zoomInput.max = cropScale * 3.5;
+  zoomInput.value = cropScale;
+  
+  // Center image
+  cropPosX = (280 - img.width * cropScale) / 2;
+  cropPosY = (280 - img.height * cropScale) / 2;
+  
+  drawCropCanvas();
+  document.getElementById('cropEditorModal').classList.add('active');
+}
+
+function drawCropCanvas(){
+  const canvas = document.getElementById('cropCanvas');
+  const ctx = canvas.getContext('2d');
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+  if (cropImgObj) {
+    ctx.drawImage(cropImgObj, cropPosX, cropPosY, cropImgObj.width * cropScale, cropImgObj.height * cropScale);
+  }
+}
+
+// Crop Editor Drag & Zoom Events
+(function initCropEvents(){
+  const box = document.getElementById('cropContainer');
+  const zoomInput = document.getElementById('cropZoom');
+  if(!box || !zoomInput) return;
+
+  function getPos(e){
+    if (e.touches && e.touches.length > 0) {
+      return { x: e.touches[0].clientX, y: e.touches[0].clientY };
+    }
+    return { x: e.clientX, y: e.clientY };
+  }
+
+  function startDrag(e){
+    if (!cropImgObj) return;
+    cropDragging = true;
+    const p = getPos(e);
+    cropStartX = p.x - cropPosX;
+    cropStartY = p.y - cropPosY;
+  }
+
+  function moveDrag(e){
+    if (!cropDragging || !cropImgObj) return;
+    const p = getPos(e);
+    cropPosX = p.x - cropStartX;
+    cropPosY = p.y - cropStartY;
+    drawCropCanvas();
+  }
+
+  function stopDrag(){ cropDragging = false; }
+
+  box.addEventListener('mousedown', startDrag);
+  box.addEventListener('touchstart', startDrag, {passive:true});
+  window.addEventListener('mousemove', moveDrag);
+  window.addEventListener('touchmove', moveDrag, {passive:true});
+  window.addEventListener('mouseup', stopDrag);
+  window.addEventListener('touchend', stopDrag);
+
+  zoomInput.addEventListener('input', function(){
+    if (!cropImgObj) return;
+    const oldScale = cropScale;
+    cropScale = parseFloat(this.value);
+    const centerX = 140;
+    const centerY = 140;
+    cropPosX = centerX - (centerX - cropPosX) * (cropScale / oldScale);
+    cropPosY = centerY - (centerY - cropPosY) * (cropScale / oldScale);
+    drawCropCanvas();
   });
 
-  function openCropModal() {
-    cropModal.classList.add('active');
-    cropZoom.value = 1;
-
-    baseScale = Math.max(cropSize / loadedImg.width, cropSize / loadedImg.height);
-    scale = baseScale;
-
-    offsetX = (cropSize - loadedImg.width * scale) / 2;
-    offsetY = (cropSize - loadedImg.height * scale) / 2;
-
-    drawCrop();
-  }
-
-  function constrainOffsets() {
-    const currentW = loadedImg.width * scale;
-    const currentH = loadedImg.height * scale;
-    const minX = cropSize - currentW;
-    const minY = cropSize - currentH;
-
-    if (currentW >= cropSize) {
-      offsetX = Math.min(0, Math.max(minX, offsetX));
-    } else {
-      offsetX = (cropSize - currentW) / 2;
-    }
-
-    if (currentH >= cropSize) {
-      offsetY = Math.min(0, Math.max(minY, offsetY));
-    } else {
-      offsetY = (cropSize - currentH) / 2;
-    }
-  }
-
-  function drawCrop() {
-    if (!loadedImg) return;
-    const ctx = cropCanvas.getContext('2d');
-    ctx.clearRect(0, 0, cropSize, cropSize);
-
-    ctx.imageSmoothingEnabled = true;
-    ctx.imageSmoothingQuality = 'high';
-
-    ctx.save();
-    ctx.beginPath();
-    ctx.arc(cropSize / 2, cropSize / 2, cropSize / 2, 0, Math.PI * 2);
-    ctx.clip();
-
-    ctx.drawImage(
-      loadedImg,
-      offsetX,
-      offsetY,
-      loadedImg.width * scale,
-      loadedImg.height * scale
-    );
-
-    ctx.restore();
-  }
-
-  // Interactive dragging controls
-  function startDrag(clientX, clientY) {
-    isDragging = true;
-    startX = clientX - offsetX;
-    startY = clientY - offsetY;
-  }
-
-  function moveDrag(clientX, clientY) {
-    if (!isDragging) return;
-    offsetX = clientX - startX;
-    offsetY = clientY - startY;
-    constrainOffsets();
-    drawCrop();
-  }
-
-  function endDrag() {
-    isDragging = false;
-  }
-
-  cropContainer.addEventListener('mousedown', e => startDrag(e.clientX, e.clientY));
-  window.addEventListener('mousemove', e => moveDrag(e.clientX, e.clientY));
-  window.addEventListener('mouseup', endDrag);
-
-  cropContainer.addEventListener('touchstart', e => {
-    if (e.touches.length === 1) {
-      startDrag(e.touches[0].clientX, e.touches[0].clientY);
-    }
-  }, { passive: true });
-
-  window.addEventListener('touchmove', e => {
-    if (isDragging && e.touches.length === 1) {
-      moveDrag(e.touches[0].clientX, e.touches[0].clientY);
-    }
-  }, { passive: true });
-
-  window.addEventListener('touchend', endDrag);
-
-  // Zoom slider control
-  cropZoom.addEventListener('input', function() {
-    const zoomVal = parseFloat(this.value);
-    const oldScale = scale;
-    scale = baseScale * zoomVal;
-
-    const centerCanvasX = cropSize / 2;
-    const centerCanvasY = cropSize / 2;
-
-    const imgCenterX = (centerCanvasX - offsetX) / oldScale;
-    const imgCenterY = (centerCanvasY - offsetY) / oldScale;
-
-    offsetX = centerCanvasX - imgCenterX * scale;
-    offsetY = centerCanvasY - imgCenterY * scale;
-
-    constrainOffsets();
-    drawCrop();
-  });
-
-  // Cancel action
-  cropCancelBtn.addEventListener('click', function() {
-    cropModal.classList.remove('active');
-    loadedImg = null;
-  });
-
-  // Confirm crop & permanent save
-  cropConfirmBtn.addEventListener('click', function() {
-    if (!loadedImg) return;
-
-    const outputCanvas = document.createElement('canvas');
-    const outSize = 500; // High resolution anti-aliased output
-    outputCanvas.width = outSize;
-    outputCanvas.height = outSize;
-    const outCtx = outputCanvas.getContext('2d');
-
-    outCtx.imageSmoothingEnabled = true;
-    outCtx.imageSmoothingQuality = 'high';
-
-    const factor = outSize / cropSize;
-
-    outCtx.beginPath();
-    outCtx.arc(outSize / 2, outSize / 2, outSize / 2, 0, Math.PI * 2);
-    outCtx.clip();
-
-    outCtx.drawImage(
-      loadedImg,
-      offsetX * factor,
-      offsetY * factor,
-      loadedImg.width * scale * factor,
-      loadedImg.height * scale * factor
-    );
-
-    const dataUrl = outputCanvas.toDataURL('image/png', 0.95);
-
-    try {
-      localStorage.setItem(STORAGE_KEY, dataUrl);
-      localStorage.setItem(LOCKED_KEY, 'true');
-    } catch (err) {
-      console.error('Failed to save to localStorage:', err);
-    }
-
-    cropModal.classList.remove('active');
-    renderSavedPhoto();
-  });
+  box.addEventListener('wheel', function(e){
+    e.preventDefault();
+    if (!cropImgObj) return;
+    const delta = e.deltaY < 0 ? 0.05 : -0.05;
+    let newZoom = Math.min(Math.max(parseFloat(zoomInput.min), cropScale + delta), parseFloat(zoomInput.max));
+    zoomInput.value = newZoom;
+    zoomInput.dispatchEvent(new Event('input'));
+  }, {passive:false});
 })();
 
-// Initial trigger for reveal elements
-window.dispatchEvent(new Event('scroll'));
+function closeCropModal(){
+  document.getElementById('cropEditorModal').classList.remove('active');
+  cropImgObj = null;
+  cropTarget = null;
+}
+
+function confirmCrop(){
+  if (!cropImgObj || !cropTarget) return;
+
+  // Render high-resolution circular image
+  const exportCanvas = document.createElement('canvas');
+  exportCanvas.width = 400;
+  exportCanvas.height = 400;
+  const ctx = exportCanvas.getContext('2d');
+
+  ctx.beginPath();
+  ctx.arc(200, 200, 200, 0, Math.PI * 2);
+  ctx.clip();
+
+  const scaleFactor = 400 / 280;
+  ctx.drawImage(
+    cropImgObj,
+    cropPosX * scaleFactor,
+    cropPosY * scaleFactor,
+    cropImgObj.width * cropScale * scaleFactor,
+    cropImgObj.height * cropScale * scaleFactor
+  );
+
+  const dataUrl = exportCanvas.toDataURL('image/jpeg', 0.92);
+
+  try {
+    localStorage.setItem('ashirwad_' + cropTarget + '_photo', dataUrl);
+    localStorage.setItem('ashirwad_' + cropTarget + '_locked', 'true');
+  } catch(err) {
+    console.error('Browser Storage Error:', err);
+  }
+
+  checkPhotoLock(cropTarget);
+  closeCropModal();
+}
+
+// Initial Lock Check on Load
+document.addEventListener('DOMContentLoaded', function(){
+  checkPhotoLock('founder');
+  checkPhotoLock('son');
+});
+checkPhotoLock('founder');
+checkPhotoLock('son');
 </script>
 </body>
 </html>
